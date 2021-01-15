@@ -8,9 +8,18 @@
     "start": "next start"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.2",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/styles": "^4.11.2",
+    "gray-matter": "^4.0.2",
     "next": "10.0.5",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "sass": "^1.32.2"
+    "remark": "^11.0.2",
+    "remark-highlight.js": "^6.0.0",
+    "remark-html": "^10.0.0",
+    "remark-parse": "^9.0.0",
+    "unified": "^9.2.0",
+    "uuid": "^8.3.2"
   }
 }
