@@ -1,3 +1,9 @@
+---
+title: My first blog
+slug: test3
+date: "20-05-2020"
+---
+
 # Next.js
 
 ## Render Style
@@ -25,6 +31,7 @@
 ## SSG API
 1. getStaticProps:
 * 在伺服器端執行，從伺服器端取得 props 並傳入該 component 內部
+* 必須搭配 getStaticPaths 一起使用
 
 ```javascript=
 return {
