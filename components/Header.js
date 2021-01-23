@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router'
 
-import { makeStyles } from "@material-ui/core/styles";
 import { Grid, Button, Toolbar, Avatar} from "@material-ui/core"
 
 import { categorySchema } from "@/constant/category";
@@ -8,13 +7,7 @@ import { categorySchema } from "@/constant/category";
 
 
 
-const useHeaderStyles = makeStyles(theme => ({
-
-}));
-
-const Header = (props) => {
-    const classes = useHeaderStyles();
-
+const Header = props => {
     const router = useRouter()
 
     const handleRouteChange = (path) => {
@@ -30,13 +23,15 @@ const Header = (props) => {
                     </Button>
                 </Grid>
                 <Grid item xs={6}>
-                    {
-                        categorySchema.map((item, index) => (
-                            <Button key={item.id} onClick={() => handleRouteChange(item.path)}>
-                                { item.title }
-                            </Button>
-                        ))
-                    }
+                    <div>
+                        {
+                            categorySchema.map(item => (
+                                <Button key={item.id} onClick={() => handleRouteChange(item.path)}>
+                                    { item.title }
+                                </Button>
+                            ))
+                        }
+                    </div>
                 </Grid>
             </Toolbar>
         </Grid>

@@ -3,6 +3,7 @@ import Head from 'next/head'
 
 import DefaultLayout from "@/layout/DefaultLayout";
 
+
 const IndexPage = props => {
   return (
     <div>

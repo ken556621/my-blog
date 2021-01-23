@@ -1,9 +1,3 @@
----
-title: My first blog
-slug: test3
-date: "20-05-2020"
----
-
 # Next.js
 
 ## Render Style

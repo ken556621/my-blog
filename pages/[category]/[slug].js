@@ -1,26 +1,32 @@
+import Head from 'next/head'
 
+import SideList from "@/components/SideList";
 
-import { makeStyles } from "@material-ui/core/styles";
-
-
-
-const useBlogStyles = makeStyles(theme => ({
-  container: {
-
-  }
-}));
+import styles from "@/styles/blog.module.scss";
 
 const Blog = (props) => {
     const {
-      blog
+      category = "",
+      allFormatBlogs = [],
+      blog = {}
     } = props;
 
-    const classes = useBlogStyles();
+    const titleRole = new RegExp("<h1>.+?</h1>");
+
+    const title = blog.content.match(titleRole)[0].replace("<h1>", "").replace("</h1>", "");
 
     return (
       <div>
+        <Head>
+            <title>{title}</title>
+            <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        </Head>
+        <SideList
+          category={category}
+          list={allFormatBlogs}
+        />
         <section
-          className={classes.container}
+          className={styles.container}
           dangerouslySetInnerHTML={{ __html: blog.content }}
         />
       </div>
@@ -29,25 +35,37 @@ const Blog = (props) => {
 
   export async function getStaticProps(context) {
     const fs = require("fs");
-    const remark = require("remark");
-    const html = require("remark-html");
 
     const { category, slug } = context.params;
     const path = `${process.cwd()}/contents/${category}/${slug}.md`;
+    const allTitlePath = `${process.cwd()}/contents/${category}`;
 
+    const MarkdownIt = require("@hackmd/markdown-it");
+
+    const md = new MarkdownIt();
 
     const rawContent = fs.readFileSync(path, {
       encoding: "utf-8",
     });
 
-    const result = await remark()
-    .use(html)
-    .process(rawContent)
+    const files = fs.readdirSync(`${process.cwd()}/contents/${category}`, "utf-8");
+
+    const allMdFiles = files.filter(fn => fn.endsWith(".md"));
+
+    const allContent = allMdFiles.map(mdFile => fs.readFileSync(`${process.cwd()}/contents/${category}/${mdFile}`, {
+        encoding: "utf-8",
+    }));
+
+    const allFormatBlogs = allContent.map(content => md.render(content));
+
+    const result = md.render(rawContent);
 
     return {
       props: {
+          category,
+          allFormatBlogs,
           blog: {
-            content: result.toString()
+            content: result
         }
       },
     };

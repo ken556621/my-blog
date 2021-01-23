@@ -1,75 +1,59 @@
 
+import DefaultLayout from "@/layout/DefaultLayout";
 
-import { makeStyles } from "@material-ui/core/styles";
+import SideList from "@/components/SideList";
 
 import { categorySchema } from "@/constant/category";
 
-
-const useListStyles = makeStyles(theme => ({
-  container: {
-    height: 500,
-    overflow: "hidden"
-  }
-}));
+import styles from "@/styles/blogList.module.scss";
 
 const List = (props) => {
     const {
+        category = "",
         allFormatBlogs = []
     } = props;
 
-    const classes = useListStyles();
-
     return (
-        allFormatBlogs.map((blog, index) => (
-            <div key={index}>
-                <h1>{blog.info.title}</h1>
-                <section
-                    className={classes.container}
-                    dangerouslySetInnerHTML={{ __html: blog.content.toString() }}
-                />
-            </div>
-        ))
+        <>
+            <DefaultLayout />
+            <SideList
+                category={category}
+                list={allFormatBlogs}
+            />
+            {
+                allFormatBlogs.map((blog, index) => (
+                    <div key={index} className={styles.container}>
+                        <section
+                            dangerouslySetInnerHTML={{ __html: blog }}
+                        />
+                    </div>
+                ))
+            }
+        </>
     )
 }
 
 
 export async function getStaticProps(context) {
+    const { category } = context.params;
     const fs = require("fs");
-    const remark = require("remark");
-    const html = require("remark-html");
-    const matter = require("gray-matter");
+    const MarkdownIt = require("@hackmd/markdown-it");
 
-    const files = fs.readdirSync(`${process.cwd()}/contents/${context.params.category}`, "utf-8");
-
-    const allFormatBlogs = [];
+    const files = fs.readdirSync(`${process.cwd()}/contents/${category}`, "utf-8");
 
     const allMdFiles = files.filter(fn => fn.endsWith(".md"));
 
-    const allContent = allMdFiles.map(mdFile => fs.readFileSync(`${process.cwd()}/contents/${context.params.category}/${mdFile}`, {
+    const allContent = allMdFiles.map(mdFile => fs.readFileSync(`${process.cwd()}/contents/${category}/${mdFile}`, {
         encoding: "utf-8",
     }))
 
-    const parseContent = async () => {
-        for (let i = 0; i < allContent.length; i++) {
-            const content = await remark()
-            .use(html)
-            .process(allContent[i])
+    const md = new MarkdownIt();
 
-            const { data } = matter(allContent[i]);
-
-            const result = {
-                info: data,
-                content: content.contents
-            }
-
-            allFormatBlogs.push(result);
-        }
-    }
-
-    await parseContent();
+    const allFormatBlogs = allContent.map(content => md.render(content));
 
     return {
         props: {
+            category: context.params.category,
             allFormatBlogs
         }
     };
