@@ -1,8 +1,10 @@
-import Head from 'next/head'
+import Head from "next/head"
 
 import SideList from "@/components/SideList";
+import DefaultLayout from "@/layout/DefaultLayout";
 
 import styles from "@/styles/blog.module.scss";
+
 
 const Blog = (props) => {
     const {
@@ -11,24 +13,30 @@ const Blog = (props) => {
       blog = {}
     } = props;
 
-    const titleRole = new RegExp("<h1>.+?</h1>");
+    const getTitle = (content) => {
+      const titleRole = new RegExp("<h1>.+?</h1>");
 
-    const title = blog.content.match(titleRole)[0].replace("<h1>", "").replace("</h1>", "");
+      const title = content.match(titleRole)[0].replace("<h1>", "").replace("</h1>", "");
+
+      return title
+    }
 
     return (
       <div>
         <Head>
-            <title>{title}</title>
+            <title>{getTitle(blog.content)}</title>
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         </Head>
+        <DefaultLayout />
         <SideList
           category={category}
           list={allFormatBlogs}
         />
-        <section
-          className={styles.container}
-          dangerouslySetInnerHTML={{ __html: blog.content }}
-        />
+        <div className={styles.container}>
+          <section
+            dangerouslySetInnerHTML={{ __html: blog.content }}
+          />
+        </div>
       </div>
     )
   }
@@ -38,11 +46,22 @@ const Blog = (props) => {
 
     const { category, slug } = context.params;
     const path = `${process.cwd()}/contents/${category}/${slug}.md`;
-    const allTitlePath = `${process.cwd()}/contents/${category}`;
 
-    const MarkdownIt = require("@hackmd/markdown-it");
+    const hljs = require("highlight.js");
 
-    const md = new MarkdownIt();
+    const md = require("markdown-it")({
+      highlight: (str, lang) => {
+        if (lang && hljs.getLanguage(lang)) {
+          try {
+            return hljs.highlight(lang, str).value;
+          } catch (__) {
+
+          }
+        }
+
+        return "";
+      }
+    });
 
     const rawContent = fs.readFileSync(path, {
       encoding: "utf-8",

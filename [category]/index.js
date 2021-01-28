@@ -1,4 +1,6 @@
 
+import { useRouter } from "next/router";
+
 import DefaultLayout from "@/layout/DefaultLayout";
 
 import SideList from "@/components/SideList";
@@ -13,6 +15,20 @@ const List = (props) => {
         allFormatBlogs = []
     } = props;
 
+    const router = useRouter();
+
+    const getPath = (content) => {
+        const titleRole = new RegExp("<h1>.+?</h1>");
+
+        const path = content.match(titleRole)[0].replace("<h1>", "").replace("</h1>", "").toLowerCase();
+
+        return path
+    }
+
+    const handleClickArticle = (path) => {
+        router.push(`${category}/${path}`)
+    };
+
     return (
         <>
             <DefaultLayout />
@@ -22,8 +38,14 @@ const List = (props) => {
             />
             {
                 allFormatBlogs.map((blog, index) => (
-                    <div key={index} className={styles.container}>
+                    <div
+                        key={index}
+                        className={styles.container}
+                    >
+                        <div className={styles.overlay}>
+                        </div>
                         <section
+                            onClick={() => handleClickArticle(getPath(blog))}
                             dangerouslySetInnerHTML={{ __html: blog }}
                         />
                     </div>
@@ -36,8 +58,23 @@ const List = (props) => {
 
 export async function getStaticProps(context) {
     const { category } = context.params;
+
     const fs = require("fs");
-    const MarkdownIt = require("@hackmd/markdown-it");
+    const hljs = require("highlight.js");
+
+    const md = require("markdown-it")({
+      highlight: (str, lang) => {
+        if (lang && hljs.getLanguage(lang)) {
+          try {
+            return hljs.highlight(lang, str).value;
+          } catch (__) {
+
+          }
+        }
+
+        return "";
+      }
+    });
 
     const files = fs.readdirSync(`${process.cwd()}/contents/${category}`, "utf-8");
 
@@ -46,8 +83,6 @@ export async function getStaticProps(context) {
     const allContent = allMdFiles.map(mdFile => fs.readFileSync(`${process.cwd()}/contents/${category}/${mdFile}`, {
         encoding: "utf-8",
     }))
-
-    const md = new MarkdownIt();
 
     const allFormatBlogs = allContent.map(content => md.render(content));
 
