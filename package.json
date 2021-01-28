@@ -8,9 +8,10 @@
     "start": "next start"
   },
   "dependencies": {
-    "@hackmd/markdown-it": "^10.0.0-pre10",
     "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",
+    "highlight.js": "^10.5.0",
+    "markdown-it": "^12.0.4",
     "next": "10.0.5",
     "react": "17.0.1",
     "react-dom": "17.0.1",

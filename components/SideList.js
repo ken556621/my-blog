@@ -20,16 +20,21 @@ const SideList = props => {
         return <>No Article</>
     }
 
-    const titleRole = new RegExp("<h1>.+?</h1>");
+    const getAllTitle = () => {
+        const titleRole = new RegExp("<h1>.+?</h1>");
 
-    const allTitle = list.map(blog => blog.match(titleRole)[0].replace("<h1>", "").replace("</h1>", ""));
+        const allTitle = list.map(blog => blog.match(titleRole)[0].replace("<h1>", "").replace("</h1>", ""));
+
+        return allTitle
+    }
 
     return (
         <div className={styles.container}>
-            <List dense={true} disablePadding={true}>
+            <List dense disablePadding>
                 {
-                    allTitle.map(title => (
+                    getAllTitle().map((title, index) => (
                         <Link
+                            key={index}
                             href={{
                                 pathname: '/[category]/[title]',
                                 query: { category, title: title.toLowerCase() },
