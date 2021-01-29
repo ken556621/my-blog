@@ -45,6 +45,7 @@ const List = (props) => {
                         <div className={styles.overlay}>
                         </div>
                         <section
+                            className={styles.articleSection}
                             onClick={() => handleClickArticle(getPath(blog))}
                             dangerouslySetInnerHTML={{ __html: blog }}
                         />
