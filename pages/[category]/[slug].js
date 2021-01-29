@@ -34,6 +34,7 @@ const Blog = (props) => {
         />
         <div className={styles.container}>
           <section
+            className={styles.articleSection}
             dangerouslySetInnerHTML={{ __html: blog.content }}
           />
         </div>
