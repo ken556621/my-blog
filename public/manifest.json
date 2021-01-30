@@ -3,7 +3,7 @@
     "name": "KenBlog",
     "lang": "en",
     "description": "A blog ",
-    "start_url": "/",
+    "start_url": "https://my-blog.ken556621.vercel.app",
     "background_color": "#eef5ff",
     "theme_color": "#285a99",
     "dir": "ltr",

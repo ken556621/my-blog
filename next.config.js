@@ -16,7 +16,7 @@ module.exports = withPWA(
           FIREBASE_SENDER_ID: process.env.FIREBASE_SENDER_ID,
       },
       pwa: {
-        dest: 'public'
+        dest: "public"
       }
   }
 )
