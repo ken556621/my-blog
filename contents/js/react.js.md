@@ -1,3 +1,0 @@
-# React.js
-
-## Second blog

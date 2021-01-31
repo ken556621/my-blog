@@ -183,6 +183,12 @@ export async function getServerSideProps() {
 
 ```
 
+## 總結
+
+* 我認為在 CSR 的專案中，若專案一開始用 next.js 去起能讓我們節省未來想轉換成 SSR 或是 SSG 的成本，雖然還是會有一些其他設定要調整，包含 redux 等等，但至少在 routing 的部分可以比較無痛銜接
+* next.js 在文件上我認為寫得非常清楚，並且他有許多與其他開源專案整合的 sample code 可以直接參考
+* 搭配 vercel，next.js 只要將 code 推上 github 便能輕易deploy，除了成功部署會有信件通知外，往後每次 push 上 github vercel 都會自動跑 CI 的流程，非常方便
+
 
 
 
