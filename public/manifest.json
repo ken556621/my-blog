@@ -9,6 +9,7 @@
     "dir": "ltr",
     "display": "standalone",
     "orientation": "any",
+    "scope": "https://my-blog.ken556621.vercel.app",
     "icons": [
      {
       "src": "/android-icon-192x192-dunplab-manifest-28429.png",
