@@ -1,0 +1,20 @@
+.container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 14px 0 rgb(137 174 255 / 20%);
+    border-radius: 8px;
+}
+
+.title {
+    margin-bottom: 20px;
+    font-size: 26px;
+    color: #0a2f5c;
+}
+
+.subTitle {
+    color: #0a2f5c;
+}

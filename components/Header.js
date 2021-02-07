@@ -15,12 +15,12 @@ const Header = props => {
     }
 
     const backToHomePage = () => {
-        router.push("/")
+        router.push("/home")
     }
 
     return (
         <Grid item xs={12}>
-            <Toolbar>
+            <Toolbar className={styles.toolbar}>
                 <Grid item xs={6}>
                     <Button onClick={backToHomePage}>
                         <Avatar src="/icons/favicon-32x32-dunplab-manifest-28429.png" />
