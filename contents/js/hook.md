@@ -301,16 +301,22 @@ const Test = () => {
 };
 ```
 
-#### useImperativeHandle
-
-
-
-
-
-
-
 #### useLayoutEffect
-#### useDebugValue
+* 類似於 useEffect，但執行的時間點是在 render 畫面之前，所以會有阻塞畫面 render 的風險
+* 使用時機可能會在於再畫面出來之前先計算畫面高度或是一些邏輯是希望在畫面出現之前的
+* 用法也類似於 useEffect
+
+```js
+ useLayoutEffect(() => {
+        // 做一些在畫面繪製之前的事情
+    }, []);
+```
+
+## 總結
+
+* Hook 讓原本 class 的寫法轉為 function programming
+* 另外 useDebugValue 和 useImperativeHandle 就沒有做介紹了，因為我完全沒有機會用到這兩個方法QQ
+* 基本上 useState 和 useEffect 算是最常用到的方法，熟悉這兩個大概能解決多數的問題
 
 
 
