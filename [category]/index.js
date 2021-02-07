@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 
 import DefaultLayout from "@/layout/DefaultLayout";
 
+import Home from "@/components/Home";
 import SideList from "@/components/SideList";
 
 import { categorySchema } from "@/constant/category";
@@ -12,7 +13,8 @@ import styles from "@/styles/blogList.module.scss";
 const List = (props) => {
     const {
         category = "",
-        allFormatBlogs = []
+        allFormatBlogs = [],
+        isHomePage = false
     } = props;
 
     const router = useRouter();
@@ -28,6 +30,15 @@ const List = (props) => {
     const handleClickArticle = (path) => {
         router.push(`${category}/${path}`)
     };
+
+    if(isHomePage){
+        return (
+            <>
+                <DefaultLayout />
+                <Home />
+            </>
+        )
+    }
 
     return (
         <>
@@ -59,6 +70,17 @@ const List = (props) => {
 
 export async function getStaticProps(context) {
     const { category } = context.params;
+
+    // 若是首頁則不繼續往下跑
+    if(category === "home"){
+        return {
+            props: {
+                category: "",
+                allFormatBlogs: [],
+                isHomePage: true
+            }
+        }
+    }
 
     const fs = require("fs");
     const hljs = require("highlight.js");
