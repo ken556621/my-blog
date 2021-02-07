@@ -77,7 +77,19 @@ export async function getStaticProps(context) {
       }
     });
 
-    const files = fs.readdirSync(`${process.cwd()}/contents/${category}`, "utf-8");
+    // 擋若不是文章列表內的網址列畫面不會噴錯
+    let files;
+
+    try {
+        files = fs.readdirSync(`${process.cwd()}/contents/${category}`, "utf-8");
+    } catch (err) {
+        return {
+            props: {
+                category: "",
+                allFormatBlogs: []
+            }
+        }
+    }
 
     const allMdFiles = files.filter(fn => fn.endsWith(".md"));
 
