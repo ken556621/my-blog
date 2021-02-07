@@ -2,7 +2,7 @@
     "short_name": "KB",
     "name": "KenBlog",
     "lang": "en",
-    "description": "A blog ",
+    "description": "A blog",
     "start_url": "https://my-blog.ken556621.vercel.app",
     "background_color": "#eef5ff",
     "theme_color": "#285a99",

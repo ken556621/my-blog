@@ -18,9 +18,9 @@ const List = (props) => {
     const router = useRouter();
 
     const getPath = (content) => {
-        const titleRole = new RegExp("<h1>.+?</h1>");
+        const titleRole = new RegExp("<h6>tags:.+?</h6>");
 
-        const path = content.match(titleRole)[0].replace("<h1>", "").replace("</h1>", "").toLowerCase();
+        const path = content.match(titleRole)[0].replace("<h6>tags:", "").replace("</h6>", "").toLowerCase();
 
         return path
     }
