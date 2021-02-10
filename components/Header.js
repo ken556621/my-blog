@@ -23,7 +23,7 @@ const Header = props => {
             <Toolbar className={styles.toolbar}>
                 <Grid item xs={6}>
                     <IconButton onClick={backToHomePage}>
-                        <Avatar src="/icons/favicon-32x32-dunplab-manifest-28429.png" alt="Ken Code" />
+                        <Avatar className={styles.logo} src="/icons/favicon-32x32-dunplab-manifest-28429.png" alt="Ken Code" />
                     </IconButton>
                 </Grid>
                 <Grid item xs={6}>

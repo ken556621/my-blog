@@ -73,13 +73,13 @@ function Counter() {
 export default Counter;
 
 ```
-#### 優點
+### 優點
 * Hook 讓我們以 function 的方式取代以往用 class 的寫法
 * 不需要在繼承，代表 constructor 和 super 可以不用在寫
 * 不會再有一堆 this 的出現，不需要再去判斷哪個 this 指向哪裡，或是 this 忘記綁定 function 的窘況
 * 每個 component 可以切成更小的單位，可以防止過多的包裝，也就是過多 HOC 的情況出現
 
-#### 缺點
+### 缺點
 * 以往 class 的生命週期是使用以下方法
 ```js
 componentDidMount

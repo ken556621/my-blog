@@ -112,7 +112,7 @@ npx create-next-app demo
 
 執行完後資料夾內會得到以下結構
 
-<img src="https://i.imgur.com/Sla8HNt.png" alt="folder-structure">
+<img src="https://i.imgur.com/Sla8HNt.png" alt="folder-structure" style="width: 300px;">
 
 ### 其中 pages 資料夾算是 next.js 整個專案中的關鍵，內部每個 js 檔案都代表一個 route
 
@@ -132,7 +132,7 @@ http://localhost:3000/test
 
 * 若每次路徑是動態的，next.js 也提供 [] 包起來的方式，這讓我們類似的頁面不用寫好幾個路由
 
-<img src="https://i.imgur.com/rEMT9sg.png" alt="folder-structure">
+<img src="https://i.imgur.com/rEMT9sg.png" alt="folder-structure" style="width: 300px;">
 
 ```
 http://localhost:3000/[變數1]

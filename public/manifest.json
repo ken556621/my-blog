@@ -12,9 +12,24 @@
     "scope": "/",
     "icons": [
      {
+        "src": "/android-icon-512x512-dunplab-manifest-28429.png",
+        "type": "image/png",
+        "sizes": "512x512"
+     },
+     {
       "src": "/android-icon-192x192-dunplab-manifest-28429.png",
       "type": "image/png",
       "sizes": "192x192"
+     },
+     {
+        "src": "/apple-icon-512x512-dunplab-manifest-28429.png",
+        "type": "image/png",
+        "sizes": "512x512"
+     },
+     {
+        "src": "/apple-icon-192x192-dunplab-manifest-28429.png",
+        "type": "image/png",
+        "sizes": "192x192"
      },
      {
       "src": "/apple-icon-180x180-dunplab-manifest-28429.png",
@@ -45,6 +60,11 @@
         "src": "/favicon-512x512-dunplab-manifest-28429.png",
         "type": "image/png",
         "sizes": "512x512"
+     },
+     {
+        "src": "/favicon-192x192-dunplab-manifest-28429.png",
+        "type": "image/png",
+        "sizes": "192x192"
      },
      {
       "src": "/favicon-96x96-dunplab-manifest-28429.png",
