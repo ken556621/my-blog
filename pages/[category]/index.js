@@ -21,9 +21,9 @@ const List = (props) => {
     const router = useRouter();
 
     const getPath = (content) => {
-        const titleRole = new RegExp("<h6>tags:.+?</h6>");
+        const titleRole = new RegExp("<p>tags:.+?</p>");
 
-        const path = content.match(titleRole)[0].replace("<h6>tags:", "").replace("</h6>", "").toLowerCase();
+        const path = content.match(titleRole)[0].replace("<p>tags:", "").replace("</p>", "").toLowerCase();
 
         return path
     }
@@ -39,7 +39,7 @@ const List = (props) => {
                     <title>Ken Code</title>
                     <meta charset="utf-8" />
                     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-                    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+                    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1" />
                     <meta name="description" content="Ken Code blog" />
                     <meta name="keywords" content="engineer" />
                     <meta name="theme-color" content="#317EFB" />
@@ -62,7 +62,7 @@ const List = (props) => {
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
                 <meta charset="utf-8" />
                 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-                <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+                <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1" />
                 <meta name="description" content="Js, React and GCP blog" />
                 <meta name="keywords" content="engineer" />
                 <meta name="theme-color" content="#317EFB" />

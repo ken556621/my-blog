@@ -278,5 +278,5 @@ const request = (options) => {
 * 有了換頁和重複發送 api 自動 abort 的機制後，不用擔心不同 api 相互影響不同頁面，或是佔據太多頻寬的問題，使用體驗有更流暢的感覺
 * 在 survey 的過程中有看到許多不同的寫法，像是 status code 統一管理的方式，這些也都是未來想嘗試的
 
-###### tags:api-structure
+tags:api-structure
 

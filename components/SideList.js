@@ -33,24 +33,25 @@ const SideList = props => {
             <List dense disablePadding>
                 {
                     getAllTitle().map((title, index) => (
-                        <Link
-                            key={index}
-                            href={{
-                                pathname: '/[category]/[title]',
-                                query: { category, title: title.toLowerCase() },
-                            }}
+
+                        <ListItem
+                            className={styles.listItemRoot}
+                            button
                         >
-                            <a>
-                                <ListItem
-                                    className={styles.listItemRoot}
-                                    button
-                                >
+                            <Link
+                                key={index}
+                                href={{
+                                    pathname: '/[category]/[title]',
+                                    query: { category, title: title.toLowerCase() },
+                                }}
+                            >
+                                <a>
                                     <ListItemText
                                         primary={title}
                                     />
-                                </ListItem>
-                            </a>
-                        </Link>
+                                </a>
+                            </Link>
+                        </ListItem>
                     ))
                 }
             </List>

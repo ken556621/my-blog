@@ -42,6 +42,11 @@
       "sizes": "114x114"
      },
      {
+        "src": "/favicon-512x512-dunplab-manifest-28429.png",
+        "type": "image/png",
+        "sizes": "512x512"
+     },
+     {
       "src": "/favicon-96x96-dunplab-manifest-28429.png",
       "type": "image/png",
       "sizes": "96x96"

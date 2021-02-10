@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 
-import { Grid, Button, Toolbar, Avatar} from "@material-ui/core";
+import { Grid, Button, IconButton, Toolbar, Avatar} from "@material-ui/core";
 
 import { categorySchema } from "@/constant/category";
 
@@ -22,9 +22,9 @@ const Header = props => {
         <Grid item xs={12}>
             <Toolbar className={styles.toolbar}>
                 <Grid item xs={6}>
-                    <Button onClick={backToHomePage}>
-                        <Avatar src="/icons/favicon-32x32-dunplab-manifest-28429.png" />
-                    </Button>
+                    <IconButton onClick={backToHomePage}>
+                        <Avatar src="/icons/favicon-32x32-dunplab-manifest-28429.png" alt="Ken Code" />
+                    </IconButton>
                 </Grid>
                 <Grid item xs={6}>
                     <div className={styles.menu}>
