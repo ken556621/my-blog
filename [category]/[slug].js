@@ -27,10 +27,13 @@ const Blog = (props) => {
             <title>{getTitle(blog.content) + " | Ken Code Blog"}</title>
 
             <meta charset="utf-8" />
-            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
             <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1" />
-            <meta name="description" content={getTitle(blog.content)} />
-            <meta name="keywords" content="engineer" />
+            <meta name="description" content="談到學程式，有常見的3大迷思，非本科、跨領域無法學好程式？學了程式是不是只能當工程師？其實你能培養第二專長，成為T型人才。這個部落格紀錄自學轉職過程中的所學所聞。" />
+            <meta content="從體能教練轉職前端工程師、不斷自學精進和熱愛用技術去解決身邊的問題｜Ken Code Blog" property="og:title" />
+            <meta content="談到學程式，有常見的3大迷思，非本科、跨領域無法學好程式？學了程式是不是只能當工程師？其實你能培養第二專長，成為T型人才。這個部落格紀錄自學轉職過程中的所學所聞。" property="og:description" />
+            <meta content="從體能教練轉職前端工程師、不斷自學精進和熱愛用技術去解決身邊的問題｜Ken Code Blog" property="twitter:title" />
+            <meta content="談到學程式，有常見的3大迷思，非本科、跨領域無法學好程式？學了程式是不是只能當工程師？其實你能培養第二專長，成為T型人才。這個部落格紀錄自學轉職過程中的所學所聞。" property="twitter:description" />
+            <meta name="keywords" content="前端工程師、轉職、自學、體能教練" />
             <meta name="theme-color" content="#317EFB" />
 
             <link rel="manifest" href="/manifest.json" />
