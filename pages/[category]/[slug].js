@@ -24,7 +24,7 @@ const Blog = (props) => {
     return (
       <div>
         <Head>
-            <title>{getTitle(blog.content)}</title>
+            <title>{getTitle(blog.content) + " | Ken Code Blog"}</title>
 
             <meta charset="utf-8" />
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />

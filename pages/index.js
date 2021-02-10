@@ -7,7 +7,7 @@ const IndexPage = props => {
   return (
     <div>
       <Head>
-        <title>Ken Blog</title>
+        <title>Ken Code Blog</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
