@@ -3,13 +3,13 @@
     "name": "KenBlog",
     "lang": "en",
     "description": "A blog",
-    "start_url": "https://my-blog.ken556621.vercel.app/home",
+    "start_url": "/",
     "background_color": "#eef5ff",
     "theme_color": "#285a99",
     "dir": "ltr",
     "display": "standalone",
     "orientation": "any",
-    "scope": "https://my-blog.ken556621.vercel.app",
+    "scope": "/",
     "icons": [
      {
       "src": "/android-icon-192x192-dunplab-manifest-28429.png",
