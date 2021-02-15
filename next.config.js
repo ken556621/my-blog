@@ -16,7 +16,34 @@ module.exports = withPWA(
           FIREBASE_SENDER_ID: process.env.FIREBASE_SENDER_ID,
       },
       pwa: {
-        dest: "public"
+        dest: "public",
+        runtimeCaching: [
+          {
+            urlPattern: '/',
+            // use NetworkFirst or NetworkOnly if you redirect un-authenticated user to login page
+            // use StaleWhileRevalidate if you want to prompt user to reload when new version available
+            handler: 'CacheFirst',
+            options: {
+              // don't change cache name
+              cacheName: 'start-url',
+              expiration: {
+                maxEntries: 1,
+                maxAgeSeconds: 24 * 60 * 60 // 24 hours
+              }
+            }
+          },
+          {
+            urlPattern: /\.(?:js)$/i,
+            handler: 'StaleWhileRevalidate',
+            options: {
+              cacheName: 'static-js-assets',
+              expiration: {
+                maxEntries: 32,
+                maxAgeSeconds: 24 * 60 * 60 // 24 hours
+              }
+            }
+          }
+        ]
       }
   }
 )
