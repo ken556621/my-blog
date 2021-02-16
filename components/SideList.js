@@ -45,7 +45,7 @@ const SideList = props => {
                         key={index}
                         href={{
                             pathname: '/[category]/[title]',
-                            query: { category, title: getPath(content) },
+                            query: { category, title: getPath(content) }
                         }}
                     >
                         <a>
