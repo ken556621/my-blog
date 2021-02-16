@@ -1,23 +1,32 @@
 
 import Header from "@/components/Header";
 import SideList from "@/components/SideList";
+import Banner from "@/components/Banner";
 
 import styles from "@/styles/blog.module.scss";
 
 
-const Blog = (props) => {
+const Blog = props => {
     const {
       category = "",
       allFormatBlogs = [],
       blog = {}
     } = props;
 
-    const getTitle = (content) => {
+    const getTitle = content => {
       const titleRole = new RegExp("<h1>.+?</h1>");
 
       const title = content.match(titleRole)[0].replace("<h1>", "").replace("</h1>", "");
 
       return title
+    }
+
+    const getDate = content => {
+      const dateRole = new RegExp("<p>date:.+?</p>");
+
+      const date = content.match(dateRole)[0].replace("<p>date:", "").replace("</p>", "");
+
+      return date
     }
 
     return (
@@ -26,6 +35,10 @@ const Blog = (props) => {
             title = {`${getTitle(blog.content)} | 游肯扣部落格`}
             description = {`肯游扣部落格關於${getTitle(blog.content)}的介紹`}
             sharingTitle = {`肯游扣部落格關於${getTitle(blog.content)}的介紹`}
+        />
+        <Banner
+            word = {`${getTitle(blog.content)}`}
+            date = {getDate(blog.content)}
         />
         <SideList
           category={category}

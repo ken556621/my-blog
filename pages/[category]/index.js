@@ -2,6 +2,7 @@
 import { useRouter } from "next/router";
 
 import Header from "@/components/Header";
+import Banner from "@/components/Banner";
 import SideList from "@/components/SideList";
 
 import { categorySchema } from "@/constant/category";
@@ -16,7 +17,7 @@ const BlogList = (props) => {
 
     const router = useRouter();
 
-    const getPath = (content) => {
+    const getPath = content => {
         const titleRole = new RegExp("<p>tags:.+?</p>");
 
         const path = content.match(titleRole)[0].replace("<p>tags:", "").replace("</p>", "").toLowerCase();
@@ -53,6 +54,9 @@ const BlogList = (props) => {
                 title = {`${category.toUpperCase()} | 游肯扣部落格`}
                 description = {`${category} 的技術部落格文章列表`}
                 sharingTitle = {`${category} 的技術部落格文章列表`}
+            />
+            <Banner
+                word = {`${category.toUpperCase()} 系列文章`}
             />
             <SideList
                 category={category}
