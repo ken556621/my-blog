@@ -262,7 +262,7 @@ if (isIos() && !isInStandaloneMode()) {
 ```
 相對路徑可能要稍微注意一下
 
-4. 修改 next.config.js
+4. 修改 next.config.js(這邊使用 next-pwa 的套件)
 
 ```js
 const withPWA = require("next-pwa");
