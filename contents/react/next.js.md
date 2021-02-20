@@ -18,7 +18,7 @@
 2. SSR(Server Site Render)
 > 廚房(Server Side)有不同的食材，客戶(Client Side)點了餐廚師就開始做，做完拿給客人
 
-3. SPA(Single Page Application)
+3. CSR(Single Page Application)
 > 廚房(Server Side)有不同的食材，客戶(Client Side)點了餐直接把那些食材拿回家裡做
 
 |  | SSG | CSR | SSR |
@@ -112,7 +112,7 @@ npx create-next-app demo
 
 執行完後資料夾內會得到以下結構
 
-<img src="https://i.imgur.com/Sla8HNt.png" alt="folder-structure" style="width: 300px;">
+![](https://i.imgur.com/Sla8HNt.png)
 
 ### 其中 pages 資料夾算是 next.js 整個專案中的關鍵，內部每個 js 檔案都代表一個 route
 
@@ -132,7 +132,7 @@ http://localhost:3000/test
 
 * 若每次路徑是動態的，next.js 也提供 [] 包起來的方式，這讓我們類似的頁面不用寫好幾個路由
 
-<img src="https://i.imgur.com/rEMT9sg.png" alt="folder-structure" style="width: 300px;">
+![](https://i.imgur.com/rEMT9sg.png)
 
 ```
 http://localhost:3000/[變數1]
@@ -189,33 +189,6 @@ export async function getServerSideProps() {
 * next.js 在文件上我認為寫得非常清楚，並且他有許多與其他開源專案整合的 sample code 可以直接參考
 * 搭配 vercel，next.js 只要將 code 推上 github 便能輕易deploy，除了成功部署會有信件通知外，往後每次 push 上 github vercel 都會自動跑 CI 的流程，非常方便
 
-
-
 tags:next.js
 
-date:2021/1/3
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+date:2021/1/30
