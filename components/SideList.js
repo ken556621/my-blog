@@ -28,6 +28,10 @@ const SideList = props => {
     const getPath = content => {
         const titleRole = new RegExp("<p>tags:.+?</p>");
 
+        if(!titleRole){
+            return ""
+        }
+
         const path = content.match(titleRole)[0].replace("<p>tags:", "").replace("</p>", "").toLowerCase();
 
         return path
