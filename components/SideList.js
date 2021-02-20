@@ -20,6 +20,10 @@ const SideList = props => {
     const getTitle = content => {
         const titleRole = new RegExp("<h1>.+?</h1>");
 
+        if(!titleRole){
+            return ""
+        }
+
         const title = content.match(titleRole)[0].replace("<h1>", "").replace("</h1>", "");
 
         return title

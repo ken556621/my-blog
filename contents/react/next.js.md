@@ -189,6 +189,7 @@ export async function getServerSideProps() {
 * next.js 在文件上我認為寫得非常清楚，並且他有許多與其他開源專案整合的 sample code 可以直接參考
 * 搭配 vercel，next.js 只要將 code 推上 github 便能輕易deploy，除了成功部署會有信件通知外，往後每次 push 上 github vercel 都會自動跑 CI 的流程，非常方便
 
+
 tags:next.js
 
 date:2021/1/30
