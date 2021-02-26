@@ -22,9 +22,9 @@ const BlogList = (props) => {
           // 這裡result只會有兩種結果：一個是用戶允許(granted)，另一個是用戶封鎖(denied)
           console.log("User Choice", result);
           if (result !== "granted") {
-            console.log("No notification permission granted!");
+            console.log("拒絕");
           } else {
-            displayConfirmNotification();
+            console.log("接受");
           }
         });
     };
