@@ -1,4 +1,4 @@
-
+import { useEffect } from "react";
 import { useRouter } from "next/router";
 
 import Header from "@/components/Header";
@@ -16,6 +16,18 @@ const BlogList = (props) => {
     } = props;
 
     const router = useRouter();
+
+    const askForNotificationPermission = () => {
+        Notification.requestPermission(result => {
+          // 這裡result只會有兩種結果：一個是用戶允許(granted)，另一個是用戶封鎖(denied)
+          console.log("User Choice", result);
+          if (result !== "granted") {
+            console.log("No notification permission granted!");
+          } else {
+            displayConfirmNotification();
+          }
+        });
+    };
 
     const getPath = content => {
         const titleRole = new RegExp("<p>tags:.+?</p>");
@@ -51,6 +63,10 @@ const BlogList = (props) => {
             ))
         )
     }
+
+    useEffect(() => {
+        askForNotificationPermission();
+    }, [])
 
     return (
         <>
