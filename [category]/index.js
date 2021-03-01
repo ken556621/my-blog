@@ -52,8 +52,6 @@ const BlogList = (props) => {
                     key={index}
                     className={styles.container}
                 >
-                    <div className={styles.overlay}>
-                    </div>
                     <section
                         className={styles.articleSection}
                         onClick={() => handleClickArticle(getPath(blog))}
