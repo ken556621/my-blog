@@ -1,11 +1,14 @@
+import { useContext } from "react"
 import { useRouter } from "next/router";
 import Head from "next/head";
 
-import { Grid, Button, Toolbar, Avatar} from "@material-ui/core";
+import { Grid, Button, Toolbar, Avatar } from "@material-ui/core";
 
 import { categorySchema } from "@/constant/category";
 
 import styles from "@/styles/header.module.scss";
+
+import { DrawerContext } from "@/context/drawerContext";
 
 
 const Header = props => {
@@ -15,10 +18,17 @@ const Header = props => {
         sharingTitle = "從體能教練轉職前端工程師、不斷自學精進和熱愛用技術去解決身邊的問題｜Yu Ken Code Blog"
     } = props;
 
-    const router = useRouter()
+    const router = useRouter();
+
+    const { drawerOpened, setDrawerOpened } = useContext(DrawerContext);
 
     const handleRouteChange = (path) => {
         router.push(path)
+    }
+
+    const handleChangeTheme = () => {
+        console.log("Change theme");
+        setDrawerOpened(!drawerOpened)
     }
 
     const backToHomePage = () => {
@@ -29,7 +39,7 @@ const Header = props => {
         <>
             <Head>
                 <title>{title}</title>
-                <meta charset="utf-8" />
+                <meta charSet="utf-8" />
                 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1" />
                 <meta name="description" content={description} />
                 <meta content={sharingTitle} property="og:title" />
@@ -59,10 +69,13 @@ const Header = props => {
                             {
                                 categorySchema.map(item => (
                                     <Button key={item.id} onClick={() => handleRouteChange(item.path)}>
-                                        { item.title }
+                                        { item.title}
                                     </Button>
                                 ))
                             }
+                            <Button onClick={handleChangeTheme}>
+                                Toggle Theme
+                            </Button>
                         </div>
                     </Grid>
                 </Toolbar>
