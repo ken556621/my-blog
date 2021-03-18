@@ -2,13 +2,15 @@ import { useContext } from "react"
 import { useRouter } from "next/router";
 import Head from "next/head";
 
+import { makeStyles } from "@material-ui/core";
 import { Grid, Button, Toolbar, Avatar } from "@material-ui/core";
+import IconButton from '@material-ui/core/IconButton';
+import Brightness4Icon from '@material-ui/icons/Brightness4';
+import Brightness4OutlinedIcon from '@material-ui/icons/Brightness4Outlined';
 
 import { categorySchema } from "@/constant/category";
 
-import styles from "@/styles/header.module.scss";
-
-import { DrawerContext } from "@/context/drawerContext";
+import { DarkModeContext } from "@/context/darkModeContext";
 
 
 const Header = props => {
@@ -18,17 +20,18 @@ const Header = props => {
         sharingTitle = "從體能教練轉職前端工程師、不斷自學精進和熱愛用技術去解決身邊的問題｜Yu Ken Code Blog"
     } = props;
 
+    const classes = useHeaderStyles();
+
     const router = useRouter();
 
-    const { drawerOpened, setDrawerOpened } = useContext(DrawerContext);
+    const { isDarkMode, setIsDarkMode } = useContext(DarkModeContext);
 
     const handleRouteChange = (path) => {
         router.push(path)
     }
 
     const handleChangeTheme = () => {
-        console.log("Change theme");
-        setDrawerOpened(!drawerOpened)
+        setIsDarkMode(!isDarkMode);
     }
 
     const backToHomePage = () => {
@@ -55,17 +58,21 @@ const Header = props => {
                 <link href="/icons/apple-icon-60x60-dunplab-manifest-28429.png" rel="apple-touch-icon" type="image/png" sizes="60x60" />
             </Head>
             <Grid item xs={12}>
-                <Toolbar className={styles.toolbar}>
+                <Toolbar
+                    classes={{
+                        root: classes.toolbar
+                    }}
+                >
                     <Grid item xs={6}>
                         <Button onClick={backToHomePage}>
-                            <Avatar className={styles.logo} src="/icons/favicon-32x32-dunplab-manifest-28429.png" alt="Ken Code" />
-                            <h1 className={styles.logoWord}>
+                            <Avatar className={classes.logo} src="/icons/favicon-32x32-dunplab-manifest-28429.png" alt="Ken Code" />
+                            <h1 className={classes.logoWord}>
                                 Yu Ken Code
                             </h1>
                         </Button>
                     </Grid>
                     <Grid item xs={6}>
-                        <div className={styles.menu}>
+                        <div className={classes.menu}>
                             {
                                 categorySchema.map(item => (
                                     <Button key={item.id} onClick={() => handleRouteChange(item.path)}>
@@ -73,9 +80,13 @@ const Header = props => {
                                     </Button>
                                 ))
                             }
-                            <Button onClick={handleChangeTheme}>
-                                Toggle Theme
-                            </Button>
+                            <IconButton onClick={handleChangeTheme}>
+                                {
+                                    isDarkMode ?
+                                        <Brightness4OutlinedIcon /> :
+                                        <Brightness4Icon />
+                                }
+                            </IconButton>
                         </div>
                     </Grid>
                 </Toolbar>
@@ -83,5 +94,25 @@ const Header = props => {
         </>
     )
 }
+
+const useHeaderStyles = makeStyles((theme) => ({
+    toolbar: {
+
+    },
+    logo: {
+        "& img": {
+            width: 300
+        }
+    },
+    logoWord: {
+        margin: "0px 0px 0px 10px",
+        padding: 0,
+        fontSize: "1.5em",
+        textTransform: "none"
+    },
+    menu: {
+        textAlign: "end"
+    }
+}));
 
 export default Header;

@@ -7,25 +7,32 @@ import styles from "@/styles/global.scss"
 import firebase from "firebase/app";
 import "firebase/messaging";
 
-import { ThemeContext, themes } from "@/context/themeContext";
+import { ThemeProvider } from "@material-ui/styles";
+
+import theme from "@/styles/theme";
+
+import { DarkModeContext } from "@/context/darkModeContext";
 import { DrawerContext, drawer } from "@/context/drawerContext";
 
 
 const MyApp = ({ Component, pageProps, config }) => {
-  const [backgroundColor, setBackgroundColor] = useState(themes.light);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const [drawerOpened, setDrawerOpened] = useState(drawer.isOpened);
 
   return (
-    <ThemeContext.Provider value={{ backgroundColor, setBackgroundColor }}>
+    <DarkModeContext.Provider value={{ isDarkMode, setIsDarkMode }}>
       <DrawerContext.Provider value={{ drawerOpened, setDrawerOpened }}>
-        <Component {...pageProps} />
+        <ThemeProvider theme={theme}>
+          <Component {...pageProps} />
+        </ThemeProvider>
       </DrawerContext.Provider>
-    </ThemeContext.Provider>
+    </DarkModeContext.Provider>
   )
 }
 
-MyApp.getInitialProps = async () => {
+MyApp.getInitialProps = async (ctx) => {
   const { serverRuntimeConfig } = getConfig();
+
   const {
     FIREBASE_API_KEY,
     FIREBASE_APP_ID,

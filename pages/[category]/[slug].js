@@ -2,7 +2,7 @@ import Header from "@/components/Header";
 import SideList from "@/components/SideList";
 import Banner from "@/components/Banner";
 
-import styles from "@/styles/blog.module.scss";
+import { makeStyles } from "@material-ui/core";
 
 
 const Blog = props => {
@@ -11,6 +11,8 @@ const Blog = props => {
     allFormatBlogs = [],
     blog = {}
   } = props;
+
+  const classes = useBlogStyles();
 
   const getTitle = content => {
     const titleRole = new RegExp("<h1>.+?</h1>");
@@ -51,9 +53,9 @@ const Blog = props => {
         category={category}
         list={allFormatBlogs}
       />
-      <article className={styles.container}>
+      <article className={classes.container}>
         <section
-          className={styles.articleSection}
+          className={classes.articleSection}
           dangerouslySetInnerHTML={{ __html: blog.content }}
         />
       </article>
@@ -145,6 +147,17 @@ export const getStaticPaths = async () => {
     fallback: false,
   };
 }
+
+const useBlogStyles = makeStyles((theme) => ({
+  container: {
+    marginLeft: "2%",
+    display: "flex",
+    justifyContent: "center"
+  },
+  articleSection: {
+    width: "100%",
+  }
+}));
 
 export default Blog
 

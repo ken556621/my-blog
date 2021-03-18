@@ -1,22 +1,30 @@
+import { useContext } from "react"
 import Link from 'next/link'
+import clsx from "clsx";
 
-import { makeStyles } from "@material-ui/core";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
+import Drawer from '@material-ui/core/Drawer';
+import IconButton from '@material-ui/core/IconButton';
+import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
+
+import styles from "@/styles/sideList.module.scss";
+
+import { DrawerContext } from "@/context/drawerContext";
 
 
-const SideList = props => {
+const SideArticleTags = props => {
     const {
         category = "",
         list = []
     } = props;
 
-    const classes = useSideListStyles();
-
     if (!list.length || !category) {
         return <>No Article</>
     }
+
+    const { drawerOpened, setDrawerOpened } = useContext(DrawerContext);
 
     const getTitle = content => {
         const titleRole = new RegExp("<h1>.+?</h1>");
@@ -42,12 +50,16 @@ const SideList = props => {
         return path
     };
 
+    const closeDrawer = () => {
+        setDrawerOpened(false)
+    };
+
     const CustomListItem = () => {
         return (
             list.map((content, index) => (
                 <ListItem
                     key={index}
-                    className={classes.listItemRoot}
+                    className={styles.listItemRoot}
                     button
                 >
                     <Link
@@ -69,30 +81,27 @@ const SideList = props => {
     };
 
     return (
-        <div className={classes.container}>
-            <List dense disablePadding>
-                <CustomListItem />
-            </List>
-        </div>
+        <Drawer
+            open={drawerOpened}
+            anchor="right"
+        >
+            <div className={styles.container}>
+                <List dense disablePadding>
+                    <CustomListItem />
+                </List>
+                <div className={styles.btnWrapper}>
+                    <IconButton
+                        className={clsx({
+                            [styles.iconButtonRotate]: drawerOpened
+                        })}
+                        onClick={closeDrawer}
+                    >
+                        <ArrowLeftIcon />
+                    </IconButton>
+                </div>
+            </div>
+        </Drawer>
     )
 }
 
-const useSideListStyles = makeStyles((theme) => ({
-    container: {
-        position: "fixed",
-        top: "15%",
-        right: 0,
-        backgroundColor: "#ffffff",
-        borderRadius: 8,
-        boxShadow: "0 2px 14px 0 rgb(137 174 255 / 20%)",
-        "& a": {
-            color: "#000000",
-            textDecoration: "none"
-        }
-    },
-    listItemRoot: {
-        display: "block"
-    }
-}));
-
-export default SideList;
+export default SideArticleTags;

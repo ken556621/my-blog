@@ -7,7 +7,8 @@ import SideList from "@/components/SideList";
 
 import { categorySchema } from "@/constant/category";
 
-import styles from "@/styles/blogList.module.scss";
+import { makeStyles } from "@material-ui/core";
+
 
 const BlogList = (props) => {
     const {
@@ -15,24 +16,26 @@ const BlogList = (props) => {
         allFormatBlogs = []
     } = props;
 
+    const classes = useBlogListStyles();
+
     const router = useRouter();
 
     const askForNotificationPermission = () => {
         Notification.requestPermission(result => {
-          // 這裡result只會有兩種結果：一個是用戶允許(granted)，另一個是用戶封鎖(denied)
-          console.log("User Choice", result);
-          if (result !== "granted") {
-            console.log("拒絕");
-          } else {
-            console.log("接受");
-          }
+            // 這裡result只會有兩種結果：一個是用戶允許(granted)，另一個是用戶封鎖(denied)
+            console.log("User Choice", result);
+            if (result !== "granted") {
+                console.log("拒絕");
+            } else {
+                console.log("接受");
+            }
         });
     };
 
     const getPath = content => {
         const titleRole = new RegExp("<p>tags:.+?</p>");
 
-        if(!titleRole){
+        if (!titleRole) {
             return ""
         }
 
@@ -50,10 +53,10 @@ const BlogList = (props) => {
             allFormatBlogs.map((blog, index) => (
                 <div
                     key={index}
-                    className={styles.container}
+                    className={classes.container}
                 >
                     <section
-                        className={styles.articleSection}
+                        className={classes.articleSection}
                         onClick={() => handleClickArticle(getPath(blog))}
                         dangerouslySetInnerHTML={{ __html: blog }}
                     />
@@ -69,12 +72,12 @@ const BlogList = (props) => {
     return (
         <>
             <Header
-                title = {`${category.toUpperCase()} | 游肯扣部落格`}
-                description = {`${category} 的技術部落格文章列表`}
-                sharingTitle = {`${category} 的技術部落格文章列表`}
+                title={`${category.toUpperCase()} | 游肯扣部落格`}
+                description={`${category} 的技術部落格文章列表`}
+                sharingTitle={`${category} 的技術部落格文章列表`}
             />
             <Banner
-                word = {`${category.toUpperCase()} 系列文章`}
+                word={`${category.toUpperCase()} 系列文章`}
             />
             <SideList
                 category={category}
@@ -93,18 +96,18 @@ export const getStaticProps = async context => {
     const hljs = require("highlight.js");
 
     const md = require("markdown-it")({
-      html: true,
-      highlight: (str, lang) => {
-        if (lang && hljs.getLanguage(lang)) {
-          try {
-            return hljs.highlight(lang, str).value;
-          } catch (__) {
+        html: true,
+        highlight: (str, lang) => {
+            if (lang && hljs.getLanguage(lang)) {
+                try {
+                    return hljs.highlight(lang, str).value;
+                } catch (__) {
 
-          }
+                }
+            }
+
+            return "";
         }
-
-        return "";
-      }
     });
 
     // 擋若不是文章列表內的網址列畫面不會噴錯
@@ -148,9 +151,24 @@ export const getStaticPaths = async () => {
     })
 
     return {
-      paths,
-      fallback: true
+        paths,
+        fallback: true
     };
-  }
+}
+
+const useBlogListStyles = makeStyles((theme) => ({
+    container: {
+        marginLeft: "2%",
+        height: 500,
+        overflow: "hidden",
+        display: "flex",
+        justifyContent: "center",
+        position: "relative"
+    },
+    articleSection: {
+        cursor: "pointer",
+        width: "100%"
+    }
+}));
 
 export default BlogList;
