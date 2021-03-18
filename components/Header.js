@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { useRouter } from "next/router";
 import Head from "next/head";
+import clsx from "clsx";
 
 import { makeStyles } from "@material-ui/core";
 import { Grid, Button, Toolbar, Avatar } from "@material-ui/core";
@@ -60,7 +61,9 @@ const Header = props => {
             <Grid item xs={12}>
                 <Toolbar
                     classes={{
-                        root: classes.toolbar
+                        root: clsx(classes.toolbar, {
+                            [classes.darkMode]: isDarkMode
+                        })
                     }}
                 >
                     <Grid item xs={6}>
@@ -97,7 +100,13 @@ const Header = props => {
 
 const useHeaderStyles = makeStyles((theme) => ({
     toolbar: {
-
+        transition: "all 2s"
+    },
+    darkMode: {
+        "& span, h1": {
+            color: theme.color.word.darkMode
+        },
+        backgroundColor: theme.color.background.darkMode
     },
     logo: {
         "& img": {

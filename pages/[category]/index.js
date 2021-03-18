@@ -1,5 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { useRouter } from "next/router";
+import clsx from "clsx";
 
 import Header from "@/components/Header";
 import Banner from "@/components/Banner";
@@ -8,6 +9,8 @@ import SideList from "@/components/SideList";
 import { categorySchema } from "@/constant/category";
 
 import { makeStyles } from "@material-ui/core";
+
+import { DarkModeContext } from "@/context/darkModeContext";
 
 
 const BlogList = (props) => {
@@ -19,6 +22,8 @@ const BlogList = (props) => {
     const classes = useBlogListStyles();
 
     const router = useRouter();
+
+    const { isDarkMode } = useContext(DarkModeContext);
 
     const askForNotificationPermission = () => {
         Notification.requestPermission(result => {
@@ -51,16 +56,18 @@ const BlogList = (props) => {
     const BlogList = () => {
         return (
             allFormatBlogs.map((blog, index) => (
-                <div
+                <article
                     key={index}
-                    className={classes.container}
+                    className={clsx(classes.container, {
+                        [classes.darkMode]: isDarkMode
+                    })}
                 >
                     <section
                         className={classes.articleSection}
                         onClick={() => handleClickArticle(getPath(blog))}
                         dangerouslySetInnerHTML={{ __html: blog }}
                     />
-                </div>
+                </article>
             ))
         )
     }
@@ -158,12 +165,21 @@ export const getStaticPaths = async () => {
 
 const useBlogListStyles = makeStyles((theme) => ({
     container: {
-        marginLeft: "2%",
+        paddingLeft: "30px",
         height: 500,
         overflow: "hidden",
         display: "flex",
         justifyContent: "center",
-        position: "relative"
+        transition: "all 2s"
+    },
+    darkMode: {
+        "& span, h1, h2, h3, h4, h5, li, p, th, td, code": {
+            color: theme.color.word.darkMode
+        },
+        "& pre": {
+            backgroundColor: "rgba(0, 0, 0, 0.5)"
+        },
+        backgroundColor: theme.color.background.darkMode
     },
     articleSection: {
         cursor: "pointer",
