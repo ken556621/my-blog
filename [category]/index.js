@@ -9,8 +9,11 @@ import SideList from "@/components/SideList";
 import { categorySchema } from "@/constant/category";
 
 import { makeStyles } from "@material-ui/core";
+import Paper from '@material-ui/core/Paper';
 
 import { DarkModeContext } from "@/context/darkModeContext";
+
+import { getPath } from "@/helper/getArticleTag";
 
 
 const BlogList = (props) => {
@@ -37,25 +40,23 @@ const BlogList = (props) => {
         });
     };
 
-    const getPath = content => {
-        const titleRole = new RegExp("<p>tags:.+?</p>");
-
-        if (!titleRole) {
-            return ""
-        }
-
-        const path = content.match(titleRole)[0].replace("<p>tags:", "").replace("</p>", "").toLowerCase();
-
-        return path
-    }
-
     const handleClickArticle = (path) => {
         router.push(`${category}/${path}`)
     };
 
     const BlogList = () => {
+        console.log(allFormatBlogs)
         return (
             allFormatBlogs.map((blog, index) => (
+                // <Paper
+                //     classes={{
+                //         root: classes.paperRoot
+                //     }}
+                //     key={index}
+                //     elevation={0}
+                // >
+                //     {blog}
+                // </Paper>
                 <article
                     key={index}
                     className={clsx(classes.container, {
@@ -90,7 +91,9 @@ const BlogList = (props) => {
                 category={category}
                 list={allFormatBlogs}
             />
-            <BlogList />
+            <div className={classes.blogListWrapper}>
+                <BlogList />
+            </div>
         </>
     )
 }
@@ -165,7 +168,7 @@ export const getStaticPaths = async () => {
 
 const useBlogListStyles = makeStyles((theme) => ({
     container: {
-        paddingLeft: "30px",
+        paddingLeft: 30,
         height: 500,
         overflow: "hidden",
         display: "flex",
@@ -173,17 +176,21 @@ const useBlogListStyles = makeStyles((theme) => ({
         transition: "all 2s"
     },
     darkMode: {
-        "& span, h1, h2, h3, h4, h5, li, p, th, td, code": {
+        "& span, h1, h2, h3, h4, h5, li, p, th, td": {
             color: theme.color.word.darkMode
-        },
-        "& pre": {
-            backgroundColor: "rgba(0, 0, 0, 0.5)"
         },
         backgroundColor: theme.color.background.darkMode
     },
     articleSection: {
         cursor: "pointer",
         width: "100%"
+    },
+    blogListWrapper: {
+        display: "flex",
+        flexWrap: "wrap"
+    },
+    paperRoot: {
+        width: 300
     }
 }));
 

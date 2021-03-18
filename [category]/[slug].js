@@ -9,6 +9,8 @@ import { makeStyles } from "@material-ui/core";
 
 import { DarkModeContext } from "@/context/darkModeContext";
 
+import { getTitle, getDate } from "@/helper/getArticleTag";
+
 const Blog = props => {
   const {
     category = "",
@@ -19,30 +21,6 @@ const Blog = props => {
   const classes = useBlogStyles();
 
   const { isDarkMode } = useContext(DarkModeContext);
-
-  const getTitle = content => {
-    const titleRole = new RegExp("<h1>.+?</h1>");
-
-    if (!titleRole) {
-      return ""
-    }
-
-    const title = content.match(titleRole)[0].replace("<h1>", "").replace("</h1>", "");
-
-    return title
-  }
-
-  const getDate = content => {
-    const dateRole = new RegExp("<p>date:.+?</p>");
-
-    if (!dateRole) {
-      return ""
-    }
-
-    const date = content.match(dateRole)[0].replace("<p>date:", "").replace("</p>", "");
-
-    return date
-  }
 
   return (
     <div>
@@ -160,17 +138,14 @@ export const getStaticPaths = async () => {
 
 const useBlogStyles = makeStyles((theme) => ({
   container: {
-    paddingLeft: "30px",
+    paddingLeft: 30,
     display: "flex",
     justifyContent: "center",
     transition: "all 2s"
   },
   darkMode: {
-    "& span, h1, h2, h3, h4, h5, li, p, th, td, code": {
+    "& span, h1, h2, h3, h4, h5, li, p, th, td": {
       color: theme.color.word.darkMode
-    },
-    "& pre": {
-      backgroundColor: "rgba(0, 0, 0, 0.5)"
     },
     backgroundColor: theme.color.background.darkMode
   },
