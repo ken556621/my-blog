@@ -13,6 +13,8 @@ import styles from "@/styles/sideList.module.scss";
 
 import { DrawerContext } from "@/context/drawerContext";
 
+import { getPath, getTitle } from "@/helper/getArticleTag";
+
 
 const SideArticleTags = props => {
     const {
@@ -25,30 +27,6 @@ const SideArticleTags = props => {
     }
 
     const { drawerOpened, setDrawerOpened } = useContext(DrawerContext);
-
-    const getTitle = content => {
-        const titleRole = new RegExp("<h1>.+?</h1>");
-
-        if (!titleRole) {
-            return ""
-        }
-
-        const title = content.match(titleRole)[0].replace("<h1>", "").replace("</h1>", "");
-
-        return title
-    };
-
-    const getPath = content => {
-        const titleRole = new RegExp("<p>tags:.+?</p>");
-
-        if (!titleRole) {
-            return ""
-        }
-
-        const path = content.match(titleRole)[0].replace("<p>tags:", "").replace("</p>", "").toLowerCase();
-
-        return path
-    };
 
     const closeDrawer = () => {
         setDrawerOpened(false)

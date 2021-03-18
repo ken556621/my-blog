@@ -5,6 +5,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 
+import { getPath, getTitle } from "@/helper/getArticleTag";
 
 const SideList = props => {
     const {
@@ -17,30 +18,6 @@ const SideList = props => {
     if (!list.length || !category) {
         return <>No Article</>
     }
-
-    const getTitle = content => {
-        const titleRole = new RegExp("<h1>.+?</h1>");
-
-        if (!titleRole) {
-            return ""
-        }
-
-        const title = content.match(titleRole)[0].replace("<h1>", "").replace("</h1>", "");
-
-        return title
-    };
-
-    const getPath = content => {
-        const titleRole = new RegExp("<p>tags:.+?</p>");
-
-        if (!titleRole) {
-            return ""
-        }
-
-        const path = content.match(titleRole)[0].replace("<p>tags:", "").replace("</p>", "").toLowerCase();
-
-        return path
-    };
 
     const CustomListItem = () => {
         return (
