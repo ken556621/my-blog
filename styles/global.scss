@@ -44,10 +44,15 @@ li {
 }
 
 blockquote {
-    background-color: #ffffff;
-    padding: 8px 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 14px 0 rgba(137, 174, 255, 0.2);
+    font-size: 24px;
+    font-weight: bold;
+    color: rgba(117, 117, 117, 1);
+    & p::before {
+        content: "“";
+    };
+    & p::after {
+        content: "”";
+    }
 }
 
 table {

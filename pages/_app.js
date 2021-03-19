@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import getConfig from "next/config";
 
@@ -18,6 +18,13 @@ import { DrawerContext, drawer } from "@/context/drawerContext";
 const MyApp = ({ Component, pageProps, config }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [drawerOpened, setDrawerOpened] = useState(drawer.isOpened);
+
+  useEffect(() => {
+    const htmlDom = document.querySelector("html");
+
+    htmlDom.style.transition = "background 2s";
+    htmlDom.style.backgroundColor = isDarkMode ? "#121212" : "#f8fbff";
+  }, [isDarkMode])
 
   return (
     <DarkModeContext.Provider value={{ isDarkMode, setIsDarkMode }}>

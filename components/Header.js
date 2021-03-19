@@ -105,8 +105,7 @@ const useHeaderStyles = makeStyles((theme) => ({
     darkMode: {
         "& span, h1": {
             color: theme.color.word.darkMode
-        },
-        backgroundColor: theme.color.background.darkMode
+        }
     },
     logo: {
         "& img": {

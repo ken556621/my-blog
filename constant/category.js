@@ -19,7 +19,7 @@ export const categorySchema = [
     },
     {
         id: uuid(),
-        title: "movie",
-        path: "/movie"
+        title: "portfolio",
+        path: "/portfolio"
     }
 ]

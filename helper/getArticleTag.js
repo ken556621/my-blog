@@ -5,7 +5,7 @@ export const getPath = (content) => {
         return ""
     }
 
-    const path = content.match(titleRole)[0].replace("<p>tags:", "").replace("</p>", "").toLowerCase();
+    const path = content.match(titleRole)?.[0].replace("<p>tags:", "").replace("</p>", "").toLowerCase();
 
     return path
 };
@@ -17,7 +17,7 @@ export const getTitle = content => {
         return ""
     }
 
-    const title = content.match(titleRole)[0].replace("<h1>", "").replace("</h1>", "");
+    const title = content.match(titleRole)?.[0].replace("<h1>", "").replace("</h1>", "");
 
     return title
 };
@@ -29,7 +29,19 @@ export const getDate = content => {
         return ""
     }
 
-    const date = content.match(dateRole)[0].replace("<p>date:", "").replace("</p>", "");
+    const date = content.match(dateRole)?.[0].replace("<p>date:", "").replace("</p>", "");
 
     return date
-}
+};
+
+export const getAgenda = content => {
+    const agendaRole = new RegExp("</h2>(.|\n)*?</ul>");
+
+    if (!agendaRole) {
+        return ""
+    }
+
+    const agenda = content.match(agendaRole)?.[0];
+
+    return agenda
+};
