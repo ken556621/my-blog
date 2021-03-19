@@ -1,24 +1,3 @@
-import firebase from "firebase/app";
-import "firebase/messaging";
-
-firebase.initializeApp({
-  'messagingSenderId': '32530360613'
-});
-
-const messaging = firebase.messaging();
-
-messaging.setBackgroundMessageHandler(function (payload) {
-  console.log('[firebase-messaging-sw.js] Received background message ', payload);
-  // Customize notification here
-  const notificationTitle = 'Background Message Title';
-  const notificationOptions = {
-    body: 'Background Message body.'
-  };
-
-  return self.registration.showNotification(notificationTitle,
-    notificationOptions);
-});
-
 /**
  * Copyright 2018 Google Inc. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -40,19 +19,19 @@ if (!self.define) {
     }
     let promise = Promise.resolve();
     if (!registry[name]) {
-
-      promise = new Promise(async resolve => {
-        if ("document" in self) {
-          const script = document.createElement("script");
-          script.src = name;
-          document.head.appendChild(script);
-          script.onload = resolve;
-        } else {
-          importScripts(name);
-          resolve();
-        }
-      });
-
+      
+        promise = new Promise(async resolve => {
+          if ("document" in self) {
+            const script = document.createElement("script");
+            script.src = name;
+            document.head.appendChild(script);
+            script.onload = resolve;
+          } else {
+            importScripts(name);
+            resolve();
+          }
+        });
+      
     }
     return promise.then(() => {
       if (!registry[name]) {
@@ -66,7 +45,7 @@ if (!self.define) {
     Promise.all(names.map(singleRequire))
       .then(modules => resolve(modules.length === 1 ? modules[0] : modules));
   };
-
+  
   const registry = {
     require: Promise.resolve(require)
   };
@@ -83,7 +62,7 @@ if (!self.define) {
       };
       return Promise.all(
         depsNames.map(depName => {
-          switch (depName) {
+          switch(depName) {
             case "exports":
               return exports;
             case "module":
@@ -94,7 +73,7 @@ if (!self.define) {
         })
       ).then(deps => {
         const facValue = factory(...deps);
-        if (!exports.default) {
+        if(!exports.default) {
           exports.default = facValue;
         }
         return exports;
@@ -102,8 +81,7 @@ if (!self.define) {
     });
   };
 }
-define("./sw.js", ['./workbox-32092201'], function (workbox) {
-  'use strict';
+define("./sw.js",['./workbox-79663c73'], function (workbox) { 'use strict';
 
   /**
   * Welcome to your Workbox-powered service worker!
@@ -120,7 +98,6 @@ define("./sw.js", ['./workbox-32092201'], function (workbox) {
   importScripts();
   self.skipWaiting();
   workbox.clientsClaim();
-  workbox.setConfig({ debug: false })
   workbox.registerRoute(/.*/i, new workbox.NetworkOnly({
     "cacheName": "dev",
     plugins: []
