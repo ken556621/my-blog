@@ -144,10 +144,12 @@ const useBlogStyles = makeStyles((theme) => ({
     transition: "all 2s"
   },
   darkMode: {
-    "& span, h1, h2, h3, h4, h5, li, p, th, td": {
+    "& section > span, h1, h2, h3, h4, h5, li, p, th, td": {
       color: theme.color.word.darkMode
     },
-    backgroundColor: theme.color.background.darkMode
+    "& blockquote > p": {
+      color: "rgba(117, 117, 117, 1)"
+    }
   },
   articleSection: {
     width: "100%",

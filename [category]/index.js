@@ -13,7 +13,7 @@ import Paper from '@material-ui/core/Paper';
 
 import { DarkModeContext } from "@/context/darkModeContext";
 
-import { getPath } from "@/helper/getArticleTag";
+import { getPath, getTitle, getAgenda } from "@/helper/getArticleTag";
 
 
 const BlogList = (props) => {
@@ -45,30 +45,36 @@ const BlogList = (props) => {
     };
 
     const BlogList = () => {
-        console.log(allFormatBlogs)
         return (
             allFormatBlogs.map((blog, index) => (
-                // <Paper
-                //     classes={{
-                //         root: classes.paperRoot
-                //     }}
-                //     key={index}
-                //     elevation={0}
-                // >
-                //     {blog}
-                // </Paper>
-                <article
+                <Paper
+                    classes={{
+                        root: clsx(classes.paperRoot, {
+                            [classes.darkMode]: isDarkMode
+                        })
+                    }}
                     key={index}
-                    className={clsx(classes.container, {
-                        [classes.darkMode]: isDarkMode
-                    })}
+                    elevation={0}
+                    onClick={() => handleClickArticle(getPath(blog))}
                 >
-                    <section
-                        className={classes.articleSection}
-                        onClick={() => handleClickArticle(getPath(blog))}
-                        dangerouslySetInnerHTML={{ __html: blog }}
-                    />
-                </article>
+                    <div className={classes.imgWrapper}>
+                        <img
+                            className={classes.img}
+                            src={`/article-img/${getPath(blog)}.jpg`}
+                        />
+                    </div>
+                    <div className={classes.wordWrapper}>
+                        <p
+                            className={classes.cardTitle}
+                        >
+                            {getTitle(blog)}
+                        </p>
+                        <p
+                            className={classes.cardDescription}
+                            dangerouslySetInnerHTML={{ __html: getAgenda(blog) }}
+                        />
+                    </div>
+                </Paper>
             ))
         )
     }
@@ -91,7 +97,7 @@ const BlogList = (props) => {
                 category={category}
                 list={allFormatBlogs}
             />
-            <div className={classes.blogListWrapper}>
+            <div className={classes.container}>
                 <BlogList />
             </div>
         </>
@@ -168,29 +174,54 @@ export const getStaticPaths = async () => {
 
 const useBlogListStyles = makeStyles((theme) => ({
     container: {
-        paddingLeft: 30,
-        height: 500,
-        overflow: "hidden",
+        marginTop: 30,
         display: "flex",
-        justifyContent: "center",
+        flexWrap: "wrap",
+        justifyContent: "space-between",
         transition: "all 2s"
     },
     darkMode: {
-        "& span, h1, h2, h3, h4, h5, li, p, th, td": {
-            color: theme.color.word.darkMode
-        },
-        backgroundColor: theme.color.background.darkMode
+        boxShadow: "0 2px 10px 0 rgba(255, 255, 255, 0.1)"
     },
     articleSection: {
         cursor: "pointer",
         width: "100%"
     },
-    blogListWrapper: {
-        display: "flex",
-        flexWrap: "wrap"
-    },
     paperRoot: {
-        width: 300
+        display: "flex",
+        flexDirection: "column",
+        marginBottom: 30,
+        width: 300,
+        borderRadius: 8,
+        cursor: "pointer",
+        boxShadow: "0 2px 10px 0 rgba(0, 0, 0, 0.1)",
+        "&:hover": {
+            backgroundColor: "#c0c0c0"
+        }
+    },
+    imgWrapper: {
+        overflow: "hidden",
+        borderRadius: "8px 8px 0px 0px"
+    },
+    img: {
+        width: 300,
+        transition: "all .5s ease",
+        "&:hover": {
+            transform: "scale(1.2)"
+        }
+    },
+    wordWrapper: {
+        paddingBottom: 20,
+        paddingLeft: 20
+    },
+    cardTitle: {
+        fontSize: 20
+    },
+    cardDescription: {
+        margin: 0,
+        "& p, ul": {
+            margin: 0
+        }
     }
 }));
 
