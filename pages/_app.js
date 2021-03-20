@@ -10,11 +10,15 @@ import { DarkModeContext } from "@/context/darkModeContext";
 import { DrawerContext, drawer } from "@/context/drawerContext";
 
 
-const MyApp = ({ Component, pageProps, config }) => {
+const MyApp = ({ Component, pageProps }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [drawerOpened, setDrawerOpened] = useState(drawer.isOpened);
 
   useEffect(() => {
+    if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      setIsDarkMode(true);
+    }
+
     const htmlDom = document.querySelector("html");
 
     htmlDom.style.transition = "background 2s";
