@@ -18,7 +18,9 @@ const MyApp = ({ Component, pageProps }) => {
     if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
       setIsDarkMode(true);
     }
+  }, [])
 
+  useEffect(() => {
     const htmlDom = document.querySelector("html");
 
     htmlDom.style.transition = "background 2s";
