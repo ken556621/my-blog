@@ -5,7 +5,7 @@
   "homepage": "https://ken556621.github.io/my-blog",
   "scripts": {
     "export": "next export",
-    "deploy": "rm -rf node_modules/.cache && next build && next export && touch out/.nojekyll && git add out/ && git commit -m \"Deploy Next.js to gh-pages\" && git subtree push --prefix out origin gh-pages",
+    "deploy": "rm -rf node_modules/.cache && next build && next export && touch pages/.nojekyll && git add pages/ && git commit -m \"Deploy Next.js to gh-pages\" && git subtree push --prefix pages origin gh-pages",
     "dev": "next dev",
     "build": "next build",
     "start": "next start"
