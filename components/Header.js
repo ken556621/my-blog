@@ -100,7 +100,7 @@ const Header = props => {
 
 const useHeaderStyles = makeStyles((theme) => ({
     toolbar: {
-        transition: "all 2s"
+        transition: "background-color 2s"
     },
     darkMode: {
         "& span, h1": {

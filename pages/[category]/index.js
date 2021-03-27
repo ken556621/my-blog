@@ -178,7 +178,7 @@ const useBlogListStyles = makeStyles((theme) => ({
         display: "flex",
         flexWrap: "wrap",
         justifyContent: "space-between",
-        transition: "all 2s"
+        transition: "background-color 2s"
     },
     darkMode: {
         boxShadow: "0 2px 10px 0 rgba(255, 255, 255, 0.1)"
