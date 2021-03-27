@@ -141,7 +141,7 @@ const useBlogStyles = makeStyles((theme) => ({
     paddingLeft: 30,
     display: "flex",
     justifyContent: "center",
-    transition: "all 2s"
+    transition: "background-color 2s"
   },
   darkMode: {
     "& section > span, h1, h2, h3, h4, h5, li, p, th, td": {
