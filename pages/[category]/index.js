@@ -28,18 +28,6 @@ const BlogList = (props) => {
 
     const { isDarkMode } = useContext(DarkModeContext);
 
-    const askForNotificationPermission = () => {
-        Notification.requestPermission(result => {
-            // 這裡result只會有兩種結果：一個是用戶允許(granted)，另一個是用戶封鎖(denied)
-            console.log("User Choice", result);
-            if (result !== "granted") {
-                console.log("拒絕");
-            } else {
-                console.log("接受");
-            }
-        });
-    };
-
     const handleClickArticle = (path) => {
         router.push(`${category}/${path}`)
     };
@@ -78,10 +66,6 @@ const BlogList = (props) => {
             ))
         )
     }
-
-    useEffect(() => {
-        askForNotificationPermission();
-    }, [])
 
     return (
         <>
