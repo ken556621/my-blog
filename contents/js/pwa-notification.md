@@ -138,11 +138,17 @@ app.post("/subscribe", (req, res) => {
 });
 ```
 
-## 心得
-繼上次 PWA 最重要三元素，剩下的推播訊息總算補上了，接下來會繼續針對推播後續再深入研究一點，包含
+## 瀏覽器支援度
 
-1. 監聽使用者推播訊息點擊，關閉或是確認，如何客製化不同的 action
-2. 現階段各瀏覽器和裝置對於推播支援程度
+<img style="width: 500px;" src="https://i.imgur.com/RgzkhJ5.png" alt="browser-support">
+
+[圖片來源 MDN](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/showNotification)
+
+* Safari 就你最特別...
+
+
+## 心得
+繼上次 PWA 最重要三元素，剩下的推播訊息總算補上了，推播許多的 api 在 Safari 支援度真的是不堪入目，Firefox 基本上也是，只能說要把推播做得像 app 那樣，可能還是有點差距
 
 
 tags:pwa-notification
