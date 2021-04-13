@@ -175,7 +175,7 @@ const useBlogListStyles = makeStyles((theme) => ({
         display: "flex",
         flexDirection: "column",
         marginBottom: 30,
-        width: 300,
+        width: 350,
         borderRadius: 8,
         cursor: "pointer",
         boxShadow: "0 2px 10px 0 rgba(0, 0, 0, 0.1)",
@@ -185,10 +185,11 @@ const useBlogListStyles = makeStyles((theme) => ({
     },
     imgWrapper: {
         overflow: "hidden",
+        height: 235,
         borderRadius: "8px 8px 0px 0px"
     },
     img: {
-        width: 300,
+        width: "100%",
         transition: "all .5s ease",
         "&:hover": {
             transform: "scale(1.2)"
