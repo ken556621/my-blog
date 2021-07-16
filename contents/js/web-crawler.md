@@ -64,14 +64,17 @@ Completely Automated Test to Tell Computers and Humans apart
 
 ## 範例
 1. 104 爬取前端工作資訊
-    優：速度較快
-    缺：無法模擬複雜操作或網頁原始碼抓不到
+
+    - 優：速度較快
+    - 缺：無法模擬複雜操作或網頁原始碼抓不到
 2. Pupeeteer 模擬使用者登入
-    優：可以模擬各種使用者操作，也能做測試
-    缺：速度較慢
+
+    - 優：可以模擬各種使用者操作，也能做測試
+    - 缺：速度較慢
 3. Network api 尋寶
-    優：遇到好的 api 直接上天堂
-    缺：可能有頻率或是其他限制，或是哪天 api 爆掉
+
+    - 優：遇到好的 api 直接上天堂
+    - 缺：可能有頻率或是其他限制，或是哪天 api 爆掉
 4. 避免頻繁發送 request 解決方法
 
 [Demo link](https://github.com/ken556621/crawler-demo)
