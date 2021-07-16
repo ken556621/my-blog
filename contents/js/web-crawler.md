@@ -49,12 +49,15 @@ Error: read ECONNRESET
 Completely Automated Test to Tell Computers and Humans apart
 
 1. Captcha 1.0
+
 ![](https://i.imgur.com/nkVsQ7G.png)
 
 2. Captcha 2.0
+
 ![](https://i.imgur.com/3ChpxaH.jpg)
 
 3. Captcha 3.0
+
 ![](https://i.imgur.com/JDUW5ER.jpg)
 
 為何點擊我不是機器人，就知道你不是機器人？
