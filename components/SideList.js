@@ -57,7 +57,7 @@ const SideList = props => {
 const useSideListStyles = makeStyles((theme) => ({
     container: {
         position: "fixed",
-        top: "15%",
+        bottom: "8%",
         right: 0,
         backgroundColor: "#ffffff",
         borderRadius: 8,

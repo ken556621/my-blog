@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 
-
+import Header from "@/components/Header";
 
 const Banner = props => {
     const {
@@ -12,6 +12,9 @@ const Banner = props => {
 
     return (
         <div className={classes.container}>
+            <Header
+                title={"游肯扣部落格"}
+            />
             <h1 className={classes.word}>
                 {word}
             </h1>
@@ -24,16 +27,14 @@ const Banner = props => {
 
 const useBannerStyles = makeStyles((theme) => ({
     container: {
-        height: 100,
-        backgroundColor: "rgba(255,255,255,0.67)",
+        height: 300,
         backgroundSize: "cover",
-        backgroundImage: "linear-gradient(0deg, rgba(255, 255, 255, 0.67), rgba(255, 255, 255, 0.67)), url(/banner-img.jpg)",
+        backgroundImage: "url(/banner-img.jpg)",
         backgroundPosition: "center 70%",
-        backgroundRepeat: "no-repeat",
-        padding: "55px 15px",
-        textAlign: "center"
+        backgroundRepeat: "no-repeat"
     },
     word: {
+        textAlign: "center",
         color: "#333333"
     }
 }));

@@ -58,7 +58,13 @@ const Header = props => {
                 <link href="/icons/favicon-32x32-dunplab-manifest-28429.png" rel="icon" type="image/png" sizes="32x32" />
                 <link href="/icons/apple-icon-60x60-dunplab-manifest-28429.png" rel="apple-touch-icon" type="image/png" sizes="60x60" />
             </Head>
-            <Grid item xs={12}>
+            <Grid
+                classes={{
+                    root: classes.gridRoot
+                }}
+                item
+                xs={12}
+            >
                 <Toolbar
                     classes={{
                         root: clsx(classes.toolbar, {
@@ -79,7 +85,7 @@ const Header = props => {
                             {
                                 categorySchema.map(item => (
                                     <Button key={item.id} onClick={() => handleRouteChange(item.path)}>
-                                        { item.title}
+                                        {item.title}
                                     </Button>
                                 ))
                             }
@@ -99,6 +105,10 @@ const Header = props => {
 }
 
 const useHeaderStyles = makeStyles((theme) => ({
+    gridRoot: {
+        position: "sticky",
+        top: 0
+    },
     toolbar: {
         transition: "background-color 2s"
     },

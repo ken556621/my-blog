@@ -69,11 +69,11 @@ const BlogList = (props) => {
 
     return (
         <>
-            <Header
+            {/* <Header
                 title={`${category.toUpperCase()} | 游肯扣部落格`}
                 description={`${category} 的技術部落格文章列表`}
                 sharingTitle={`${category} 的技術部落格文章列表`}
-            />
+            /> */}
             <Banner
                 word={`${category.toUpperCase()} 系列文章`}
             />
@@ -159,10 +159,12 @@ export const getStaticPaths = async () => {
 const useBlogListStyles = makeStyles((theme) => ({
     container: {
         marginTop: 30,
+        padding: "0px 24px",
         display: "flex",
         flexWrap: "wrap",
         justifyContent: "space-between",
-        transition: "background-color 2s"
+        transition: "background-color 2s",
+        maxWidth: 1200
     },
     darkMode: {
         boxShadow: "0 2px 10px 0 rgba(255, 255, 255, 0.1)"
