@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import clsx from "clsx";
 
-import Header from "@/components/Header";
 import SideList from "@/components/SideList";
 import Banner from "@/components/Banner";
 
@@ -40,11 +39,6 @@ const Blog = props => {
 
   return (
     <div>
-      <Header
-        title={`${getTitle(blog.content)} | 游肯扣部落格`}
-        description={`肯游扣部落格關於${getTitle(blog.content)}的介紹`}
-        sharingTitle={`肯游扣部落格關於${getTitle(blog.content)}的介紹`}
-      />
       <Banner word={`${getTitle(blog.content)}`} date={getDate(blog.content)} />
       <SideList category={category} list={allFormatBlogs} />
       <article

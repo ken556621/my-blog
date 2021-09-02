@@ -68,6 +68,7 @@ js 執行的 js 檔案為哪一個
 ### 第二步
 
 加入 background.js 檔案
+
 ![](https://i.imgur.com/ZeCt4S1.png)
 
 這隻檔案會在我們每次進入瀏覽器的時候執行，內容用純 js 寫，主要為新增一個 popup 並植入於這個網頁的 body 上
@@ -138,6 +139,7 @@ const confirmBtnStyle = `
 ![](https://i.imgur.com/xJcpEwa.png)
 
 打開瀏覽器，點擊右上角的 ...，選取更多工具，點擊擴充功能
+
 ![](https://i.imgur.com/2Y0ldwp.png)
 
 打開右上角的開發人員模式，點擊載入未封裝項目，選取我們剛剛寫好的檔案夾

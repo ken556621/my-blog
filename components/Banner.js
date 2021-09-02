@@ -25,7 +25,7 @@ const Banner = props => {
     <div className={classes.container}>
       <Header title={"游肯扣部落格"} />
       <h1 className={classes.word}>{word}</h1>
-      <div className={classes.date}>{date}</div>
+      <div className={classes.word}>{date}</div>
     </div>
   );
 };
