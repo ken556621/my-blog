@@ -147,6 +147,7 @@ const confirmBtnStyle = `
 載入後會看到我們的插件成功出現，如果我們 local 這邊的程式碼有什麼更動，只需要按右下角的重新整理的 icon 即可更新這個套件，非常方便
 
 [GitHub Repo](https://github.com/ken556621/habit-extension)
+
 tags:web-extension
 
 date:2021/8/26
