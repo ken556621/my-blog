@@ -13,6 +13,38 @@ import { categorySchema } from "@/constant/category";
 
 import { DarkModeContext } from "@/context/darkModeContext";
 
+const useHeaderStyles = makeStyles(theme => ({
+  gridRoot: {
+    position: "sticky",
+    top: 0
+  },
+  toolbar: {
+    transition: "background-color 2s"
+  },
+  logo: {
+    "& img": {
+      width: 300
+    }
+  },
+  logoWord: {
+    margin: "0px 0px 0px 10px",
+    padding: 0,
+    fontSize: "1.5em",
+    textTransform: "none"
+  },
+  menu: {
+    textAlign: "end"
+  },
+  selectedButtonLabel: {
+    fontWeight: "bold",
+    "&:after": {
+      width: 10,
+      height: 5,
+      backgroundColor: "red"
+    }
+  }
+}));
+
 const Header = props => {
   const {
     title = "肯游扣部落格 | Yu Ken Code Blog",
@@ -124,38 +156,5 @@ const Header = props => {
     </>
   );
 };
-
-const useHeaderStyles = makeStyles(theme => ({
-  gridRoot: {
-    position: "sticky",
-    top: 0
-  },
-  toolbar: {
-    transition: "background-color 2s"
-  },
-  logo: {
-    "& img": {
-      width: 300
-    }
-  },
-  logoWord: {
-    margin: "0px 0px 0px 10px",
-    padding: 0,
-    fontSize: "1.5em",
-    textTransform: "none"
-  },
-  menu: {
-    textAlign: "end"
-  },
-  selectedButtonLabel: {
-    fontWeight: "bold",
-    // ken
-    "&:after": {
-      width: 10,
-      height: 5,
-      backgroundColor: "red"
-    }
-  }
-}));
 
 export default Header;

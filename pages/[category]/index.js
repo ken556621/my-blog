@@ -15,7 +15,63 @@ import { DarkModeContext } from "@/context/darkModeContext";
 
 import { getPath, getTitle, getAgenda } from "@/helper/getArticleTag";
 
-const BlogList = props => {
+const useBlogListStyles = makeStyles(theme => ({
+  container: {
+    margin: "30px auto 0px auto",
+    padding: "0px 24px",
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+    transition: "background-color 2s",
+    maxWidth: 1200
+  },
+  darkMode: {
+    boxShadow: "0 2px 10px 0 rgba(255, 255, 255, 0.1)"
+  },
+  articleSection: {
+    cursor: "pointer",
+    width: "100%"
+  },
+  paperRoot: {
+    display: "flex",
+    flexDirection: "column",
+    marginBottom: 30,
+    width: 350,
+    borderRadius: 8,
+    cursor: "pointer",
+    boxShadow: "0 2px 10px 0 rgba(0, 0, 0, 0.1)",
+    "&:hover": {
+      backgroundColor: "#c0c0c0"
+    }
+  },
+  imgWrapper: {
+    overflow: "hidden",
+    height: 235,
+    borderRadius: "8px 8px 0px 0px"
+  },
+  img: {
+    width: "100%",
+    transition: "all .5s ease",
+    "&:hover": {
+      transform: "scale(1.2)"
+    }
+  },
+  wordWrapper: {
+    paddingBottom: 20,
+    paddingLeft: 20
+  },
+  cardTitle: {
+    fontSize: 20
+  },
+  cardDescription: {
+    margin: 0,
+    "& p, ul": {
+      margin: 0
+    }
+  }
+}));
+
+const BlogListContent = props => {
   const { category = "", allFormatBlogs = [] } = props;
 
   const classes = useBlogListStyles();
@@ -134,60 +190,4 @@ export const getStaticPaths = async () => {
   };
 };
 
-const useBlogListStyles = makeStyles(theme => ({
-  container: {
-    marginTop: 30,
-    padding: "0px 24px",
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
-    transition: "background-color 2s",
-    maxWidth: 1200
-  },
-  darkMode: {
-    boxShadow: "0 2px 10px 0 rgba(255, 255, 255, 0.1)"
-  },
-  articleSection: {
-    cursor: "pointer",
-    width: "100%"
-  },
-  paperRoot: {
-    display: "flex",
-    flexDirection: "column",
-    marginBottom: 30,
-    width: 350,
-    borderRadius: 8,
-    cursor: "pointer",
-    boxShadow: "0 2px 10px 0 rgba(0, 0, 0, 0.1)",
-    "&:hover": {
-      backgroundColor: "#c0c0c0"
-    }
-  },
-  imgWrapper: {
-    overflow: "hidden",
-    height: 235,
-    borderRadius: "8px 8px 0px 0px"
-  },
-  img: {
-    width: "100%",
-    transition: "all .5s ease",
-    "&:hover": {
-      transform: "scale(1.2)"
-    }
-  },
-  wordWrapper: {
-    paddingBottom: 20,
-    paddingLeft: 20
-  },
-  cardTitle: {
-    fontSize: 20
-  },
-  cardDescription: {
-    margin: 0,
-    "& p, ul": {
-      margin: 0
-    }
-  }
-}));
-
-export default BlogList;
+export default BlogListContent;
