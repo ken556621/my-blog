@@ -1,3 +1,5 @@
+import clsx from "clsx";
+
 import { makeStyles } from "@material-ui/core";
 
 const usePersonalInfoStyles = makeStyles(theme => ({
@@ -5,14 +7,20 @@ const usePersonalInfoStyles = makeStyles(theme => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    height: "calc(100vh - 64px)",
+    // height: "calc(60vh)",
     padding: "0px 24px"
   },
   avatar: {
     borderRadius: 8
   },
-  introdution: {
-    width: 500
+  subTitle: {
+    margin: 0
+  },
+  subTitleOne: {
+    width: 400
+  },
+  subTitleTwo: {
+    width: 380
   }
 }));
 
@@ -23,15 +31,20 @@ const PersonalInfo = props => {
 
   return (
     <div className={classes.container}>
-      <img className={classes.avatar} src="/avatar.jpg" />
-      <div className={classes.introdution}>
+      <div>
         <h1>Hello</h1>
         <h2>I'm Ken Yu, a web frontend developer.</h2>
-        <h2>
-          A patient listener who is highly motivated to understand the reasons
-          behind demands and optimized solutions for problems.
-        </h2>
+        <h3 className={clsx(classes.subTitle, classes.subTitleOne)}>
+          A patient listener who is highly motivated to
+        </h3>
+        <h3 className={clsx(classes.subTitle, classes.subTitleTwo)}>
+          understand the reasons behind demands
+        </h3>
+        <h3 className={clsx(classes.subTitle, classes.subTitleThree)}>
+          optimized solutions for problems.
+        </h3>
       </div>
+      <img className={classes.avatar} src="/avatar.jpg" />
     </div>
   );
 };
