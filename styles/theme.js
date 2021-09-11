@@ -10,6 +10,13 @@ const theme = createMuiTheme({
       main: "#0a2f5c",
       darkMode: "#f8fbff"
     }
+  },
+  overrides: {
+    MuiButton: {
+      label: {
+        textTransform: "capitalize"
+      }
+    }
   }
 });
 

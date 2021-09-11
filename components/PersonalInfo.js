@@ -1,14 +1,18 @@
 import clsx from "clsx";
 
 import { makeStyles } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
+import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 
 const usePersonalInfoStyles = makeStyles(theme => ({
+  root: {
+    height: "calc(80vh)",
+    padding: "0px 24px"
+  },
   container: {
     display: "flex",
     justifyContent: "space-between",
-    alignItems: "center",
-    // height: "calc(60vh)",
-    padding: "0px 24px"
+    alignItems: "flex-start"
   },
   avatar: {
     borderRadius: 8
@@ -21,6 +25,18 @@ const usePersonalInfoStyles = makeStyles(theme => ({
   },
   subTitleTwo: {
     width: 380
+  },
+  actionButton: {
+    marginTop: theme.spacing(6)
+  },
+  arrowIcon: {
+    marginLeft: theme.spacing(1),
+    fontSize: 18,
+    color: "#0a2f5c",
+    transition: "all .5s ease-out",
+    "&:hover": {
+      transform: "translate(0, 10px)"
+    }
   }
 }));
 
@@ -30,21 +46,31 @@ const PersonalInfo = props => {
   const classes = usePersonalInfoStyles();
 
   return (
-    <div className={classes.container}>
-      <div>
-        <h1>Hello</h1>
-        <h2>I'm Ken Yu, a web frontend developer.</h2>
-        <h3 className={clsx(classes.subTitle, classes.subTitleOne)}>
-          A patient listener who is highly motivated to
-        </h3>
-        <h3 className={clsx(classes.subTitle, classes.subTitleTwo)}>
-          understand the reasons behind demands
-        </h3>
-        <h3 className={clsx(classes.subTitle, classes.subTitleThree)}>
-          optimized solutions for problems.
-        </h3>
+    <div className={classes.root}>
+      <div className={classes.container}>
+        <div>
+          <h1>Hello</h1>
+          <h2>I'm Ken Yu, a web frontend developer.</h2>
+          <h3 className={clsx(classes.subTitle, classes.subTitleOne)}>
+            A patient listener who is highly motivated to
+          </h3>
+          <h3 className={clsx(classes.subTitle, classes.subTitleTwo)}>
+            understand the reasons behind demands
+          </h3>
+          <h3 className={clsx(classes.subTitle, classes.subTitleThree)}>
+            optimized solutions for problems.
+          </h3>
+        </div>
+        <img className={classes.avatar} src="/avatar.jpg" />
       </div>
-      <img className={classes.avatar} src="/avatar.jpg" />
+      <Button
+        classes={{
+          root: classes.actionButton
+        }}
+      >
+        View Projects
+        <ArrowDownwardIcon className={classes.arrowIcon} />
+      </Button>
     </div>
   );
 };
