@@ -25,7 +25,7 @@ const Footer = () => {
       <Tooltip
         TransitionComponent={Fade}
         TransitionProps={{ timeout: 600 }}
-        title="原本體能教練轉職前端工程師隨便寫寫紀錄學習歷程，相信人沒辦法拒絕科技的迭代，而沒有人，科技也會變得毫無意義。喜歡跟朋友討論軟體開發和一言不合就寫扣的乾脆。"
+        title="原本體能教練轉職前端工程師，相信人沒辦法拒絕科技的迭代，而沒有人，科技也會變得毫無意義。喜歡跟朋友討論軟體開發和一言不合就寫扣的乾脆。"
       >
         <marquee direction="right" scrolldelay="60">
           <img
