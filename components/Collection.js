@@ -1,4 +1,8 @@
 import { makeStyles } from "@material-ui/core";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -20,6 +24,9 @@ const useCollectionStyles = makeStyles(theme => ({
   },
   description: {
     width: "45%"
+  },
+  itemList: {
+    marginRight: theme.spacing(2)
   }
 }));
 
@@ -38,8 +45,15 @@ const Collection = props => {
     {
       id: "basketball",
       src: "/project-img/basketball2.png",
-      description:
-        "A platform lets users team up and find the nearest basketball court"
+      description: [
+        "Built a SPA with React and React Router",
+        "Applied Redux for global state management",
+        "Applied Material-Ui for better user interface",
+        "Supported RWD with SCSS to create excellent mobile user experience",
+        "Managed data with CRUD with Firebase Firestore",
+        "Applied Cloud Functions to fetch Google Map API and open source API",
+        "Implemented Geohash to recommend the nearest basketball courts for users"
+      ]
     },
     {
       id: "ledger",
@@ -49,7 +63,16 @@ const Collection = props => {
     {
       id: "ledger",
       src: "/project-img/ledger2.png",
-      description: "An account book for daily record"
+      description: [
+        "Built a web with Node.js and Express.js",
+        "Managed data with CRUD with MongoDB",
+        "Analyzed each category of expenses in a period and displayed with Chart.js",
+        "Applied Handlebars to generate HTML template",
+        "Integrated Bcrypt.js to hash password",
+        "Applied Moment.js to handle time converting",
+        "Implemented Connect-Flash to display error message",
+        "Supported Facebook Login with Passport and Passport Facebook"
+      ]
     },
     {
       id: "stylish",
@@ -59,16 +82,33 @@ const Collection = props => {
     {
       id: "stylish",
       src: "/project-img/stylish2.png",
-      description: "An e-commerce website selling modern clothings"
+      description: [
+        "Supported RWD with pure CSS",
+        "Connected to RESTful APIs by AJAX for fetching data from server side",
+        "Integrated Facebook Login API",
+        "Applied Google Analytics for tracking user's behavior"
+      ]
     },
     {
       id: "stylish",
       src: "/project-img/stylish3.png",
-      description: "An e-commerce website selling modern clothings"
+      description: [
+        "Applied Local Storage for Shopping Cart",
+        "Integrated TapPay as Payment Solution"
+      ]
     }
   ];
 
-  const Projects = () => {
+  const StackList = ({ list }) => {
+    return list.map(item => (
+      <ListItem>
+        <span className={classes.itemList}>-</span>
+        <ListItemText primary={item} />
+      </ListItem>
+    ));
+  };
+
+  const renderProjects = () => {
     return collectionSchema.map((item, index) => {
       if (index % 2 === 0) {
         return (
@@ -82,7 +122,11 @@ const Collection = props => {
       }
       return (
         <div className={classes.container}>
-          <div className={classes.description}>{item.description}</div>
+          <List
+            sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+          >
+            <StackList list={item.description} />
+          </List>
           <div className={classes.imgWrapper}>
             <img className={classes.projectImg} src={item.src} />
           </div>
@@ -91,11 +135,7 @@ const Collection = props => {
     });
   };
 
-  return (
-    <div className={classes.root}>
-      <Projects />
-    </div>
-  );
+  return <div className={classes.root}>{renderProjects()}</div>;
 };
 
 export default Collection;
