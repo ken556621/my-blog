@@ -27,16 +27,16 @@ const usePersonalInfoStyles = makeStyles(theme => ({
     width: 380
   },
   actionButton: {
-    marginTop: theme.spacing(6)
+    marginTop: theme.spacing(6),
+    "&:hover svg": {
+      transition: "all .5s ease-out",
+      transform: "translate(0, 10px)"
+    }
   },
   arrowIcon: {
     marginLeft: theme.spacing(1),
     fontSize: 18,
-    color: "#0a2f5c",
-    transition: "all .5s ease-out",
-    "&:hover": {
-      transform: "translate(0, 10px)"
-    }
+    color: "#0a2f5c"
   }
 }));
 

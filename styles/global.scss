@@ -1,96 +1,101 @@
 html {
-    padding: 0px;
-    margin: 0px auto;
-    background-color: #f8fbff;
+  padding: 0px;
+  margin: 0px auto;
+  background-color: #f8fbff;
 }
 
 body {
-    padding: 0px;
-    margin: 0px
+  padding: 0px;
+  margin: 0px;
 }
 
 a {
-    text-decoration: none;
-    color: #4172b0;
+  text-decoration: none;
+  color: #4172b0;
 }
 
 h1 {
-    color: #0a2f5c;
-    font-size: 2rem;
+  color: #0a2f5c;
+  font-size: 2rem;
 }
 
 h2 {
-    color: #0a2f5c;
+  color: #0a2f5c;
+}
+
+h3 {
+  color: #0a2f5c;
 }
 
 p {
-    color: #3a3a3a;
+  color: #3a3a3a;
 }
 
 span {
-    color: #0a2f5c;
+  color: #0a2f5c;
 }
 
 ul > li {
-    color: #3a3a3a;
+  color: #3a3a3a;
 }
 
 ul {
-    line-height: 1.8;
+  line-height: 1.8;
 }
 
 li {
-    color: #285a99;
+  color: #285a99;
 }
 
 blockquote {
-    font-size: 24px;
-    font-weight: bold;
-    color: rgba(117, 117, 117, 1);
-    & p::before {
-        content: "“";
-    };
-    & p::after {
-        content: "”";
-    }
+  font-size: 24px;
+  font-weight: bold;
+  color: rgba(117, 117, 117, 1);
+  & p::before {
+    content: "“";
+  }
+  & p::after {
+    content: "”";
+  }
 }
 
 table {
-    width: 100%;
-    color: #3a3a3a;
+  width: 100%;
+  color: #3a3a3a;
 }
 
 th {
-    text-align: start;
-    border-bottom: solid 1.5px #8ab2e4;
+  text-align: start;
+  border-bottom: solid 1.5px #8ab2e4;
 }
 
 td {
-    padding: 17px 10px;
-    text-align: start;
-    border-right: 1px solid #dbebff;
-    border-bottom: 1px solid #8ab2e4;
+  padding: 17px 10px;
+  text-align: start;
+  border-right: 1px solid #dbebff;
+  border-bottom: 1px solid #8ab2e4;
 }
 
 pre {
-    width: 60%;
-    padding: 30px;
-    border-radius: 10px;
-    background-color: #f7f7f7;
+  width: 60%;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: #f7f7f7;
 }
 
-.hljs-attr, .hljs-keyword {
-    color: #a71d5d;
+.hljs-attr,
+.hljs-keyword {
+  color: #a71d5d;
 }
 
 .hljs-string {
-    color: #0a2f5c;
+  color: #0a2f5c;
 }
 
 .hljs-comment {
-    color: #3a3a3a;
+  color: #3a3a3a;
 }
 
 img {
-    width: 300px;
+  width: 300px;
 }

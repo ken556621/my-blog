@@ -19,7 +19,7 @@ const useCollectionStyles = makeStyles(theme => ({
     boxShadow: "0 2px 14px 0 rgb(69 20 229 / 10%)"
   },
   description: {
-    width: 300
+    width: "45%"
   }
 }));
 
@@ -30,25 +30,41 @@ const Collection = props => {
 
   const collectionSchema = [
     {
-      src: "/project-img/basketball1.png"
+      id: "basketball",
+      src: "/project-img/basketball1.png",
+      description:
+        "A platform lets users team up and find the nearest basketball court"
     },
     {
-      src: "/project-img/basketball2.png"
+      id: "basketball",
+      src: "/project-img/basketball2.png",
+      description:
+        "A platform lets users team up and find the nearest basketball court"
     },
     {
-      src: "/project-img/ledger1.png"
+      id: "ledger",
+      src: "/project-img/ledger1.png",
+      description: "An account book for daily record"
     },
     {
-      src: "/project-img/ledger2.png"
+      id: "ledger",
+      src: "/project-img/ledger2.png",
+      description: "An account book for daily record"
     },
     {
-      src: "/project-img/stylish1.png"
+      id: "stylish",
+      src: "/project-img/stylish1.png",
+      description: "An e-commerce website selling modern clothings"
     },
     {
-      src: "/project-img/stylish2.png"
+      id: "stylish",
+      src: "/project-img/stylish2.png",
+      description: "An e-commerce website selling modern clothings"
     },
     {
-      src: "/project-img/stylish3.png"
+      id: "stylish",
+      src: "/project-img/stylish3.png",
+      description: "An e-commerce website selling modern clothings"
     }
   ];
 
@@ -60,17 +76,13 @@ const Collection = props => {
             <div className={classes.imgWrapper}>
               <img className={classes.projectImg} src={item.src} />
             </div>
-            <div className={classes.description}>
-              kkk=========================
-            </div>
+            <div className={classes.description}>{item.description}</div>
           </div>
         );
       }
       return (
         <div className={classes.container}>
-          <div className={classes.description}>
-            kkk=========================
-          </div>
+          <div className={classes.description}>{item.description}</div>
           <div className={classes.imgWrapper}>
             <img className={classes.projectImg} src={item.src} />
           </div>

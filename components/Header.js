@@ -16,7 +16,8 @@ import { DarkModeContext } from "@/context/darkModeContext";
 const useHeaderStyles = makeStyles(theme => ({
   gridRoot: {
     position: "sticky",
-    top: 0
+    top: 0,
+    padding: "0px 6px"
   },
   toolbar: {
     transition: "background-color 2s"
@@ -118,6 +119,7 @@ const Header = props => {
           classes={{
             root: classes.toolbar
           }}
+          disableGutters={true}
         >
           <Grid item xs={6}>
             <Button onClick={backToHomePage}>
