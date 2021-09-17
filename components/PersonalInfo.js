@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { Link } from "react-scroll";
 
 import { makeStyles } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
@@ -68,8 +69,10 @@ const PersonalInfo = props => {
           root: classes.actionButton
         }}
       >
-        View Projects
-        <ArrowDownwardIcon className={classes.arrowIcon} />
+        <Link to="collection" smooth={true}>
+          View Projects
+          <ArrowDownwardIcon className={classes.arrowIcon} />
+        </Link>
       </Button>
     </div>
   );

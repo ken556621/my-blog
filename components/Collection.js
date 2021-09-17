@@ -135,7 +135,11 @@ const Collection = props => {
     });
   };
 
-  return <div className={classes.root}>{renderProjects()}</div>;
+  return (
+    <div id="collection" className={classes.root}>
+      {renderProjects()}
+    </div>
+  );
 };
 
 export default Collection;

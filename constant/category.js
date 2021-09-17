@@ -19,6 +19,6 @@ export const categorySchema = [
   {
     id: uuid(),
     title: "portfolio",
-    path: "/portfolio"
+    path: "/?portfolio=true"
   }
 ];

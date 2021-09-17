@@ -1,4 +1,9 @@
+import { useEffect } from "react";
+import { scroller } from "react-scroll";
+
 import Header from "@/components/Header";
+
+import { useRouter } from "next/router";
 
 import { makeStyles } from "@material-ui/core";
 
@@ -14,7 +19,20 @@ const useIndexPageStyles = makeStyles(theme => ({
 }));
 
 const IndexPage = props => {
+  const router = useRouter();
+
   const classes = useIndexPageStyles();
+
+  useEffect(() => {
+    if (router.query.portfolio) {
+      console.log("qqq");
+      scroller.scrollTo("collection", {
+        duration: 800,
+        delay: 0,
+        smooth: "easeInOutQuart"
+      });
+    }
+  }, [router.query]);
 
   return (
     <>
