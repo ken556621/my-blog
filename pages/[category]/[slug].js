@@ -8,7 +8,7 @@ import { makeStyles } from "@material-ui/core";
 
 import { DarkModeContext } from "@/context/darkModeContext";
 
-import { getTitle, getDate } from "@/helper/getArticleTag";
+import { getTitle, getDate, getWordCount } from "@/helper/getArticleTag";
 
 const useBlogStyles = makeStyles(theme => ({
   container: {
@@ -38,7 +38,11 @@ const Blog = props => {
 
   return (
     <div>
-      <Banner word={`${getTitle(blog.content)}`} date={getDate(blog.content)} />
+      <Banner
+        title={`${getTitle(blog.content)}`}
+        date={getDate(blog.content)}
+        wordCount={getWordCount(blog.content)}
+      />
       <SideList category={category} list={allFormatBlogs} />
       <article
         className={clsx(classes.container, {

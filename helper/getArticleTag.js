@@ -29,6 +29,15 @@ export const getTitle = content => {
   return title;
 };
 
+export const getWordCount = content => {
+  let count = content.replace(/<[^>]*>/g, " ");
+  count = count.replace(/\s+/g, " ");
+  count = count.trim();
+  const wordCount = count.split(" ").length;
+
+  return wordCount;
+};
+
 export const getDate = content => {
   const dateRole = new RegExp("<p>date:.+?</p>");
 

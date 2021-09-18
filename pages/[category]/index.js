@@ -115,7 +115,7 @@ const BlogListContent = props => {
 
   return (
     <>
-      <Banner word={capitalize(category)} />
+      <Banner title={capitalize(category)} />
       <SideList category={category} list={allFormatBlogs} />
       <div className={classes.container}>
         <BlogList />
