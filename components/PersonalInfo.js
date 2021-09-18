@@ -15,6 +15,13 @@ const usePersonalInfoStyles = makeStyles(theme => ({
     justifyContent: "space-between",
     alignItems: "flex-start"
   },
+  secondTitle: {
+    animation: "$fadein 1s linear 1"
+  },
+  "@keyframes fadein": {
+    from: { opacity: 0 },
+    to: { opacity: 1 }
+  },
   avatar: {
     borderRadius: 8
   },
@@ -34,24 +41,38 @@ const usePersonalInfoStyles = makeStyles(theme => ({
       transform: "translate(0, 10px)"
     }
   },
+  buttonWrapper: {
+    display: "flex",
+    alignItems: "center"
+  },
   arrowIcon: {
     marginLeft: theme.spacing(1),
     fontSize: 18,
-    color: "#0a2f5c"
+    color: "#4172b0"
   }
 }));
 
 const PersonalInfo = props => {
-  const {} = props;
+  const { isSecondTitle } = props;
 
   const classes = usePersonalInfoStyles();
+
+  const renderTitle = () => {
+    return isSecondTitle ? "Yu Ken Code" : "Hello";
+  };
 
   return (
     <div className={classes.root}>
       <div className={classes.container}>
         <div>
-          <h1>Hello</h1>
-          <h2>I'm Ken Yu, a web frontend developer.</h2>
+          <h1
+            className={clsx({
+              [classes.secondTitle]: isSecondTitle
+            })}
+          >
+            {renderTitle()}
+          </h1>
+          <h2>I'm Ken, a web frontend developer.</h2>
           <h3 className={clsx(classes.subTitle, classes.subTitleOne)}>
             A patient listener who is highly motivated to
           </h3>
@@ -69,7 +90,7 @@ const PersonalInfo = props => {
           root: classes.actionButton
         }}
       >
-        <Link to="collection" smooth={true}>
+        <Link className={classes.buttonWrapper} to="collection" smooth={true}>
           View Projects
           <ArrowDownwardIcon className={classes.arrowIcon} />
         </Link>

@@ -1,5 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { scroller } from "react-scroll";
+import debounce from "lodash/debounce";
 
 import Header from "@/components/Header";
 
@@ -23,9 +24,32 @@ const IndexPage = props => {
 
   const classes = useIndexPageStyles();
 
+  const [isSecondTitle, setIsSecondTitle] = useState(false);
+
+  const handleUpdateSecondTitle = hasScrollDown => {
+    setIsSecondTitle(hasScrollDown);
+  };
+
+  const scrollChangeDebounce = useCallback(
+    debounce(hasScrollDown => handleUpdateSecondTitle(hasScrollDown), 10),
+    []
+  );
+
+  useEffect(() => {
+    const onScroll = event => {
+      if (event.target.documentElement.scrollTop > 30) {
+        scrollChangeDebounce(true);
+        return;
+      }
+      scrollChangeDebounce(false);
+    };
+    window.addEventListener("scroll", onScroll);
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   useEffect(() => {
     if (router.query.portfolio) {
-      console.log("qqq");
       scroller.scrollTo("collection", {
         duration: 800,
         delay: 0,
@@ -37,9 +61,9 @@ const IndexPage = props => {
   return (
     <>
       <div className={classes.headerWrapper}>
-        <Header />
+        <Header isSecondTitle={isSecondTitle} />
       </div>
-      <PersonalInfo />
+      <PersonalInfo isSecondTitle={isSecondTitle} />
       <Collection />
       <Footer />
     </>

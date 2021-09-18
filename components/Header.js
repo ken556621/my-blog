@@ -33,6 +33,10 @@ const useHeaderStyles = makeStyles(theme => ({
     fontSize: "1.5em",
     textTransform: "none"
   },
+  secondLogoWord: {
+    transition: "opacity .5s ease-out",
+    opacity: 0
+  },
   menu: {
     textAlign: "end"
   },
@@ -50,7 +54,8 @@ const Header = props => {
   const {
     title = "肯游扣部落格 | Yu Ken Code Blog",
     description = "紀錄自身學習程式歷程，從體能教練轉職成為前端工程師",
-    sharingTitle = "從體能教練轉職前端工程師、不斷自學精進和熱愛用技術去解決身邊的問題｜Yu Ken Code Blog"
+    sharingTitle = "從體能教練轉職前端工程師、不斷自學精進和熱愛用技術去解決身邊的問題｜Yu Ken Code Blog",
+    isSecondTitle = false
   } = props;
 
   const classes = useHeaderStyles();
@@ -128,7 +133,13 @@ const Header = props => {
                 src="/icons/favicon-32x32-dunplab-manifest-28429.png"
                 alt="Ken Code"
               />
-              <h1 className={classes.logoWord}>Yu Ken Code</h1>
+              <h1
+                className={clsx(classes.logoWord, {
+                  [classes.secondLogoWord]: isSecondTitle
+                })}
+              >
+                Yu Ken Code
+              </h1>
             </Button>
           </Grid>
           <Grid item xs={6}>

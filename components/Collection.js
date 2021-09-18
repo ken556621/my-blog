@@ -101,7 +101,7 @@ const Collection = props => {
 
   const StackList = ({ list }) => {
     return list.map(item => (
-      <ListItem>
+      <ListItem dense>
         <span className={classes.itemList}>-</span>
         <ListItemText primary={item} />
       </ListItem>
@@ -116,7 +116,7 @@ const Collection = props => {
             <div className={classes.imgWrapper}>
               <img className={classes.projectImg} src={item.src} />
             </div>
-            <div className={classes.description}>{item.description}</div>
+            <h3 className={classes.description}>{item.description}</h3>
           </div>
         );
       }
