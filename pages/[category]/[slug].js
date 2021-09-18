@@ -12,9 +12,8 @@ import { getTitle, getDate } from "@/helper/getArticleTag";
 
 const useBlogStyles = makeStyles(theme => ({
   container: {
-    paddingLeft: 30,
-    display: "flex",
-    justifyContent: "center",
+    width: "75%",
+    margin: "0px auto",
     transition: "background-color 2s"
   },
   darkMode: {
