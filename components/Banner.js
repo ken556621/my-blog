@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 
 import { makeStyles } from "@material-ui/core";
 import EventIcon from "@material-ui/icons/Event";
-import FolderIcon from "@material-ui/icons/Folder";
+import PermMediaIcon from "@material-ui/icons/PermMedia";
 import LocalLibraryIcon from "@material-ui/icons/LocalLibrary";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 
@@ -33,7 +33,8 @@ const useBannerStyles = makeStyles(theme => ({
     color: "#333333",
     fontSize: 18,
     "&:not(&:first-of-type)": {
-      margin: theme.spacing(0, 1)
+      marginLeft: theme.spacing(2),
+      marginRight: theme.spacing(1)
     },
     "&:first-of-type": {
       marginRight: theme.spacing(1)
@@ -56,11 +57,12 @@ const Banner = props => {
   };
 
   const ArticleInfo = () => {
+    if (!date) return <></>;
     return (
       <div className={classes.infoWrapper}>
         <EventIcon className={classes.icon} />
         <span className={classes.info}>{date}</span>
-        <FolderIcon className={classes.icon} />
+        <PermMediaIcon className={classes.icon} />
         <span className={classes.info}>{router.query.category}</span>
         <LocalLibraryIcon className={classes.icon} />
         <span className={classes.info}>{wordCount}</span>
