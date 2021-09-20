@@ -4,7 +4,6 @@ import capitalize from "lodash/capitalize";
 import clsx from "clsx";
 
 import Banner from "@/components/Banner";
-import SideList from "@/components/SideList";
 
 import { categorySchema } from "@/constant/category";
 
@@ -116,7 +115,6 @@ const BlogListContent = props => {
   return (
     <>
       <Banner title={capitalize(category)} />
-      <SideList category={category} list={allFormatBlogs} />
       <div className={classes.container}>
         <BlogList />
       </div>

@@ -29,6 +29,18 @@ export const getTitle = content => {
   return title;
 };
 
+export const getSecondTitle = content => {
+  const regexp = /<h2>.+?</g;
+
+  const secondTitleList = content.match(regexp);
+
+  const formatedSecondTitleList = secondTitleList.map(item =>
+    item.replace("<h2>", "").replace("<", "")
+  );
+
+  return formatedSecondTitleList;
+};
+
 export const getWordCount = content => {
   let count = content.replace(/<[^>]*>/g, " ");
   count = count.replace(/\s+/g, " ");

@@ -1,18 +1,21 @@
 import { useContext } from "react";
 import clsx from "clsx";
-
-import SideList from "@/components/SideList";
-import Banner from "@/components/Banner";
+import { DarkModeContext } from "@/context/darkModeContext";
+import {
+  getTitle,
+  getSecondTitle,
+  getDate,
+  getWordCount
+} from "@/helper/getArticleTag";
 
 import { makeStyles } from "@material-ui/core";
 
-import { DarkModeContext } from "@/context/darkModeContext";
-
-import { getTitle, getDate, getWordCount } from "@/helper/getArticleTag";
+import Banner from "@/components/Banner";
+import SideNav from "@/components/SideNav";
 
 const useBlogStyles = makeStyles(theme => ({
   container: {
-    width: "75%",
+    width: "70%",
     margin: "0px auto",
     transition: "background-color 2s"
   },
@@ -30,7 +33,7 @@ const useBlogStyles = makeStyles(theme => ({
 }));
 
 const Blog = props => {
-  const { category = "", allFormatBlogs = [], blog = {} } = props;
+  const { blog = {} } = props;
 
   const classes = useBlogStyles();
 
@@ -43,7 +46,7 @@ const Blog = props => {
         date={getDate(blog.content)}
         wordCount={getWordCount(blog.content)}
       />
-      <SideList category={category} list={allFormatBlogs} />
+      <SideNav secondTitleList={getSecondTitle(blog.content)} />
       <article
         className={clsx(classes.container, {
           [classes.darkMode]: isDarkMode
