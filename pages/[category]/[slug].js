@@ -15,7 +15,7 @@ import SideNav from "@/components/SideNav";
 
 const useBlogStyles = makeStyles(theme => ({
   container: {
-    width: "70%",
+    width: "65%",
     margin: "0px auto",
     transition: "background-color 2s"
   },

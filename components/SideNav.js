@@ -6,8 +6,18 @@ import { makeStyles } from "@material-ui/core";
 const useSideNavStyles = makeStyles(theme => ({
   root: {
     position: "fixed",
-    right: 0,
-    top: "55%"
+    left: 0,
+    top: "55%",
+    padding: theme.spacing(0, 2)
+  },
+  articleTag: {
+    width: "50%",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    display: "flex",
+    cursor: "pointer",
+    display: "block"
   }
 }));
 
@@ -18,8 +28,11 @@ const SideNav = props => {
 
   return (
     <div className={classes.root}>
+      <h3>Table of Contents</h3>
       {secondTitleList.map(item => (
-        <div>{item}</div>
+        <Link className={classes.articleTag} to="collection" smooth={true}>
+          {item}
+        </Link>
       ))}
     </div>
   );
