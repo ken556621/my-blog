@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import { Link } from "react-scroll";
 
 import { makeStyles } from "@material-ui/core";
@@ -30,7 +29,7 @@ const SideNav = props => {
     <div className={classes.root}>
       <h3>Table of Contents</h3>
       {secondTitleList.map(item => (
-        <Link className={classes.articleTag} to="collection" smooth={true}>
+        <Link className={classes.articleTag} to={item} smooth={true}>
           {item}
         </Link>
       ))}

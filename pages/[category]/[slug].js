@@ -7,6 +7,7 @@ import {
   getDate,
   getWordCount
 } from "@/helper/getArticleTag";
+import { setSecondTitleId } from "@/helper/formatArticle";
 
 import { makeStyles } from "@material-ui/core";
 
@@ -39,6 +40,8 @@ const Blog = props => {
 
   const { isDarkMode } = useContext(DarkModeContext);
 
+  const formatedContent = setSecondTitleId(blog.content);
+
   return (
     <div>
       <Banner
@@ -54,7 +57,7 @@ const Blog = props => {
       >
         <section
           className={classes.articleSection}
-          dangerouslySetInnerHTML={{ __html: blog.content }}
+          dangerouslySetInnerHTML={{ __html: formatedContent }}
         />
       </article>
     </div>
