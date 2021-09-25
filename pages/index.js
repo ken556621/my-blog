@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import { scroller } from "react-scroll";
+import { scroller, Events } from "react-scroll";
 import debounce from "lodash/debounce";
 
 import Header from "@/components/Header";

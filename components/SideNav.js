@@ -10,7 +10,7 @@ const useSideNavStyles = makeStyles(theme => ({
     padding: theme.spacing(0, 2)
   },
   articleTag: {
-    width: "50%",
+    width: 150,
     textOverflow: "ellipsis",
     whiteSpace: "nowrap",
     overflow: "hidden",
