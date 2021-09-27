@@ -81,18 +81,12 @@ const Collection = props => {
     },
     {
       id: "stylish",
-      src: "/project-img/stylish2.png",
+      src: "/project-img/stylish3.png",
       description: [
         "Supported RWD with pure CSS",
         "Connected to RESTful APIs by AJAX for fetching data from server side",
         "Integrated Facebook Login API",
-        "Applied Google Analytics for tracking user's behavior"
-      ]
-    },
-    {
-      id: "stylish",
-      src: "/project-img/stylish3.png",
-      description: [
+        "Applied Google Analytics for tracking user's behavior",
         "Applied Local Storage for Shopping Cart",
         "Integrated TapPay as Payment Solution"
       ]

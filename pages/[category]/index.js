@@ -60,10 +60,11 @@ const useBlogListStyles = makeStyles(theme => ({
     paddingLeft: 20
   },
   cardTitle: {
-    fontSize: 20
+    fontSize: "1rem"
   },
   cardDescription: {
     margin: 0,
+    fontSize: ".725rem",
     "& p, ul": {
       margin: 0
     }
