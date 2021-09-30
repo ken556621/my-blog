@@ -82,24 +82,24 @@ const SideNav = props => {
     []
   );
 
-  useEffect(() => {
-    if (!document) return;
+  // useEffect(() => {
+  //   if (!document) return;
 
-    setSecondTitleOffsetList(getSecondTitleOffsetList());
-  }, [document]);
+  //   setSecondTitleOffsetList(getSecondTitleOffsetList());
+  // }, [document]);
 
-  useEffect(() => {
-    const onScroll = event => {
-      const scrollTop = event.target.documentElement.scrollTop;
+  // useEffect(() => {
+  //   const onScroll = event => {
+  //     const scrollTop = event.target.documentElement.scrollTop;
 
-      scrollChangeDebounce(scrollTop);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
+  //     scrollChangeDebounce(scrollTop);
+  //   };
+  //   window.addEventListener("scroll", onScroll, { passive: true });
 
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("scroll", onScroll);
+  //   };
+  // }, []);
 
   return (
     <div className={classes.root}>
