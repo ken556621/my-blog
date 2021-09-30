@@ -18,6 +18,7 @@ export const setSecondTitleId = content => {
       splitedContent[index - 1] === "h" &&
       splitedContent[index - 2] !== "/"
     ) {
+      // Id
       splitedContent.splice(index + 1, 0, " ");
       splitedContent.splice(
         index + 2,
