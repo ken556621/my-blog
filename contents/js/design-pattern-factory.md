@@ -2,9 +2,9 @@
 
 ## 目錄
 
-- 何謂 Factory?
-- 為何需要 Factory ?
-- 結論
+* 何謂 Factory?
+* 為何需要 Factory ?
+* 結論
 
 ## 何謂 Factory?
 
