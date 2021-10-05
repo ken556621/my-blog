@@ -94,8 +94,8 @@ const Collection = props => {
   ];
 
   const StackList = ({ list }) => {
-    return list.map(item => (
-      <ListItem dense>
+    return list.map((item, index) => (
+      <ListItem key={index} dense>
         <span className={classes.itemList}>-</span>
         <ListItemText primary={item} />
       </ListItem>

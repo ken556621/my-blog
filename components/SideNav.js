@@ -36,8 +36,9 @@ const SideNav = props => {
   return (
     <div className={classes.root}>
       <h3>Table of Contents</h3>
-      {secondTitleList.map(item => (
+      {secondTitleList.map((item, index) => (
         <Link
+          key={index}
           className={classes.articleTag}
           to={_.snakeCase(item)}
           smooth={true}
