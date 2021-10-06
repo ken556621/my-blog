@@ -8,10 +8,6 @@
 * Server 依照推播的 token 發送推播給註冊者
 * 心得
 
-
-
-
-
 ## 推播流程架構圖
 
 <img style="width: 500px;" src="https://i.imgur.com/TerAQ8n.png" alt="client-flow">
