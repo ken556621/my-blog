@@ -47,6 +47,9 @@ const useHeaderStyles = makeStyles(theme => ({
       height: 5,
       backgroundColor: "red"
     }
+  },
+  darkMode: {
+    color: theme.color.word.darkMode
   }
 }));
 
@@ -135,7 +138,8 @@ const Header = props => {
               />
               <h1
                 className={clsx(classes.logoWord, {
-                  [classes.secondLogoWord]: isSecondTitle
+                  [classes.secondLogoWord]: isSecondTitle,
+                  [classes.darkMode]: isDarkMode
                 })}
               >
                 Yu Ken Code
@@ -151,7 +155,8 @@ const Header = props => {
                     label: clsx({
                       [classes.selectedButtonLabel]: item.path.includes(
                         router.query.category
-                      )
+                      ),
+                      [classes.darkMode]: isDarkMode
                     })
                   }}
                   onClick={() => handleRouteChange(item.path)}
@@ -160,7 +165,11 @@ const Header = props => {
                 </Button>
               ))}
               <IconButton onClick={handleChangeTheme}>
-                {isDarkMode ? <Brightness4OutlinedIcon /> : <Brightness4Icon />}
+                {isDarkMode ? (
+                  <Brightness4OutlinedIcon className={classes.darkMode} />
+                ) : (
+                  <Brightness4Icon />
+                )}
               </IconButton>
             </div>
           </Grid>

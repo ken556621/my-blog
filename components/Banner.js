@@ -1,4 +1,7 @@
+import { useContext } from "react";
 import { useRouter } from "next/router";
+import { DarkModeContext } from "@/context/darkModeContext";
+import clsx from "clsx";
 
 import { makeStyles } from "@material-ui/core";
 import EventIcon from "@material-ui/icons/Event";
@@ -9,12 +12,12 @@ import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import Header from "@/components/Header";
 
 const useBannerStyles = makeStyles(theme => ({
-  container: {
+  container: {},
+  bannerWrapper: {
     height: 300,
-    backgroundSize: "cover",
-    backgroundImage: "url(/banner-img.jpg)",
-    backgroundPosition: "center 70%",
-    backgroundRepeat: "no-repeat"
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center"
   },
   title: {
     textAlign: "center"
@@ -39,6 +42,11 @@ const useBannerStyles = makeStyles(theme => ({
     "&:first-of-type": {
       marginRight: theme.spacing(1)
     }
+  },
+  darkMode: {
+    "& h1, h2, h3, span, svg": {
+      color: theme.color.word.darkMode
+    }
   }
 }));
 
@@ -46,6 +54,8 @@ const Banner = props => {
   const { title = "", date = "", wordCount = "" } = props;
 
   const classes = useBannerStyles();
+
+  const { isDarkMode } = useContext(DarkModeContext);
 
   const router = useRouter();
 
@@ -73,10 +83,16 @@ const Banner = props => {
   };
 
   return (
-    <div className={classes.container}>
+    <div
+      className={clsx(classes.container, {
+        [classes.darkMode]: isDarkMode
+      })}
+    >
       <Header title={"游肯扣部落格"} />
-      <h1 className={classes.title}>{title}</h1>
-      <ArticleInfo />
+      <div className={classes.bannerWrapper}>
+        <h1 className={classes.title}>{title}</h1>
+        <ArticleInfo />
+      </div>
     </div>
   );
 };

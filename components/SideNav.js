@@ -9,9 +9,10 @@ import { makeStyles } from "@material-ui/core";
 const useSideNavStyles = makeStyles(theme => ({
   root: {
     display: "none",
-    position: "fixed",
-    left: 0,
-    top: "55%",
+    position: "sticky",
+    top: 0,
+    float: "left",
+    marginTop: 95,
     padding: theme.spacing(0, 2),
     [theme.breakpoints.up("laptop")]: {
       display: "block"
