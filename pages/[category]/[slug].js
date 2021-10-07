@@ -21,10 +21,10 @@ const useBlogStyles = makeStyles(theme => ({
     transition: "background-color 2s"
   },
   darkMode: {
-    "& section > h1, h2, h3, li": {
+    "& section > h1, h2, h3": {
       color: theme.color.word.darkMode
     },
-    "& section > span, h4, h5, p, th, td": {
+    "& section > span, li, h4, h5, p, th, td": {
       color: theme.color.secondWord.darkMode
     }
   },
