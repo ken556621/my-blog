@@ -1,5 +1,8 @@
+import { useContext } from "react";
 import _ from "lodash";
 import { Link } from "react-scroll";
+import clsx from "clsx";
+import { DarkModeContext } from "@/context/darkModeContext";
 
 import { makeStyles } from "@material-ui/core";
 
@@ -25,6 +28,12 @@ const useSideNavStyles = makeStyles(theme => ({
     display: "block",
     color: "#0a2f5c",
     fontSize: ".8rem"
+  },
+  darkModeTitle: {
+    color: theme.color.secondWord.darkMode
+  },
+  darkModeLink: {
+    color: "rgb(138, 180, 248)"
   }
 }));
 
@@ -33,13 +42,23 @@ const SideNav = props => {
 
   const classes = useSideNavStyles();
 
+  const { isDarkMode } = useContext(DarkModeContext);
+
   return (
     <div className={classes.root}>
-      <h3>Table of Contents</h3>
+      <h3
+        className={clsx({
+          [classes.darkModeTitle]: isDarkMode
+        })}
+      >
+        Table of Contents
+      </h3>
       {secondTitleList.map((item, index) => (
         <Link
           key={index}
-          className={classes.articleTag}
+          className={clsx(classes.articleTag, {
+            [classes.darkModeLink]: isDarkMode
+          })}
           to={_.snakeCase(item)}
           smooth={true}
         >
