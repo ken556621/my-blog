@@ -106,7 +106,7 @@ console.log(arr); // ["Ken"]
 
 什麼狀況會有類陣列出現？
 
-![螢幕快照 2021-10-13 上午11.04.33.png](%5B%E7%AD%86%E8%A8%98%5D%20JavaScript%20%E4%B8%AD%20Array%20%E7%9A%84%E7%9C%89%E7%9C%89%E8%A7%92%E8%A7%92%2066518f733e874537949782ece4caa5bf/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7_2021-10-13_%E4%B8%8A%E5%8D%8811.04.33.png)
+![](https://i.imgur.com/rn1Qdl1.png)
 
 像是在取 dom 元素的時候，getElementByClassName 就會回傳一個類陣列的結構
 
