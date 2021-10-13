@@ -106,7 +106,7 @@ const Collection = props => {
     return collectionSchema.map((item, index) => {
       if (index % 2 === 0) {
         return (
-          <div className={classes.container}>
+          <div key={index} className={classes.container}>
             <div className={classes.imgWrapper}>
               <img className={classes.projectImg} src={item.src} />
             </div>
