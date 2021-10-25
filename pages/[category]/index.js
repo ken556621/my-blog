@@ -100,6 +100,7 @@ const BlogListContent = props => {
           <img
             className={classes.img}
             src={`/article-img/${getPath(blog)}.jpg`}
+            alt={getPath(blog)}
           />
         </div>
         <div className={classes.wordWrapper}>

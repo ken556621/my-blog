@@ -31,6 +31,7 @@ const Footer = () => {
           <img
             src="https://akstatic.streetvoice.com/asset/images/sv-cat.gif"
             className={classes.img}
+            alt="Running cat"
           />
         </marquee>
       </Tooltip>

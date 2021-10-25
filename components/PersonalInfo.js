@@ -83,7 +83,7 @@ const PersonalInfo = props => {
             optimized solutions for problems.
           </h3>
         </div>
-        <img className={classes.avatar} src="/avatar.jpg" />
+        <img className={classes.avatar} src="/avatar.jpg" alt="Person Img" />
       </div>
       <Button
         classes={{

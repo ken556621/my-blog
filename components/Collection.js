@@ -105,7 +105,11 @@ const Collection = props => {
         return (
           <div key={index} className={classes.container}>
             <div className={classes.imgWrapper}>
-              <img className={classes.projectImg} src={item.src} />
+              <img
+                className={classes.projectImg}
+                src={item.src}
+                alt={item.id}
+              />
             </div>
             <h3 className={classes.description}>{item.description}</h3>
           </div>
@@ -119,7 +123,7 @@ const Collection = props => {
             <StackList list={item.description} />
           </List>
           <div className={classes.imgWrapper}>
-            <img className={classes.projectImg} src={item.src} />
+            <img className={classes.projectImg} src={item.src} alt={item.id} />
           </div>
         </div>
       );
