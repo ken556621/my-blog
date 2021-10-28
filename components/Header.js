@@ -165,7 +165,7 @@ const Header = props => {
                   {item.title}
                 </Button>
               ))}
-              <IconButton onClick={handleChangeTheme}>
+              <IconButton aria-label="changeTheme" onClick={handleChangeTheme}>
                 {isDarkMode ? (
                   <Brightness4OutlinedIcon className={classes.darkMode} />
                 ) : (
