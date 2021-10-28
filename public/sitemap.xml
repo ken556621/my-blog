@@ -1,12 +1,18 @@
-<?xml version='1.0' encoding='UTF-8'?>
-    <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-        <sitemap>
-            <loc>https://kenyucode.vercel.app/</loc>
-        </sitemap>
-        <sitemap>
-            <loc>https://kenyucode.vercel.app/js</loc>
-        </sitemap>
-        <sitemap>
-            <loc>https://kenyucode.vercel.app/react</loc>
-        </sitemap>
-    </sitemapindex>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+    <url>
+        <loc>https://kenyucode.vercel.app/</loc>
+        <lastmod>2021-10-28T06:48:36+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://kenyucode.vercel.app/js</loc>
+        <lastmod>2021-10-28T06:48:36+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://kenyucode.vercel.app/react</loc>
+        <lastmod>2021-10-28T06:48:36+00:00</lastmod>
+    </url>
+</urlset>
