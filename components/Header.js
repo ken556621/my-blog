@@ -95,6 +95,7 @@ const Header = props => {
         <meta content={description} property="twitter:description" />
         <meta name="keywords" content="前端工程師、轉職、自學、體能教練" />
         <meta name="theme-color" content="#317EFB" />
+        <meta name="google-site-verification" content="H1MEre3sIZnXcRdwbgmTNEm94vKd3SkjiLnPcYUaEKw" />
 
         <link rel="manifest" href="/manifest.json" />
         <link
