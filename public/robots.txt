@@ -1,8 +1,7 @@
-User-agent: Mediapartners-Google
-Disallow: 
+User-agent: Googlebot
+Disallow: /nogooglebot/
 
 User-agent: *
-Disallow: /search
 Allow: /
 
 Sitemap: https://kenyucode.vercel.app/sitemap.xml
