@@ -1,13 +1,13 @@
 import { useEffect, useState, useCallback } from "react";
-import { scroller, Events } from "react-scroll";
+import { scroller } from "react-scroll";
 import debounce from "lodash/debounce";
-
-import Header from "@/components/Header";
+import { baseUrl } from "@/constant/config";
 
 import { useRouter } from "next/router";
 
 import { makeStyles } from "@material-ui/core";
 
+import Header from "@/components/Header";
 import PersonalInfo from "@/components/PersonalInfo";
 import Collection from "@/components/Collection";
 import Footer from "@/components/Footer";
@@ -61,7 +61,7 @@ const IndexPage = props => {
   return (
     <>
       <div className={classes.headerWrapper}>
-        <Header isSecondTitle={isSecondTitle} />
+        <Header isSecondTitle={isSecondTitle} img={`${baseUrl}/avatar.jpg`} />
       </div>
       <PersonalInfo isSecondTitle={isSecondTitle} />
       <Collection />

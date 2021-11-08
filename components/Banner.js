@@ -9,8 +9,6 @@ import PermMediaIcon from "@material-ui/icons/PermMedia";
 import LocalLibraryIcon from "@material-ui/icons/LocalLibrary";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 
-import Header from "@/components/Header";
-
 const useBannerStyles = makeStyles(theme => ({
   container: {},
   bannerWrapper: {
@@ -88,7 +86,6 @@ const Banner = props => {
         [classes.darkMode]: isDarkMode
       })}
     >
-      <Header title={"游肯扣部落格"} />
       <div className={classes.bannerWrapper}>
         <h1 className={classes.title}>{title}</h1>
         <ArticleInfo />

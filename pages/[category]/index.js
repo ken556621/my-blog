@@ -4,14 +4,14 @@ import capitalize from "lodash/capitalize";
 import clsx from "clsx";
 
 import Banner from "@/components/Banner";
-
-import { categorySchema } from "@/constant/category";
+import Header from "@/components/Header";
 
 import { makeStyles } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 
+import { categorySchema } from "@/constant/category";
+import { baseUrl } from "@/constant/config";
 import { DarkModeContext } from "@/context/darkModeContext";
-
 import { getPath, getTitle, getAgenda } from "@/helper/getArticleTag";
 
 const useBlogListStyles = makeStyles(theme => ({
@@ -23,6 +23,9 @@ const useBlogListStyles = makeStyles(theme => ({
     justifyContent: "space-between",
     transition: "background-color 2s",
     maxWidth: 1200
+  },
+  headerWrapper: {
+    position: "relative"
   },
   darkMode: {
     boxShadow: "0 2px 10px 0 rgba(255, 255, 255, 0.1)"
@@ -116,7 +119,13 @@ const BlogListContent = props => {
 
   return (
     <>
-      <Banner title={capitalize(category)} />
+      <div className={classes.headerWrapper}>
+        <Header
+          title={capitalize(category) + "技術文分享"}
+          img={`${baseUrl}/avatar.jpg`}
+        />
+        <Banner title={capitalize(category)} />
+      </div>
       <div className={classes.container}>
         <BlogList />
       </div>

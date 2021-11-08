@@ -5,20 +5,26 @@ import {
   getTitle,
   getSecondTitle,
   getDate,
+  getPath,
   getWordCount
 } from "@/helper/getArticleTag";
 import { setSecondTitleId } from "@/helper/formatArticle";
+import { baseUrl } from "@/constant/config";
 
 import { makeStyles } from "@material-ui/core";
 
 import Banner from "@/components/Banner";
 import SideNav from "@/components/SideNav";
+import Header from "@/components/Header";
 
 const useBlogStyles = makeStyles(theme => ({
   container: {
     width: "65%",
     margin: "0px auto",
     transition: "background-color 2s"
+  },
+  headerWrapper: {
+    position: "relative"
   },
   darkMode: {
     "& section > h1, h2, h3": {
@@ -42,13 +48,23 @@ const Blog = props => {
 
   const formatedContent = setSecondTitleId(blog.content);
 
+  const title = getTitle(blog.content);
+
   return (
     <div>
-      <Banner
-        title={`${getTitle(blog.content)}`}
-        date={getDate(blog.content)}
-        wordCount={getWordCount(blog.content)}
-      />
+      <div className={classes.headerWrapper}>
+        <Header
+          title={title}
+          description={title}
+          sharingTitle={title}
+          img={`${baseUrl}/article-img/${getPath(blog.content)}`}
+        />
+        <Banner
+          title={title}
+          date={getDate(blog.content)}
+          wordCount={getWordCount(blog.content)}
+        />
+      </div>
       <SideNav secondTitleList={getSecondTitle(blog.content)} />
       <article
         className={clsx(classes.container, {
