@@ -121,10 +121,10 @@ const BlogListContent = props => {
     <>
       <div className={classes.headerWrapper}>
         <Header
-          title={capitalize(category) + "技術文分享"}
+          title={capitalize(category) + " 技術文分享"}
           img={`${baseUrl}/avatar.jpg`}
         />
-        <Banner title={capitalize(category)} />
+        <Banner title={capitalize(category) + " 技術文分享"} />
       </div>
       <div className={classes.container}>
         <BlogList />
