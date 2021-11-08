@@ -73,22 +73,49 @@ td {
 }
 
 pre {
+  overflow: scroll;
   padding: 30px;
   border-radius: 10px;
-  background-color: rgb(247, 246, 243);
+  color: #e9e9e9;
+  background-color: #232323;
+}
+
+.hljs-function {
+  color: #e9e9e9;
 }
 
 .hljs-attr,
-.hljs-keyword {
-  color: #a71d5d;
+.hljs-keyword,
+.hljs-literal {
+  color: #c26230;
+}
+
+.hljs-subst {
+  color: #519f50;
 }
 
 .hljs-string {
-  color: rgb(55, 53, 47);
+  color: #a5c261;
+}
+
+.hljs-title {
+  color: #ffc66d;
+}
+
+.hljs-built_in {
+  color: #6dacde;
+}
+
+.hljs-params {
+  color: #d0d0ff;
+}
+
+.hljs-number {
+  color: #a5c261;
 }
 
 .hljs-comment {
-  color: rgb(55, 53, 47);
+  color: #bc9458;
 }
 
 img {
