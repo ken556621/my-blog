@@ -1,9 +1,12 @@
+import { useContext } from "react";
 import clsx from "clsx";
 import { Link } from "react-scroll";
 
 import { makeStyles } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
+
+import { DarkModeContext } from "@/context/darkModeContext";
 
 const usePersonalInfoStyles = makeStyles(theme => ({
   root: {
@@ -49,11 +52,16 @@ const usePersonalInfoStyles = makeStyles(theme => ({
     marginLeft: theme.spacing(1),
     fontSize: 18,
     color: "#4172b0"
+  },
+  darkModeTitle: {
+    color: theme.color.secondWord.darkMode
   }
 }));
 
 const PersonalInfo = props => {
   const { isSecondTitle } = props;
+
+  const { isDarkMode } = useContext(DarkModeContext);
 
   const classes = usePersonalInfoStyles();
 
@@ -67,19 +75,38 @@ const PersonalInfo = props => {
         <div>
           <h1
             className={clsx({
-              [classes.secondTitle]: isSecondTitle
+              [classes.secondTitle]: isSecondTitle,
+              [classes.darkModeTitle]: isDarkMode
             })}
           >
             {renderTitle()}
           </h1>
-          <h2>I'm Ken, a web frontend developer.</h2>
-          <h3 className={clsx(classes.subTitle, classes.subTitleOne)}>
+          <h2
+            className={clsx({
+              [classes.darkModeTitle]: isDarkMode
+            })}
+          >
+            I'm Ken, a web frontend developer.
+          </h2>
+          <h3
+            className={clsx(classes.subTitle, classes.subTitleOne, {
+              [classes.darkModeTitle]: isDarkMode
+            })}
+          >
             A patient listener who is highly motivated to
           </h3>
-          <h3 className={clsx(classes.subTitle, classes.subTitleTwo)}>
+          <h3
+            className={clsx(classes.subTitle, classes.subTitleTwo, {
+              [classes.darkModeTitle]: isDarkMode
+            })}
+          >
             understand the reasons behind demands
           </h3>
-          <h3 className={clsx(classes.subTitle, classes.subTitleThree)}>
+          <h3
+            className={clsx(classes.subTitle, classes.subTitleThree, {
+              [classes.darkModeTitle]: isDarkMode
+            })}
+          >
             optimized solutions for problems.
           </h3>
         </div>
