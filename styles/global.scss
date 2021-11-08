@@ -80,7 +80,10 @@ pre {
   background-color: #232323;
 }
 
-.hljs-function {
+.hljs-function,
+.hljs-tag,
+.hljs-name,
+.xml {
   color: #e9e9e9;
 }
 
