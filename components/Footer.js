@@ -6,7 +6,7 @@ import dayjs from "dayjs";
 
 const useFooterStyles = makeStyles(theme => ({
   footerWrapper: {
-    padding: theme.spacing(4),
+    padding: theme.spacing(3),
     textAlign: "center",
     backgroundColor: "#343a40",
     color: "#fff"

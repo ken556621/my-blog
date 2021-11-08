@@ -1,7 +1,12 @@
+import { useContext } from "react";
+import clsx from "clsx";
+
 import { makeStyles } from "@material-ui/core";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
+
+import { DarkModeContext } from "@/context/darkModeContext";
 
 const useCollectionStyles = makeStyles(theme => ({
   root: {
@@ -24,6 +29,9 @@ const useCollectionStyles = makeStyles(theme => ({
   },
   itemList: {
     marginRight: theme.spacing(2)
+  },
+  darkModeTitle: {
+    color: theme.color.secondWord.darkMode
   }
 }));
 
@@ -31,6 +39,8 @@ const Collection = props => {
   const {} = props;
 
   const classes = useCollectionStyles();
+
+  const { isDarkMode } = useContext(DarkModeContext);
 
   const collectionSchema = [
     {
@@ -93,8 +103,19 @@ const Collection = props => {
   const StackList = ({ list }) => {
     return list.map((item, index) => (
       <ListItem key={index} dense>
-        <span className={classes.itemList}>-</span>
-        <ListItemText primary={item} />
+        <span
+          className={clsx(classes.itemList, {
+            [classes.darkModeTitle]: isDarkMode
+          })}
+        >
+          -
+        </span>
+        <ListItemText
+          classes={{
+            primary: clsx({ [classes.darkModeTitle]: isDarkMode })
+          }}
+          primary={item}
+        />
       </ListItem>
     ));
   };
@@ -111,7 +132,13 @@ const Collection = props => {
                 alt={item.id}
               />
             </div>
-            <h3 className={classes.description}>{item.description}</h3>
+            <h3
+              className={clsx(classes.description, {
+                [classes.darkModeTitle]: isDarkMode
+              })}
+            >
+              {item.description}
+            </h3>
           </div>
         );
       }
