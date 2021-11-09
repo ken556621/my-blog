@@ -19,9 +19,12 @@ import Header from "@/components/Header";
 
 const useBlogStyles = makeStyles(theme => ({
   container: {
-    width: "65%",
+    width: "85%",
     margin: "0px auto",
-    transition: "background-color 2s"
+    transition: "background-color 2s",
+    [theme.breakpoints.up("laptop")]: {
+      width: "65%"
+    }
   },
   headerWrapper: {
     position: "relative"
