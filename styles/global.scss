@@ -15,20 +15,21 @@ a {
 }
 
 h1 {
-  color: rgb(55, 53, 47);
+  color: #333;
   font-size: 2rem;
 }
 
 h2 {
-  color: rgb(55, 53, 47);
+  color: #333;
 }
 
 h3 {
-  color: rgb(55, 53, 47);
+  color: #333;
 }
 
 p {
-  color: rgb(55, 53, 47);
+  margin: 0px 0px 15px;
+  color: #333;
 }
 
 span {
@@ -44,14 +45,14 @@ li {
 }
 
 blockquote {
-  font-size: 24px;
+  margin: 10px 0px 30px;
+  padding: 10px 10px 10px 15px;
   font-weight: bold;
   color: rgba(117, 117, 117, 1);
-  & p::before {
-    content: "“";
-  }
-  & p::after {
-    content: "”";
+  border-left: 5px solid #ccc;
+  background: #f1f1f1;
+  & p {
+    margin: 0;
   }
 }
 
