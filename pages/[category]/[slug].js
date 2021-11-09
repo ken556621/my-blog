@@ -57,7 +57,7 @@ const Blog = props => {
           title={title}
           description={title}
           sharingTitle={title}
-          img={`${baseUrl}/article-img/${getPath(blog.content)}`}
+          img={`${baseUrl}/article-img/${getPath(blog.content)}.jpg`}
         />
         <Banner
           title={title}
