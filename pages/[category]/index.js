@@ -47,6 +47,7 @@ const useBlogListStyles = makeStyles(theme => ({
     }
   },
   imgWrapper: {
+    marginBottom: 10,
     overflow: "hidden",
     height: 235,
     borderRadius: "8px 8px 0px 0px"
