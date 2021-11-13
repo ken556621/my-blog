@@ -47,7 +47,6 @@ const useBlogListStyles = makeStyles(theme => ({
     }
   },
   imgWrapper: {
-    marginBottom: 10,
     overflow: "hidden",
     height: 235,
     borderRadius: "8px 8px 0px 0px"
@@ -60,8 +59,7 @@ const useBlogListStyles = makeStyles(theme => ({
     }
   },
   wordWrapper: {
-    paddingBottom: 20,
-    paddingLeft: 20
+    padding: 20
   },
   cardTitle: {
     fontSize: "1rem"
