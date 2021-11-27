@@ -1,27 +1,34 @@
-import { useContext } from "react";
-import clsx from "clsx";
-import { DarkModeContext } from "@/context/darkModeContext";
 import {
-  getTitle,
-  getSecondTitle,
   getDate,
   getPath,
+  getSecondTitle,
+  getTitle,
   getWordCount
 } from "@/helper/getArticleTag";
-import { setSecondTitleId } from "@/helper/formatArticle";
-import { baseUrl } from "@/constant/config";
-
-import { makeStyles } from "@material-ui/core";
 
 import Banner from "@/components/Banner";
-import SideNav from "@/components/SideNav";
+import { DarkModeContext } from "@/context/darkModeContext";
 import Header from "@/components/Header";
+import SideNav from "@/components/SideNav";
+import { baseUrl } from "@/constant/config";
+import clsx from "clsx";
+import { makeStyles } from "@material-ui/core";
+import { setSecondTitleId } from "@/helper/formatArticle";
+import { useContext } from "react";
 
 const useBlogStyles = makeStyles(theme => ({
   container: {
+    backgroundColor: "#efefef",
+    transition: "background-color 2s"
+  },
+  articleContainer: {
     width: "85%",
     margin: "0px auto",
+    padding: "20px 60px 50px",
     transition: "background-color 2s",
+    boxShadow: "0 2px 6px rgb(0 0 0 / 25%)",
+    borderRadius: 15,
+    backgroundColor: "#ffffff",
     [theme.breakpoints.up("laptop")]: {
       width: "65%"
     }
@@ -36,6 +43,9 @@ const useBlogStyles = makeStyles(theme => ({
     "& section > span, li, h4, h5, p, th, td": {
       color: theme.color.secondWord.darkMode
     }
+  },
+  backgroundDarkMode: {
+    backgroundColor: theme.color.background.darkMode
   },
   articleSection: {
     width: "100%"
@@ -54,7 +64,11 @@ const Blog = props => {
   const title = getTitle(blog.content);
 
   return (
-    <div>
+    <main
+      className={clsx(classes.container, {
+        [classes.backgroundDarkMode]: isDarkMode
+      })}
+    >
       <div className={classes.headerWrapper}>
         <Header
           title={title}
@@ -70,8 +84,9 @@ const Blog = props => {
       </div>
       <SideNav secondTitleList={getSecondTitle(blog.content)} />
       <article
-        className={clsx(classes.container, {
-          [classes.darkMode]: isDarkMode
+        className={clsx(classes.articleContainer, {
+          [classes.darkMode]: isDarkMode,
+          [classes.backgroundDarkMode]: isDarkMode
         })}
       >
         <section
@@ -79,7 +94,7 @@ const Blog = props => {
           dangerouslySetInnerHTML={{ __html: formatedContent }}
         />
       </article>
-    </div>
+    </main>
   );
 };
 

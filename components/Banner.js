@@ -1,18 +1,17 @@
+import AccessTimeIcon from "@material-ui/icons/AccessTime";
+import { DarkModeContext } from "@/context/darkModeContext";
+import EventIcon from "@material-ui/icons/Event";
+import LocalLibraryIcon from "@material-ui/icons/LocalLibrary";
+import PermMediaIcon from "@material-ui/icons/PermMedia";
+import clsx from "clsx";
+import { makeStyles } from "@material-ui/core";
 import { useContext } from "react";
 import { useRouter } from "next/router";
-import { DarkModeContext } from "@/context/darkModeContext";
-import clsx from "clsx";
-
-import { makeStyles } from "@material-ui/core";
-import EventIcon from "@material-ui/icons/Event";
-import PermMediaIcon from "@material-ui/icons/PermMedia";
-import LocalLibraryIcon from "@material-ui/icons/LocalLibrary";
-import AccessTimeIcon from "@material-ui/icons/AccessTime";
 
 const useBannerStyles = makeStyles(theme => ({
   container: {},
   bannerWrapper: {
-    height: 300,
+    height: 220,
     display: "flex",
     flexDirection: "column",
     justifyContent: "center"

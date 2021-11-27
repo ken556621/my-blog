@@ -8,11 +8,11 @@ const theme = createMuiTheme({
     },
     word: {
       main: "#0a2f5c",
-      darkMode: "rgb(189, 193, 198)"
+      darkMode: "#ffffff"
     },
     secondWord: {
       main: "#0a2f5c",
-      darkMode: "rgb(255, 255, 255)"
+      darkMode: "#ffffff"
     },
     codeBlock: {
       main: "#0a2f5c",
