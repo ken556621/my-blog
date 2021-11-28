@@ -1,16 +1,14 @@
-import { useContext } from "react";
-import { useRouter } from "next/router";
-import clsx from "clsx";
+import { Avatar, Button, Grid, IconButton, Toolbar } from "@material-ui/core";
 
-import { makeStyles } from "@material-ui/core";
-import { Grid, Button, Toolbar, Avatar, IconButton } from "@material-ui/core";
 import Brightness4Icon from "@material-ui/icons/Brightness4";
 import Brightness4OutlinedIcon from "@material-ui/icons/Brightness4Outlined";
-
 import BurgerMenu from "@/components/BurgerMenu";
-
-import { categorySchema } from "@/constant/category";
 import { DarkModeContext } from "@/context/darkModeContext";
+import { categorySchema } from "@/constant/category";
+import clsx from "clsx";
+import { makeStyles } from "@material-ui/core";
+import { useContext } from "react";
+import { useRouter } from "next/router";
 
 const useTopNavStyles = makeStyles(theme => ({
   gridRoot: {
@@ -99,7 +97,7 @@ const TopNav = props => {
         disableGutters={true}
       >
         <Grid item xs={6}>
-          <Button onClick={backToHomePage}>
+          <Button onClick={backToHomePage} aria-label="Home Page">
             <Avatar
               className={classes.logo}
               src="/icons/favicon-32x32-dunplab-manifest-28429.png"
@@ -129,6 +127,7 @@ const TopNav = props => {
                   })
                 }}
                 onClick={() => handleRouteChange(item.path)}
+                aria-label={item.title}
               >
                 {item.title}
               </Button>

@@ -1,12 +1,11 @@
-import { useState, useContext } from "react";
-import { useRouter } from "next/router";
-import clsx from "clsx";
-
-import { makeStyles } from "@material-ui/core";
 import { Button, Menu, MenuItem } from "@material-ui/core";
+import { useContext, useState } from "react";
 
-import { categorySchema } from "@/constant/category";
 import { DarkModeContext } from "@/context/darkModeContext";
+import { categorySchema } from "@/constant/category";
+import clsx from "clsx";
+import { makeStyles } from "@material-ui/core";
+import { useRouter } from "next/router";
 
 const useBurgerMenuStyle = makeStyles(theme => ({
   buttonLabel: {
@@ -50,6 +49,7 @@ const BurgerMenu = () => {
           label: classes.buttonLabel
         }}
         onClick={handleClick}
+        aria-label="Burger Button"
       >
         <div className={classes.line}></div>
         <div className={classes.line}></div>

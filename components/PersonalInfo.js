@@ -115,6 +115,7 @@ const PersonalInfo = props => {
         classes={{
           root: classes.actionButton
         }}
+        aria-label="View more"
       >
         <Link className={classes.buttonWrapper} to="collection" smooth={true}>
           View Projects
