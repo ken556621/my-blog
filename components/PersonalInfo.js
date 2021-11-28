@@ -1,12 +1,10 @@
-import { useContext } from "react";
-import clsx from "clsx";
-import { Link } from "react-scroll";
-
-import { makeStyles } from "@material-ui/core";
-import Button from "@material-ui/core/Button";
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
-
+import Button from "@material-ui/core/Button";
 import { DarkModeContext } from "@/context/darkModeContext";
+import { Link } from "react-scroll";
+import clsx from "clsx";
+import { makeStyles } from "@material-ui/core";
+import { useContext } from "react";
 
 const usePersonalInfoStyles = makeStyles(theme => ({
   root: {
@@ -16,7 +14,8 @@ const usePersonalInfoStyles = makeStyles(theme => ({
   container: {
     display: "flex",
     justifyContent: "space-between",
-    alignItems: "flex-start"
+    alignItems: "flex-start",
+    flexWrap: "wrap"
   },
   secondTitle: {
     animation: "$fadein 1s linear 1"

@@ -1,16 +1,14 @@
-import { useEffect, useState, useCallback } from "react";
-import { scroller } from "react-scroll";
-import debounce from "lodash/debounce";
-import { baseUrl } from "@/constant/config";
+import { useCallback, useEffect, useState } from "react";
 
-import { useRouter } from "next/router";
-
-import { makeStyles } from "@material-ui/core";
-
-import Header from "@/components/Header";
-import PersonalInfo from "@/components/PersonalInfo";
 import Collection from "@/components/Collection";
 import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import PersonalInfo from "@/components/PersonalInfo";
+import { baseUrl } from "@/constant/config";
+import debounce from "lodash/debounce";
+import { makeStyles } from "@material-ui/core";
+import { scroller } from "react-scroll";
+import { useRouter } from "next/router";
 
 const useIndexPageStyles = makeStyles(theme => ({
   headerWrapper: {
@@ -59,14 +57,14 @@ const IndexPage = props => {
   }, [router.query]);
 
   return (
-    <>
+    <main>
       <div className={classes.headerWrapper}>
         <Header isSecondTitle={isSecondTitle} img={`${baseUrl}/avatar.jpg`} />
       </div>
       <PersonalInfo isSecondTitle={isSecondTitle} />
       <Collection />
       <Footer />
-    </>
+    </main>
   );
 };
 

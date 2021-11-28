@@ -86,7 +86,8 @@ const Banner = props => {
       })}
     >
       <div className={classes.bannerWrapper}>
-        <h1 className={classes.title}>{title}</h1>
+        <h1 className={classes.title}>Yu Ken Code</h1>
+        <h2 className={classes.title}>{title}</h2>
         <ArticleInfo />
       </div>
     </div>
