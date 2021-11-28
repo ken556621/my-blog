@@ -1,5 +1,4 @@
 import Head from "next/head";
-
 import TopNav from "@/components/TopNav";
 
 const Header = props => {
@@ -19,7 +18,7 @@ const Header = props => {
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta
           name="viewport"
-          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=5"
         />
         <meta content={description} name="description" />
         <meta content={sharingTitle} property="og:title" />
