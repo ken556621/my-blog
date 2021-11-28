@@ -22,15 +22,15 @@ const useBlogStyles = makeStyles(theme => ({
     transition: "background-color 2s"
   },
   articleContainer: {
-    width: "85%",
     margin: "0px auto",
-    padding: "20px 60px 50px",
+    padding: "20px 30px 20px",
     transition: "background-color 2s",
     boxShadow: "0 2px 6px rgb(0 0 0 / 25%)",
     borderRadius: 15,
     backgroundColor: "#ffffff",
     [theme.breakpoints.up("laptop")]: {
-      width: "65%"
+      width: "65%",
+      padding: "20px 60px 50px"
     }
   },
   headerWrapper: {
@@ -159,6 +159,7 @@ export const getStaticPaths = async () => {
 
   const result = files.map(folder => {
     const blogPath = `${process.cwd()}/contents/${folder}`;
+
     const blog = fs.readdirSync(blogPath, "utf-8");
 
     return {
