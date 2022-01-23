@@ -1,71 +1,104 @@
-import { useContext } from "react";
-import clsx from "clsx";
-
-import { makeStyles } from "@material-ui/core";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
+import { animated, to as interpolate, useSprings } from "react-spring";
+import { useContext, useState } from "react";
 
 import { DarkModeContext } from "@/context/darkModeContext";
+import clsx from "clsx";
+import { makeStyles } from "@material-ui/core";
+import { useDrag } from "react-use-gesture";
 
-const useCollectionStyles = makeStyles(theme => ({
+const useCollectionStyles = makeStyles((theme) => ({
   root: {
-    padding: "0px 24px"
-  },
-  container: {
+    position: "relative",
+    height: "100vh",
+    overflow: "hidden",
     display: "flex",
-    justifyContent: "space-between"
+    alignItems: "center",
+    justifyContent: "center",
+    paddingTop: 70,
+
+    [theme.breakpoints.up("laptop")]: {
+      height: "60vh",
+      paddingTop: 0,
+    },
+
+    "& > div": {
+      position: "absolute",
+      width: "100vw",
+      willChange: "transform",
+      display: "flex !important",
+      justifyContent: "center",
+      flexWrap: "wrap",
+      gap: 0,
+
+      [theme.breakpoints.up("laptop")]: {
+        gap: 50,
+      }
+    },
+
+    "& > div .img": {
+      backgroundSize: "100% auto",
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "center",
+      width: "80%",
+      minHeight: "18vh",
+      willChange: "transform",
+      boxShadow: "0 2px 14px 0 rgb(69 20 229 / 10%)",
+
+      [theme.breakpoints.up("laptop")]: {
+        width: "50%",
+        minHeight: "35vh",
+      }
+    },
+
+    "& > div .word": {
+      padding: "0px 20px",
+      width: "100%",
+      minHeight: "35vh",
+      backgroundColor: "#f8fbff",
+      borderRadius: 8,
+
+      [theme.breakpoints.up("laptop")]: {
+        width: "30%",
+        padding: 50,
+      }
+    },
   },
-  imgWrapper: {
-    width: "50%"
+  description: {},
+  darkMode: {
+    "& > div .word": {
+      backgroundColor: theme.color.background.darkMode,
+      "& ul li": {
+        color: theme.color.word.darkMode,
+      }
+    },
   },
-  projectImg: {
-    width: "100%",
-    borderRadius: 8,
-    boxShadow: "0 2px 14px 0 rgb(69 20 229 / 10%)"
-  },
-  description: {
-    width: "45%"
-  },
-  itemList: {
-    marginRight: theme.spacing(2)
-  },
-  darkModeTitle: {
-    color: theme.color.secondWord.darkMode
-  }
 }));
 
-const Collection = props => {
-  const {} = props;
-
+const Collection = () => {
   const classes = useCollectionStyles();
-
   const { isDarkMode } = useContext(DarkModeContext);
+
+  const [gone] = useState(() => new Set());
 
   const collectionSchema = [
     {
-      id: "basketball",
-      src: "/project-img/basketball1.png",
-      description:
-        "A platform lets users team up and find the nearest basketball court"
-    },
-    {
-      id: "basketball",
-      src: "/project-img/basketball2.png",
+      id: "stylish",
+      src: "/project-img/stylish3.png",
       description: [
-        "Built a SPA with React and React Router",
-        "Applied Redux for global state management",
-        "Applied Material-Ui for better user interface",
-        "Supported RWD with SCSS to create excellent mobile user experience",
-        "Managed data with CRUD with Firebase Firestore",
-        "Applied Cloud Functions to fetch Google Map API and open source API",
-        "Implemented Geohash to recommend the nearest basketball courts for users"
-      ]
+        "Supported RWD with pure CSS",
+        "Connected to RESTful APIs by AJAX for fetching data from server side",
+        "Integrated Facebook Login API",
+        "Applied Google Analytics for tracking user's behavior",
+        "Applied Local Storage for Shopping Cart",
+        "Integrated TapPay as Payment Solution",
+      ],
     },
     {
-      id: "ledger",
-      src: "/project-img/ledger1.png",
-      description: "An account book for daily record"
+      id: "stylish",
+      src: "/project-img/stylish1.png",
+      description: [
+        "An e-commerce website selling modern clothings"
+      ],
     },
     {
       id: "ledger",
@@ -78,88 +111,123 @@ const Collection = props => {
         "Integrated Bcrypt.js to hash password",
         "Applied Moment.js to handle time converting",
         "Implemented Connect-Flash to display error message",
-        "Supported Facebook Login with Passport and Passport Facebook"
-      ]
+        "Supported Facebook Login with Passport and Passport Facebook",
+      ],
     },
     {
-      id: "stylish",
-      src: "/project-img/stylish1.png",
-      description: "An e-commerce website selling modern clothings"
-    },
-    {
-      id: "stylish",
-      src: "/project-img/stylish3.png",
+      id: "ledger",
+      src: "/project-img/ledger1.png",
       description: [
-        "Supported RWD with pure CSS",
-        "Connected to RESTful APIs by AJAX for fetching data from server side",
-        "Integrated Facebook Login API",
-        "Applied Google Analytics for tracking user's behavior",
-        "Applied Local Storage for Shopping Cart",
-        "Integrated TapPay as Payment Solution"
+        "An account book for daily record",
       ]
-    }
+    },
+    {
+      id: "basketball",
+      src: "/project-img/basketball2.png",
+      description: [
+        "Built a SPA with React and React Router",
+        "Applied Redux for global state management",
+        "Applied Material-Ui for better user interface",
+        "Supported RWD with SCSS to create excellent mobile user experience",
+        "Managed data with CRUD with Firebase Firestore",
+        "Applied Cloud Functions to fetch Google Map API and open source API",
+        "Implemented Geohash to recommend the nearest basketball courts for users",
+      ],
+    },
+    {
+      id: "basketball",
+      src: "/project-img/basketball1.png",
+      description:[
+        "A platform lets users team up and find the nearest basketball court"
+      ],
+    },
   ];
 
-  const StackList = ({ list }) => {
-    return list.map((item, index) => (
-      <ListItem key={index} dense>
-        <span
-          className={clsx(classes.itemList, {
-            [classes.darkModeTitle]: isDarkMode
-          })}
-        >
-          -
-        </span>
-        <ListItemText
-          classes={{
-            primary: clsx({ [classes.darkModeTitle]: isDarkMode })
-          }}
-          primary={item}
-        />
-      </ListItem>
+  const windowInnerWidth =
+    typeof window === "object" ? window.innerWidth : 1440;
+  const to = (i) => ({
+    x: 0,
+    y: i * -4,
+    scale: 1,
+    rot: -10 + Math.random() * 20,
+    delay: i * 100,
+  });
+  const from = (i) => ({ x: 0, rot: 0, scale: 1.5, y: -1000 });
+  const trans = (r, s) =>
+    `perspective(1500px) rotateX(30deg) rotateY(${
+      r / 10
+    }deg) rotateZ(${r}deg) scale(${s})`;
+
+  const [props, set] = useSprings(collectionSchema.length, (i) => ({
+    ...to(i),
+    from: from(i),
+  }));
+
+  const bind = useDrag(
+    ({ args: [index], down, movement: [mx], direction: [xDir], velocity }) => {
+      const trigger = velocity > 0.2;
+      const dir = xDir < 0 ? -1 : 1;
+
+      if (!down && trigger) {
+        gone.add(index);
+      }
+
+      set((i) => {
+        if (index !== i) return;
+        const isGone = gone.has(index);
+        const x = isGone ? (200 + windowInnerWidth) * dir : down ? mx : 0;
+        const rot = mx / 100 + (isGone ? dir * 10 * velocity : 0);
+        const scale = down ? 1.1 : 1;
+        return {
+          x,
+          rot,
+          scale,
+          delay: undefined,
+          config: { friction: 50, tension: down ? 800 : isGone ? 200 : 500 },
+        };
+      });
+
+      if (!down && gone.size === collectionSchema.length)
+        setTimeout(() => gone.clear() || set((i) => to(i)), 600);
+    }
+  );
+
+  const renderDescription = (description) => {
+    return description.map((item) => (
+      <ul>
+        <li>
+         {item}
+        </li>
+      </ul>
     ));
   };
 
-  const renderProjects = () => {
-    return collectionSchema.map((item, index) => {
-      if (index % 2 === 0) {
-        return (
-          <div key={index} className={classes.container}>
-            <div className={classes.imgWrapper}>
-              <img
-                className={classes.projectImg}
-                src={item.src}
-                alt={item.id}
-              />
-            </div>
-            <h3
-              className={clsx(classes.description, {
-                [classes.darkModeTitle]: isDarkMode
-              })}
-            >
-              {item.description}
-            </h3>
-          </div>
-        );
-      }
-      return (
-        <div className={classes.container}>
-          <List
-            sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
-          >
-            <StackList list={item.description} />
-          </List>
-          <div className={classes.imgWrapper}>
-            <img className={classes.projectImg} src={item.src} alt={item.id} />
-          </div>
-        </div>
-      );
-    });
+  const renderCollection = () => {
+    return props.map(({ x, y, rot, scale }, i) => (
+      <animated.div key={i} style={{ x, y }}>
+        <animated.div
+          className="img"
+          style={{
+            transform: interpolate([rot, scale], trans),
+            backgroundImage: `url(${collectionSchema[i].src})`,
+          }}
+          {...bind(i)}
+        />
+        <animated.div 
+          className="word" 
+          {...bind(i)}
+        >
+          {renderDescription(collectionSchema[i].description)}
+        </animated.div>
+      </animated.div>
+    ));
   };
 
   return (
-    <div id="collection" className={classes.root}>
-      {renderProjects()}
+    <div id="collection" className={clsx(classes.root, {
+      [classes.darkMode]: isDarkMode
+    })}>
+      {renderCollection()}
     </div>
   );
 };
