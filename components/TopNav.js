@@ -28,7 +28,8 @@ const useTopNavStyles = makeStyles(theme => ({
     margin: "0px 0px 0px 10px",
     padding: 0,
     fontSize: "1.5em",
-    textTransform: "none"
+    textTransform: "none",
+    whiteSpace: "nowrap"
   },
   secondLogoWord: {
     transition: "opacity .5s ease-out",

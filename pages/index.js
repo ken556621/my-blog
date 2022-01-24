@@ -12,8 +12,12 @@ import { useRouter } from "next/router";
 
 const useIndexPageStyles = makeStyles(theme => ({
   headerWrapper: {
+    [theme.breakpoints.up("tablet")]: {
+      height: "25vh"
+    },
+
     position: "relative",
-    height: "25vh"
+    height: "15vh"
   }
 }));
 
