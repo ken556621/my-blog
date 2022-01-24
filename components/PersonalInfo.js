@@ -15,7 +15,11 @@ const usePersonalInfoStyles = makeStyles(theme => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "flex-start",
-    flexWrap: "wrap"
+    flexWrap: "wrap",
+    gap: 30
+  },
+  wordWrapper: {
+    
   },
   secondTitle: {
     animation: "$fadein 1s linear 1"
@@ -25,16 +29,24 @@ const usePersonalInfoStyles = makeStyles(theme => ({
     to: { opacity: 1 }
   },
   avatar: {
-    borderRadius: 8
+    borderRadius: 8,
+    width: "100%",
+    [theme.breakpoints.up("tablet")]: {
+      width: 350
+    }
   },
   subTitle: {
     margin: 0
   },
   subTitleOne: {
-    width: 400
+    [theme.breakpoints.up("laptop")]: {
+      width: 400
+    }
   },
   subTitleTwo: {
-    width: 380
+    [theme.breakpoints.up("laptop")]: {
+      width: 380
+    }
   },
   actionButton: {
     marginTop: theme.spacing(6),
@@ -71,7 +83,7 @@ const PersonalInfo = props => {
   return (
     <div className={classes.root}>
       <div className={classes.container}>
-        <div>
+        <div className={classes.wordWrapper}>
           <h1
             className={clsx({
               [classes.secondTitle]: isSecondTitle,

@@ -9,7 +9,7 @@ import { useDrag } from "react-use-gesture";
 const useCollectionStyles = makeStyles((theme) => ({
   root: {
     position: "relative",
-    height: "100vh",
+    height: "45vh",
     overflow: "hidden",
     display: "flex",
     alignItems: "center",
@@ -56,10 +56,12 @@ const useCollectionStyles = makeStyles((theme) => ({
       minHeight: "35vh",
       backgroundColor: "#f8fbff",
       borderRadius: 8,
+      display: "none",
 
       [theme.breakpoints.up("laptop")]: {
         width: "30%",
         padding: 50,
+        display: "block"
       }
     },
   },
