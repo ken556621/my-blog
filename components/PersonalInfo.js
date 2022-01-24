@@ -1,14 +1,20 @@
+import { a, useSpring } from "@react-spring/web";
+import { useContext, useRef, useState } from "react";
+
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 import Button from "@material-ui/core/Button";
 import { DarkModeContext } from "@/context/darkModeContext";
 import { Link } from "react-scroll";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core";
-import { useContext } from "react";
+import useHover from "@react-hook/hover";
 
 const usePersonalInfoStyles = makeStyles(theme => ({
   root: {
-    height: "calc(80vh)",
+    [theme.breakpoints.up("tablet")]: {
+      height: "40vh"
+    },
+    height: "80vh",
     padding: "0px 24px"
   },
   container: {
@@ -17,6 +23,16 @@ const usePersonalInfoStyles = makeStyles(theme => ({
     alignItems: "flex-start",
     flexWrap: "wrap",
     gap: 30
+  },
+  avatarWrapper: {
+    position: "relative",
+    cursor: "pointer",
+    minWidth: 300,
+    minHeight: 212,
+    [theme.breakpoints.up("tablet")]: {
+      minHeight: 262,
+      minWidth: 350,
+    },
   },
   wordWrapper: {
     
@@ -29,11 +45,17 @@ const usePersonalInfoStyles = makeStyles(theme => ({
     to: { opacity: 1 }
   },
   avatar: {
+    position: "absolute",
+    left: -10,
     borderRadius: 8,
-    width: "100%",
+    width: 300,
+    height: 212,
+    backgroundSize: "cover",
     [theme.breakpoints.up("tablet")]: {
-      width: 350
-    }
+      right: 0,
+      width: 350,
+      height: 262,
+    },
   },
   subTitle: {
     margin: 0
@@ -66,13 +88,26 @@ const usePersonalInfoStyles = makeStyles(theme => ({
   },
   darkModeTitle: {
     color: theme.color.secondWord.darkMode
+  },
+  front: {
+    backgroundImage: "url(/avatar.jpg);"
+  },
+  back: {
+    backgroundImage: "url(/avatar2.jpg);"
   }
 }));
 
-const PersonalInfo = props => {
-  const { isSecondTitle } = props;
-
+const PersonalInfo = ({
+  isSecondTitle
+}) => {
   const { isDarkMode } = useContext(DarkModeContext);
+  const target = useRef(null);
+  const isHovering = useHover(target, {enterDelay: 0, leaveDelay: 200});
+  const { transform, opacity } = useSpring({
+    opacity: isHovering ? 1 : 0,
+    transform: `perspective(600px) rotateX(${isHovering ? 180 : 0}deg)`,
+    config: { mass: 5, tension: 500, friction: 80 },
+  })
 
   const classes = usePersonalInfoStyles();
 
@@ -121,7 +156,20 @@ const PersonalInfo = props => {
             optimized solutions for problems.
           </h3>
         </div>
-        <img className={classes.avatar} src="/avatar.jpg" alt="Person Img" />
+        <div className={classes.avatarWrapper} ref={target}>
+          <a.div
+            className={`${classes.avatar} ${classes.front}`}
+            style={{ opacity: opacity.to(o => 1 - o), transform }}
+          />
+          <a.div
+            className={`${classes.avatar} ${classes.back}`}
+            style={{
+              opacity,
+              transform,
+              rotateX: "180deg",
+            }}
+          />
+        </div>
       </div>
       <Button
         classes={{
@@ -130,7 +178,7 @@ const PersonalInfo = props => {
         aria-label="View more"
       >
         <Link className={classes.buttonWrapper} to="collection" smooth={true}>
-          View Projects
+          View Projects (Drag left or right...)
           <ArrowDownwardIcon className={classes.arrowIcon} />
         </Link>
       </Button>
