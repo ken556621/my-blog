@@ -24,6 +24,7 @@ const useCollectionStyles = makeStyles((theme) => ({
     "& > div": {
       position: "absolute",
       width: "100vw",
+      maxWidth: 1440,
       willChange: "transform",
       display: "flex !important",
       justifyContent: "center",
@@ -43,7 +44,7 @@ const useCollectionStyles = makeStyles((theme) => ({
       minHeight: "18vh",
       willChange: "transform",
       boxShadow: "0 2px 14px 0 rgb(69 20 229 / 10%)",
-
+      
       [theme.breakpoints.up("laptop")]: {
         width: "50%",
         minHeight: "35vh",
@@ -57,6 +58,7 @@ const useCollectionStyles = makeStyles((theme) => ({
       backgroundColor: "#f8fbff",
       borderRadius: 8,
       display: "none",
+      transition: "background-color 2s",
 
       [theme.breakpoints.up("laptop")]: {
         width: "30%",
@@ -68,7 +70,7 @@ const useCollectionStyles = makeStyles((theme) => ({
   description: {},
   darkMode: {
     "& > div .word": {
-      backgroundColor: theme.color.background.darkMode,
+      backgroundColor: "#121212",
       "& ul li": {
         color: theme.color.word.darkMode,
       }
