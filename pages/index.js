@@ -4,6 +4,7 @@ import Collection from "@/components/Collection";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import PersonalInfo from "@/components/PersonalInfo";
+import Timeline from "components/Timeline";
 import { baseUrl } from "@/constant/config";
 import debounce from "lodash/debounce";
 import { makeStyles } from "@material-ui/core";
@@ -66,6 +67,7 @@ const IndexPage = props => {
         <Header isSecondTitle={isSecondTitle} img={`${baseUrl}/avatar.jpg`} />
       </div>
       <PersonalInfo isSecondTitle={isSecondTitle} />
+      <Timeline />
       <Collection />
       <Footer />
     </main>

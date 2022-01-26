@@ -9,16 +9,15 @@ import { useDrag } from "react-use-gesture";
 const useCollectionStyles = makeStyles((theme) => ({
   root: {
     position: "relative",
-    height: "45vh",
+    height: "35vh",
     overflow: "hidden",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    paddingTop: 70,
+    paddingTop: 0,
 
     [theme.breakpoints.up("laptop")]: {
-      height: "60vh",
-      paddingTop: 0,
+      height: "60vh"
     },
 
     "& > div": {
@@ -32,7 +31,7 @@ const useCollectionStyles = makeStyles((theme) => ({
       gap: 0,
 
       [theme.breakpoints.up("laptop")]: {
-        gap: 50,
+        gap: 10,
       }
     },
 
@@ -54,7 +53,7 @@ const useCollectionStyles = makeStyles((theme) => ({
     "& > div .word": {
       padding: "0px 20px",
       width: "100%",
-      minHeight: "35vh",
+      minHeight: "48vh",
       backgroundColor: "#f8fbff",
       borderRadius: 8,
       display: "none",
