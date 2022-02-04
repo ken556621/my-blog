@@ -15,6 +15,7 @@ const useCollectionStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
     paddingTop: 0,
+    cursor: "grab",
 
     [theme.breakpoints.up("laptop")]: {
       height: "60vh"
