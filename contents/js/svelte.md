@@ -63,9 +63,27 @@ function create_fragment(ctx) {
 }
 ```
 
-我的感覺就是，把原本 Virtual Dom 這些繁重的比對，移到 build 的階段，把原本直譯式的 JS 搞得好像編譯式一樣
+我的感覺就是，把原本 Virtual Dom 這些繁重的比對，移到 build 的階段，把要產出的 JS code 先行編譯
 
 <img src="https://i.imgur.com/oawMIJs.png" alt="tweet" style="width: 500px;" />
+
+但這麼做還是有個問題，如果變數 A 依賴於另一個變數 B，但變數 B 改變值了呢？
+```
+let a = 1;
+let b = a + 1;
+
+a = 20;
+console.log(b) // 依舊還是 2
+```
+
+受到 [observable](https://observablehq.com/) 的啟發，將有依賴性的變數，用註冊的方式，當該值變動時，他就更著變動
+
+```
+let count = 1;
+
+$: doubled = count * 2;
+// 當 count 值改變時， doubled 會重新賦值
+```
 
 這麼做有幾個優點：
 1. 在執行的時候，平均較其他框架快 30%
@@ -161,13 +179,6 @@ p.svelte-jkyvzs{
 let count = 0;
 ```
 要更新變數就直接 `count = count++` 484很直接呢？~~什麼狗屁 setState~~
-
-### 如果變數不管怎樣都要變動呢？
-類似於 React Hook 中的 useEffect
-```
-$: count = 0;
-```
-用這種方式宣告變數後，之後只要 count 的數值有變動，整個 component 都會再重跑一次
 
 ### async/await
 ```
