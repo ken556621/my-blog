@@ -62,7 +62,7 @@
 
 這套件的作者是一個我很欣賞的開發者，不只是回答 issue 非常細心，文件的各種功能都有搭配 codesandbox 讓開發者可以直接去玩玩看，從我開始使用這個套件，我記得每幾個禮拜他就會更新一次，有時候是修一些 bug，有時候是減少整個套件的體積或是優化一些效能，而且他官網有做一些淺顯易懂的動畫讓人了解 uncontroll vs controll 在效能上的差異，蠻推薦給大家試試看
 
-<img style="width: 500px;" src="https://i.imgur.com/aUMcP06.png" alt="npm-info">
+<img style="width: 100%;" src="https://i.imgur.com/aUMcP06.png" alt="npm-info">
 
 [官網連結](https://react-hook-form.com/)
 

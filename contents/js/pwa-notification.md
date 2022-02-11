@@ -10,7 +10,7 @@
 
 ## 推播流程架構圖
 
-<img style="width: 500px;" src="https://i.imgur.com/TerAQ8n.png" alt="client-flow">
+<img style="width: 100%;" src="https://i.imgur.com/TerAQ8n.png" alt="client-flow">
 
 1. 使用者進入頁面先判斷是否 service worker 有支援
 2. 若有支援就註冊
@@ -18,7 +18,7 @@
 4. 使用者接受推播後，將 token 發給 server
 
 
-<img style="width: 500px;" src="https://i.imgur.com/PwGWY2Q.png" alt="server-flow">
+<img style="width: 100%;" src="https://i.imgur.com/PwGWY2Q.png" alt="server-flow">
 
 
 
@@ -136,7 +136,7 @@ app.post("/subscribe", (req, res) => {
 
 ## 瀏覽器支援度
 
-<img style="width: 500px;" src="https://i.imgur.com/RgzkhJ5.png" alt="browser-support">
+<img style="width: 100%;" src="https://i.imgur.com/RgzkhJ5.png" alt="browser-support">
 
 [圖片來源 MDN](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/showNotification)
 

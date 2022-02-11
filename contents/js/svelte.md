@@ -15,7 +15,7 @@ Svelte 創始人 Rich-Harris
 
 ### 一切都從 spreadsheet 開始
 
-<img src="https://i.imgur.com/qNZ5CkE.png" alt="spreadsheet" style="width: 500px;" />
+<img src="https://i.imgur.com/qNZ5CkE.png" alt="spreadsheet" style="width: 100%;" />
 
 Harris 認為 spreadsheet 有很好的使用者體驗，只更新有需要被更新的數值，並且即時反應
 
@@ -65,7 +65,7 @@ function create_fragment(ctx) {
 
 我的感覺就是，把原本 Virtual Dom 這些繁重的比對，移到 build 的階段，把要產出的 JS code 先行編譯
 
-<img src="https://i.imgur.com/oawMIJs.png" alt="tweet" style="width: 500px;" />
+<img src="https://i.imgur.com/oawMIJs.png" alt="tweet" style="width: 100%;" />
 
 但這麼做還是有個問題，如果變數 A 依賴於另一個變數 B，但變數 B 改變值了呢？
 ```
@@ -216,7 +216,7 @@ export const count = writable(0);
 1. 更好的效能及更小的 bundle size
 2. 更貼近原生 JS 跟 HTML
 
-<img src="https://i.imgur.com/dXYmIU4.png" alt="github" style="width: 500px;" />
+<img src="https://i.imgur.com/dXYmIU4.png" alt="github" style="width: 100%;" />
 
 Todo List 中 Github 的分析
 

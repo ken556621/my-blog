@@ -29,7 +29,7 @@ Web 若能達到以上三點，我認為就是 PWA 了，那首先要克服的�
 
 ## Service Worker
 
-<img src="https://i.imgur.com/rx0KaBT.png" alt="service-worker-structure" style="width: 500px;" />
+<img src="https://i.imgur.com/rx0KaBT.png" alt="service-worker-structure" style="width: 100%;" />
 
 * Service Worker 類似一個中間層，能夠攔截網頁每次的發送和接收
 * 它能決定該請求要從 Cache Storage 拿還是 Network
@@ -37,14 +37,14 @@ Web 若能達到以上三點，我認為就是 PWA 了，那首先要克服的�
 
 
 
-<img src="https://i.imgur.com/I3pgXwQ.png" alt="precaching" style="width: 500px;" />
+<img src="https://i.imgur.com/I3pgXwQ.png" alt="precaching" style="width: 100%;" />
 
 * Precaching 讓使用者第一次造訪網頁就可以使用離線功能
 * 在 build time 就先把資料存入 cache
 
 ### Service Worker 生命週期
 
-<img src="https://i.imgur.com/MnYb6Bd.png" alt="lifeCycle" style="width: 500px;" />
+<img src="https://i.imgur.com/MnYb6Bd.png" alt="lifeCycle" style="width: 100%;" />
 
 * 是為了確保同一個註冊的網頁只有一個版本
 * 避免開多個視窗卻有不同的 service worker，導致資料不一致
@@ -282,7 +282,7 @@ module.exports = withPWA(
 
 6. 接下來去 devtool 的 lighthouse 去產一份報告，看 PWA 那部分有沒有成功，或是還缺什麼，若在 localhost 的話，應該只有 https 會是紅色的
 
-<img src="https://i.imgur.com/MQDKbZ3.png" alt="lighthouse-report" style="width: 500px;" />
+<img src="https://i.imgur.com/MQDKbZ3.png" alt="lighthouse-report" style="width: 100%;" />
 
 7. 接下來從手機去打開網址，打開選單後點擊加入主畫面
 
@@ -292,7 +292,7 @@ module.exports = withPWA(
 
 * 可在 devtool 將網路關成 offline 再 refresh 一次
 
-<img src="https://i.imgur.com/feWQZ3l.png" alt="offline" style="width: 500px;" />
+<img src="https://i.imgur.com/feWQZ3l.png" alt="offline" style="width: 100%;" />
 
 
 之後會再嘗試推播功能和其他偵測裝置的功能，目前先到這裡
