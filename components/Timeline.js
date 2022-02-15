@@ -29,6 +29,7 @@ const useTimelineStyles = makeStyles((theme) => ({
     fontSize: rpx(22),
   },
   companyLogo: {
+    height: 36,
     width: 36,
     borderRadius: "50%",
   },
@@ -36,7 +37,7 @@ const useTimelineStyles = makeStyles((theme) => ({
     "& h1, & h2": {
       color: theme.color.word.darkMode,
     },
-  },
+  }
 }));
 
 const Timeline = () => {
