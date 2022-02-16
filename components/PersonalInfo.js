@@ -1,5 +1,5 @@
 import { a, useSpring } from "@react-spring/web";
-import { useContext, useRef, useState } from "react";
+import { useContext, useRef } from "react";
 
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 import Button from "@material-ui/core/Button";
