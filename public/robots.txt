@@ -1,6 +1,2 @@
-User-agent: Googlebot
-
 User-agent: *
 Allow: /
-
-Sitemap: https://kenyucode.vercel.app/sitemap.xml
