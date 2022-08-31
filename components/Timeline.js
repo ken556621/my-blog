@@ -50,14 +50,14 @@ const Timeline = () => {
       lastTime: "Nov. 2021 - Now",
       jobTitle: "Frontend Engineer",
       achievement: [],
-      icon: <img className={classes.companyLogo} src="/icons/vocus.jpg" />,
+      icon: <img className={classes.companyLogo} src="/icons/vocus.jpg" alt="Vocus Logo" />,
     },
     {
       company: "CloudMile",
       lastTime: "June. 2020 - Sept. 2021",
       jobTitle: "Frontend Engineer",
       achievement: [],
-      icon: <img className={classes.companyLogo} src="/icons/cloudMile.jpeg" />,
+      icon: <img className={classes.companyLogo} src="/icons/cloudMile.jpeg" alt="CloudMile Logo" />,
     },
     {
       company: "AppWorks School",
