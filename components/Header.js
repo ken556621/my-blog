@@ -36,25 +36,6 @@ const Header = props => {
           content="H1MEre3sIZnXcRdwbgmTNEm94vKd3SkjiLnPcYUaEKw"
         />
 
-        <link rel="manifest" href="/manifest.json" />
-        <link
-          href="/icons/favicon-16x16-dunplab-manifest-28429.png"
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-        />
-        <link
-          href="/icons/favicon-32x32-dunplab-manifest-28429.png"
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-        />
-        <link
-          href="/icons/apple-icon-60x60-dunplab-manifest-28429.png"
-          rel="apple-touch-icon"
-          type="image/png"
-          sizes="60x60"
-        />
       </Head>
       <TopNav isSecondTitle={isSecondTitle} />
     </>

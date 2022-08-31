@@ -75,10 +75,6 @@ const TopNav = props => {
 
   const { isDarkMode, setIsDarkMode } = useContext(DarkModeContext);
 
-  const handleRouteChange = path => {
-    router.push(path);
-  };
-
   const handleChangeTheme = () => {
     setIsDarkMode(!isDarkMode);
   };
