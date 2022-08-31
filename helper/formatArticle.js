@@ -21,7 +21,7 @@ export const setSecondTitleId = content => {
       splitedContent.splice(
         index + 2,
         0,
-        `id=${secondTitleList[count].replace(/ /g, "")}`
+        `id=${secondTitleList[count] ? secondTitleList[count].replace(/ /g, "") : secondTitleList[count]}`
       );
       count++;
     }
