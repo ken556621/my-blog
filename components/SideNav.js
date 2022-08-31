@@ -1,5 +1,4 @@
 import { DarkModeContext } from "@/context/darkModeContext";
-import snakeCase from "lodash/snakeCase";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core";
 import { useContext } from "react";
@@ -70,7 +69,7 @@ const SideNav = props => {
       {secondTitleList.map((item, index) => (
         <Link
           key={index}
-          href={`#${snakeCase(item)}`}
+          href={`#${item.replace(/ /g, "")}`}
         >
           <a 
             className={clsx(classes.articleTag, {
