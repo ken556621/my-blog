@@ -1,10 +1,10 @@
 import { a, useSpring } from "@react-spring/web";
 import { useContext, useRef } from "react";
+import Link from "next/link";
 
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 import Button from "@material-ui/core/Button";
 import { DarkModeContext } from "@/context/darkModeContext";
-import { Link } from "react-scroll";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core";
 import useHover from "@react-hook/hover";
@@ -177,9 +177,11 @@ const PersonalInfo = ({
         }}
         aria-label="View more"
       >
-        <Link className={classes.buttonWrapper} to="collection" smooth={true}>
-          View Projects (Drag left or right...)
-          <ArrowDownwardIcon className={classes.arrowIcon} />
+        <Link href="#collection">
+          <a className={classes.buttonWrapper}>
+            View Projects (Drag left or right...)
+            <ArrowDownwardIcon className={classes.arrowIcon} />
+          </a>
         </Link>
       </Button>
     </div>

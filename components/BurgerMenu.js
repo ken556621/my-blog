@@ -1,5 +1,6 @@
 import { Button, Menu, MenuItem } from "@material-ui/core";
 import { useContext, useState } from "react";
+import Link from "next/link";
 
 import { DarkModeContext } from "@/context/darkModeContext";
 import { categorySchema } from "@/constant/category";
@@ -7,9 +8,9 @@ import clsx from "clsx";
 import { makeStyles } from "@material-ui/core";
 import { useRouter } from "next/router";
 
-const useBurgerMenuStyle = makeStyles(theme => ({
+const useBurgerMenuStyle = makeStyles((theme) => ({
   buttonLabel: {
-    flexDirection: "column"
+    flexDirection: "column",
   },
   line: {
     backgroundColor: theme.color.word.main,
@@ -17,8 +18,11 @@ const useBurgerMenuStyle = makeStyles(theme => ({
     height: 3,
     borderRadius: 3,
     "&:not(&:last-of-type)": {
-      marginBottom: 4
-    }
+      marginBottom: 4,
+    },
+  },
+  nav: {
+    color: "#333"
   }
 }));
 
@@ -30,7 +34,7 @@ const BurgerMenu = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
-  const handleClick = event => {
+  const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -38,15 +42,11 @@ const BurgerMenu = () => {
     setAnchorEl(null);
   };
 
-  const handleRouteChange = path => {
-    router.push(path);
-  };
-
   return (
     <div>
       <Button
         classes={{
-          label: classes.buttonLabel
+          label: classes.buttonLabel,
         }}
         onClick={handleClick}
         aria-label="Burger Button"
@@ -61,20 +61,23 @@ const BurgerMenu = () => {
         open={open}
         onClose={handleClose}
       >
-        {categorySchema.map(item => (
+        {categorySchema.map((item) => (
           <MenuItem
             classes={{
               label: clsx({
                 [classes.selectedButtonLabel]: item.path.includes(
                   router.query.category
                 ),
-                [classes.darkMode]: isDarkMode
-              })
+                [classes.darkMode]: isDarkMode,
+              }),
             }}
             key={item.id}
-            onClick={() => handleRouteChange(item.path)}
           >
-            {item.title}
+            <Link href={item.path}>
+              <a className={classes.nav}>
+                {item.title}
+              </a>
+            </Link>
           </MenuItem>
         ))}
       </Menu>

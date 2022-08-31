@@ -1,4 +1,4 @@
-import _ from "lodash";
+import snakeCase from "lodash";
 
 import { getSecondTitle } from "@/helper/getArticleTag";
 
@@ -23,7 +23,7 @@ export const setSecondTitleId = content => {
       splitedContent.splice(
         index + 2,
         0,
-        `id=${_.snakeCase(secondTitleList[count])}`
+        `id=${snakeCase(secondTitleList[count])}`
       );
       count++;
     }

@@ -8,7 +8,6 @@ import Timeline from "components/Timeline";
 import { baseUrl } from "@/constant/config";
 import debounce from "lodash/debounce";
 import { makeStyles } from "@material-ui/core";
-import { scroller } from "react-scroll";
 import { useRouter } from "next/router";
 
 const useIndexPageStyles = makeStyles(theme => ({
@@ -50,16 +49,6 @@ const IndexPage = props => {
 
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  useEffect(() => {
-    if (router.query.portfolio) {
-      scroller.scrollTo("collection", {
-        duration: 800,
-        delay: 0,
-        smooth: "easeInOutQuart"
-      });
-    }
-  }, [router.query]);
 
   return (
     <main>

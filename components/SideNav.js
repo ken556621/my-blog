@@ -1,9 +1,9 @@
 import { DarkModeContext } from "@/context/darkModeContext";
-import { Link } from "react-scroll";
-import _ from "lodash";
+import snakeCase from "lodash/snakeCase";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core";
 import { useContext } from "react";
+import Link from "next/link";
 
 const useSideNavStyles = makeStyles(theme => ({
   root: {
@@ -70,13 +70,15 @@ const SideNav = props => {
       {secondTitleList.map((item, index) => (
         <Link
           key={index}
-          className={clsx(classes.articleTag, {
-            [classes.darkModeLink]: isDarkMode
-          })}
-          to={_.snakeCase(item)}
-          smooth={true}
+          href={`#${snakeCase(item)}`}
         >
-          {item}
+          <a 
+            className={clsx(classes.articleTag, {
+              [classes.darkModeLink]: isDarkMode
+            })}
+          >
+            {item}
+          </a>
         </Link>
       ))}
     </div>

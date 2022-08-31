@@ -9,6 +9,7 @@ import clsx from "clsx";
 import { makeStyles } from "@material-ui/core";
 import { useContext } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const useTopNavStyles = makeStyles(theme => ({
   gridRoot: {
@@ -59,6 +60,9 @@ const useTopNavStyles = makeStyles(theme => ({
   },
   darkMode: {
     color: theme.color.word.darkMode
+  },
+  nav: {
+    color: "#333"
   }
 }));
 
@@ -127,10 +131,13 @@ const TopNav = props => {
                     [classes.darkMode]: isDarkMode
                   })
                 }}
-                onClick={() => handleRouteChange(item.path)}
                 aria-label={item.title}
               >
-                {item.title}
+                <Link href={item.path}>
+                  <a className={classes.nav}>
+                    {item.title}
+                  </a>
+                </Link>
               </Button>
             ))}
             <IconButton aria-label="changeTheme" onClick={handleChangeTheme}>
