@@ -1,5 +1,6 @@
 import Head from "next/head";
 import TopNav from "@/components/TopNav";
+import { getArticleJsonLd } from "@/constant/seo.meta";
 
 const Header = props => {
   const {
@@ -7,7 +8,9 @@ const Header = props => {
     description = "紀錄自身學習程式歷程，從體能教練轉職成為前端工程師",
     sharingTitle = "從體能教練轉職前端工程師、不斷自學精進和熱愛用技術去解決身邊的問題｜Yu Ken Code Blog",
     isSecondTitle = false,
-    img = "/article-img/hook.jpg"
+    img = "/avatar.jpg",
+    articleUrl = "",
+    publishDate = ""
   } = props;
 
   return (
@@ -36,6 +39,20 @@ const Header = props => {
           content="H1MEre3sIZnXcRdwbgmTNEm94vKd3SkjiLnPcYUaEKw"
         />
 
+        {
+          articleUrl && (
+            <script 
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: getArticleJsonLd({
+                  img,
+                  articleUrl,
+                  publishDate
+                })
+              }}
+            /> 
+          )
+        }
       </Head>
       <TopNav isSecondTitle={isSecondTitle} />
     </>

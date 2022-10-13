@@ -29,6 +29,18 @@ export const getTitle = content => {
   return title;
 };
 
+export const getDescription = content => {
+  const regexp = /<p>.+?</g;
+
+  const paragraph = content.match(regexp);
+
+  const formatedParagraph = paragraph.map(item =>
+    item.replace("<p>", "").replace("<", "")
+  ).join("");
+
+  return formatedParagraph;
+};
+
 export const getSecondTitle = content => {
   const regexp = /<h2>.+?</g;
 

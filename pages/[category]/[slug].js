@@ -3,7 +3,8 @@ import {
   getPath,
   getSecondTitle,
   getTitle,
-  getWordCount
+  getWordCount,
+  getDescription
 } from "@/helper/getArticleTag";
 
 import Banner from "@/components/Banner";
@@ -53,7 +54,10 @@ const useBlogStyles = makeStyles(theme => ({
 }));
 
 const Blog = props => {
-  const { blog = {} } = props;
+  const { 
+    blog = {},
+    category
+  } = props;
 
   const classes = useBlogStyles();
 
@@ -62,6 +66,8 @@ const Blog = props => {
   const formatedContent = setSecondTitleId(blog.content);
 
   const title = getTitle(blog.content);
+  const description = getDescription(blog.content);
+  const date = getDate(blog.content);
 
   return (
     <main
@@ -72,13 +78,15 @@ const Blog = props => {
       <div className={classes.headerWrapper}>
         <Header
           title={title}
-          description={title}
+          description={description}
           sharingTitle={title}
           img={`${baseUrl}/article-img/${getPath(blog.content)}.jpg`}
+          articleUrl={`${baseUrl}/${category}/${getPath(blog.content)}`}
+          publishDate={date}
         />
         <Banner
           title={title}
-          date={getDate(blog.content)}
+          date={date}
           wordCount={getWordCount(blog.content)}
         />
       </div>
