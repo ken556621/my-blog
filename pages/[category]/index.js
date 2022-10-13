@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { useRouter } from "next/router";
 import capitalize from "lodash/capitalize";
 import clsx from "clsx";
 
@@ -8,6 +7,7 @@ import Header from "@/components/Header";
 
 import { makeStyles } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
+import Link from "next/link";
 
 import { categorySchema } from "@/constant/category";
 import { baseUrl } from "@/constant/config";
@@ -78,41 +78,38 @@ const BlogListContent = props => {
 
   const classes = useBlogListStyles();
 
-  const router = useRouter();
-
   const { isDarkMode } = useContext(DarkModeContext);
-
-  const handleClickArticle = path => {
-    router.push(`${category}/${path}`);
-  };
 
   const BlogList = () => {
     return allFormatBlogs.map((blog, index) => (
-      <Paper
-        classes={{
-          root: clsx(classes.paperRoot, {
-            [classes.darkMode]: isDarkMode
-          })
-        }}
-        key={index}
-        elevation={0}
-        onClick={() => handleClickArticle(getPath(blog))}
-      >
-        <div className={classes.imgWrapper}>
-          <img
-            className={classes.img}
-            src={`/article-img/${getPath(blog)}.jpg`}
-            alt={getPath(blog)}
-          />
-        </div>
-        <div className={classes.wordWrapper}>
-          <p className={classes.cardTitle}>{getTitle(blog)}</p>
-          <p
-            className={classes.cardDescription}
-            dangerouslySetInnerHTML={{ __html: getAgenda(blog) }}
-          />
-        </div>
-      </Paper>
+      <Link href={`${category}/${getPath(blog)}`}>
+        <a>
+          <Paper
+            classes={{
+              root: clsx(classes.paperRoot, {
+                [classes.darkMode]: isDarkMode
+              })
+            }}
+            key={index}
+            elevation={0}
+          >
+            <div className={classes.imgWrapper}>
+              <img
+                className={classes.img}
+                src={`/article-img/${getPath(blog)}.jpg`}
+                alt={getPath(blog)}
+              />
+            </div>
+            <div className={classes.wordWrapper}>
+              <p className={classes.cardTitle}>{getTitle(blog)}</p>
+              <p
+                className={classes.cardDescription}
+                dangerouslySetInnerHTML={{ __html: getAgenda(blog) }}
+              />
+            </div>
+          </Paper>
+        </a>
+      </Link>
     ));
   };
 
