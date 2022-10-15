@@ -4,7 +4,7 @@ import clsx from "clsx";
 
 import Banner from "@/components/Banner";
 import Header from "@/components/Header";
-
+import Image from 'next/image'
 import { makeStyles } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 import Link from "next/link";
@@ -13,65 +13,6 @@ import { categorySchema } from "@/constant/category";
 import { baseUrl } from "@/constant/config";
 import { DarkModeContext } from "@/context/darkModeContext";
 import { getPath, getTitle, getAgenda } from "@/helper/getArticleTag";
-
-const useBlogListStyles = makeStyles(theme => ({
-  container: {
-    margin: "30px auto 0px auto",
-    padding: "0px 24px",
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
-    transition: "background-color 2s",
-    maxWidth: 1200
-  },
-  headerWrapper: {
-    position: "relative"
-  },
-  darkMode: {
-    boxShadow: "0 2px 10px 0 rgba(255, 255, 255, 0.1)"
-  },
-  articleSection: {
-    cursor: "pointer",
-    width: "100%"
-  },
-  paperRoot: {
-    display: "flex",
-    flexDirection: "column",
-    marginBottom: 30,
-    width: 350,
-    borderRadius: 8,
-    cursor: "pointer",
-    boxShadow: "0 2px 10px 0 rgba(0, 0, 0, 0.1)",
-    "&:hover": {
-      backgroundColor: "#c0c0c0"
-    }
-  },
-  imgWrapper: {
-    overflow: "hidden",
-    height: 235,
-    borderRadius: "8px 8px 0px 0px"
-  },
-  img: {
-    width: "100%",
-    transition: "all .5s ease",
-    "&:hover": {
-      transform: "scale(1.2)"
-    }
-  },
-  wordWrapper: {
-    padding: 20
-  },
-  cardTitle: {
-    fontSize: "1rem"
-  },
-  cardDescription: {
-    margin: 0,
-    fontSize: ".725rem",
-    "& p, ul": {
-      margin: 0
-    }
-  }
-}));
 
 const BlogListContent = props => {
   const { category = "", allFormatBlogs = [] } = props;
@@ -196,3 +137,67 @@ export const getStaticPaths = async () => {
 };
 
 export default BlogListContent;
+
+const useBlogListStyles = makeStyles(theme => ({
+  container: {
+    [theme.breakpoints.up("laptop")]: {
+      padding: "0px 24px",
+      justifyContent: "space-between",
+    },
+    margin: "30px auto 0px auto",
+    padding: "0px",
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    transition: "background-color 2s",
+    maxWidth: 1200
+  },
+  headerWrapper: {
+    position: "relative"
+  },
+  darkMode: {
+    boxShadow: "0 2px 10px 0 rgba(255, 255, 255, 0.1)"
+  },
+  articleSection: {
+    cursor: "pointer",
+    width: "100%"
+  },
+  paperRoot: {
+    display: "flex",
+    flexDirection: "column",
+    marginBottom: 30,
+    width: 350,
+    borderRadius: 8,
+    cursor: "pointer",
+    boxShadow: "0 2px 10px 0 rgba(0, 0, 0, 0.1)",
+    "&:hover": {
+      backgroundColor: "#c0c0c0"
+    }
+  },
+  imgWrapper: {
+    overflow: "hidden",
+    height: 235,
+    borderRadius: "8px 8px 0px 0px"
+  },
+  img: {
+    width: "100%",
+    transition: "all .5s ease",
+    "&:hover": {
+      transform: "scale(1.2)"
+    }
+  },
+  wordWrapper: {
+    padding: 20
+  },
+  cardTitle: {
+    fontSize: "1rem"
+  },
+  cardDescription: {
+    margin: 0,
+    fontSize: ".725rem",
+    "& p, ul": {
+      margin: 0,
+      paddingLeft: 18
+    }
+  }
+}));

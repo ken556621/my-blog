@@ -58,11 +58,11 @@ const useTopNavStyles = makeStyles(theme => ({
       backgroundColor: "red"
     }
   },
-  darkMode: {
-    color: theme.color.word.darkMode
-  },
   nav: {
     color: "#333"
+  },
+  darkMode: {
+    color: theme.color.word.darkMode
   }
 }));
 
@@ -130,7 +130,11 @@ const TopNav = props => {
                 aria-label={item.title}
               >
                 <Link href={item.path}>
-                  <a className={classes.nav}>
+                  <a 
+                    className={clsx(classes.nav, {
+                      [classes.darkMode]: isDarkMode,
+                    })}
+                  >
                     {item.title}
                   </a>
                 </Link>
