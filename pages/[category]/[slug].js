@@ -1,10 +1,10 @@
 import {
   getDate,
+  getDescription,
   getPath,
   getSecondTitle,
   getTitle,
-  getWordCount,
-  getDescription
+  getWordCount
 } from "@/helper/getArticleTag";
 
 import Banner from "@/components/Banner";

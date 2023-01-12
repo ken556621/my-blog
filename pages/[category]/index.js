@@ -1,18 +1,16 @@
-import { useContext } from "react";
-import capitalize from "lodash/capitalize";
-import clsx from "clsx";
+import { getAgenda, getPath, getTitle } from "@/helper/getArticleTag";
 
 import Banner from "@/components/Banner";
-import Header from "@/components/Header";
-import Image from 'next/image'
-import { makeStyles } from "@material-ui/core";
-import Paper from "@material-ui/core/Paper";
-import Link from "next/link";
-
-import { categorySchema } from "@/constant/category";
-import { baseUrl } from "@/constant/config";
 import { DarkModeContext } from "@/context/darkModeContext";
-import { getPath, getTitle, getAgenda } from "@/helper/getArticleTag";
+import Header from "@/components/Header";
+import Link from "next/link";
+import Paper from "@material-ui/core/Paper";
+import { baseUrl } from "@/constant/config";
+import capitalize from "lodash/capitalize";
+import { categorySchema } from "@/constant/category";
+import clsx from "clsx";
+import { makeStyles } from "@material-ui/core";
+import { useContext } from "react";
 
 const BlogListContent = props => {
   const { category = "", allFormatBlogs = [] } = props;

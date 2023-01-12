@@ -1,13 +1,10 @@
-import { useState, useEffect } from "react";
-
-import styles from "@/styles/global.scss";
-
-import { ThemeProvider } from "@material-ui/styles";
-
-import theme from "@/styles/theme";
+import { DrawerContext, drawer } from "@/context/drawerContext";
+import { useEffect, useState } from "react";
 
 import { DarkModeContext } from "@/context/darkModeContext";
-import { DrawerContext, drawer } from "@/context/drawerContext";
+import { ThemeProvider } from "@material-ui/styles";
+import styles from "@/styles/global.scss";
+import theme from "@/styles/theme";
 
 const MyApp = ({ Component, pageProps }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
