@@ -9,20 +9,20 @@ import clsx from "clsx";
 import { makeStyles } from "@material-ui/core";
 import useHover from "@react-hook/hover";
 
-const usePersonalInfoStyles = makeStyles(theme => ({
+const usePersonalInfoStyles = makeStyles((theme) => ({
   root: {
     [theme.breakpoints.up("tablet")]: {
-      height: "40vh"
+      height: "40vh",
     },
     height: "80vh",
-    padding: "0px 24px"
+    padding: "0px 24px",
   },
   container: {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "flex-start",
     flexWrap: "wrap",
-    gap: 30
+    gap: 30,
   },
   avatarWrapper: {
     position: "relative",
@@ -34,15 +34,13 @@ const usePersonalInfoStyles = makeStyles(theme => ({
       minWidth: 350,
     },
   },
-  wordWrapper: {
-    
-  },
+  wordWrapper: {},
   secondTitle: {
-    animation: "$fadein 1s linear 1"
+    animation: "$fadein 1s linear 1",
   },
   "@keyframes fadein": {
     from: { opacity: 0 },
-    to: { opacity: 1 }
+    to: { opacity: 1 },
   },
   avatar: {
     position: "absolute",
@@ -58,56 +56,54 @@ const usePersonalInfoStyles = makeStyles(theme => ({
     },
   },
   subTitle: {
-    margin: 0
+    margin: 0,
   },
   subTitleOne: {
     [theme.breakpoints.up("laptop")]: {
-      width: 400
-    }
+      width: 400,
+    },
   },
   subTitleTwo: {
     [theme.breakpoints.up("laptop")]: {
-      width: 380
-    }
+      width: 380,
+    },
   },
   actionButton: {
     marginTop: theme.spacing(6),
     "&:hover svg": {
       transition: "all .5s ease-out",
-      transform: "translate(0, 10px)"
-    }
+      transform: "translate(0, 10px)",
+    },
   },
   buttonWrapper: {
     display: "flex",
-    alignItems: "center"
+    alignItems: "center",
   },
   arrowIcon: {
     marginLeft: theme.spacing(1),
     fontSize: 18,
-    color: "#4172b0"
+    color: "#4172b0",
   },
   darkModeTitle: {
-    color: theme.color.secondWord.darkMode
+    color: theme.color.secondWord.darkMode,
   },
   front: {
-    backgroundImage: "url(/avatar.jpg);"
+    backgroundImage: "url(/avatar.jpg);",
   },
   back: {
-    backgroundImage: "url(/avatar2.jpg);"
-  }
+    backgroundImage: "url(/avatar2.jpg);",
+  },
 }));
 
-const PersonalInfo = ({
-  isSecondTitle
-}) => {
+const PersonalInfo = ({ isSecondTitle }) => {
   const { isDarkMode } = useContext(DarkModeContext);
   const target = useRef(null);
-  const isHovering = useHover(target, {enterDelay: 0, leaveDelay: 200});
+  const isHovering = useHover(target, { enterDelay: 0, leaveDelay: 200 });
   const { transform, opacity } = useSpring({
     opacity: isHovering ? 1 : 0,
     transform: `perspective(600px) rotateX(${isHovering ? 180 : 0}deg)`,
     config: { mass: 5, tension: 500, friction: 80 },
-  })
+  });
 
   const classes = usePersonalInfoStyles();
 
@@ -122,35 +118,35 @@ const PersonalInfo = ({
           <h1
             className={clsx({
               [classes.secondTitle]: isSecondTitle,
-              [classes.darkModeTitle]: isDarkMode
+              [classes.darkModeTitle]: isDarkMode,
             })}
           >
             {renderTitle()}
           </h1>
           <h2
             className={clsx({
-              [classes.darkModeTitle]: isDarkMode
+              [classes.darkModeTitle]: isDarkMode,
             })}
           >
-            I'm Ken, a web frontend developer.
+            I'm Ken, a Software Engineer.
           </h2>
           <h3
             className={clsx(classes.subTitle, classes.subTitleOne, {
-              [classes.darkModeTitle]: isDarkMode
+              [classes.darkModeTitle]: isDarkMode,
             })}
           >
             A patient listener who is highly motivated to
           </h3>
           <h3
             className={clsx(classes.subTitle, classes.subTitleTwo, {
-              [classes.darkModeTitle]: isDarkMode
+              [classes.darkModeTitle]: isDarkMode,
             })}
           >
             understand the reasons behind demands
           </h3>
           <h3
             className={clsx(classes.subTitle, classes.subTitleThree, {
-              [classes.darkModeTitle]: isDarkMode
+              [classes.darkModeTitle]: isDarkMode,
             })}
           >
             optimized solutions for problems.
@@ -159,7 +155,7 @@ const PersonalInfo = ({
         <div className={classes.avatarWrapper} ref={target}>
           <a.div
             className={`${classes.avatar} ${classes.front}`}
-            style={{ opacity: opacity.to(o => 1 - o), transform }}
+            style={{ opacity: opacity.to((o) => 1 - o), transform }}
           />
           <a.div
             className={`${classes.avatar} ${classes.back}`}
@@ -173,7 +169,7 @@ const PersonalInfo = ({
       </div>
       <Button
         classes={{
-          root: classes.actionButton
+          root: classes.actionButton,
         }}
         aria-label="View more"
       >

@@ -10,35 +10,35 @@ import debounce from "lodash/debounce";
 import { makeStyles } from "@material-ui/core";
 import { useRouter } from "next/router";
 
-const useIndexPageStyles = makeStyles(theme => ({
+const useIndexPageStyles = makeStyles((theme) => ({
   headerWrapper: {
     [theme.breakpoints.up("tablet")]: {
-      height: "20vh"
+      height: "20vh",
     },
 
     position: "relative",
-    height: "15vh"
-  }
+    height: "15vh",
+  },
 }));
 
-const IndexPage = props => {
+const IndexPage = (props) => {
   const router = useRouter();
 
   const classes = useIndexPageStyles();
 
   const [isSecondTitle, setIsSecondTitle] = useState(false);
 
-  const handleUpdateSecondTitle = hasScrollDown => {
+  const handleUpdateSecondTitle = (hasScrollDown) => {
     setIsSecondTitle(hasScrollDown);
   };
 
   const scrollChangeDebounce = useCallback(
-    debounce(hasScrollDown => handleUpdateSecondTitle(hasScrollDown), 10),
-    []
+    debounce((hasScrollDown) => handleUpdateSecondTitle(hasScrollDown), 10),
+    [],
   );
 
   useEffect(() => {
-    const onScroll = event => {
+    const onScroll = (event) => {
       if (event.target.documentElement.scrollTop > 30) {
         scrollChangeDebounce(true);
         return;
@@ -56,7 +56,7 @@ const IndexPage = props => {
         <Header isSecondTitle={isSecondTitle} img={`${baseUrl}/avatar.jpg`} />
       </div>
       <PersonalInfo isSecondTitle={isSecondTitle} />
-      <Timeline />
+      {/* <Timeline /> */}
       <Collection />
       <Footer />
     </main>
